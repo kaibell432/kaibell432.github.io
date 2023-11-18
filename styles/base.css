@@ -16,7 +16,7 @@
 
 /* Custom Hover Effect for Menu Items */
 .ui.menu .item:hover {
-    background-color: #FC6A03; /* Change hover background color */
+    background-color: #FC6A03 !important; /* Change hover background color */
 }
 
 /* Custom Style for the Brand/Logo */
@@ -26,7 +26,7 @@
 }
 
 .ui.menu .header.item:hover {
-    color: #FC6A03
+    color: black
 }
 
 body {
