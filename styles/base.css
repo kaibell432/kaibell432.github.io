@@ -1,4 +1,35 @@
 /* base.css */
+
+
+/* Custom Navbar Background */
+.ui.menu {
+    background-color: #333; /* Change the color as desired */
+}
+
+/* Custom Color for Menu Items */
+.ui.menu .item {
+    color: white; /* Change text color */
+}
+
+/* Custom Hover Effect for Menu Items */
+.ui.menu .item:hover {
+    background-color: #FC6A03; /* Change hover background color */
+}
+
+/* Custom Style for the Brand/Logo */
+.ui.menu .header.item {
+    font-size: 1.5em; /* Increase the font size */
+    color: white; /* Change brand text color */
+}
+
+.ui.menu .header.item:hover {
+    color: #FC6A03
+}
+
+.first-section {
+    padding-top: 20px;
+}
+
 body {
     font-family: Arial, sans-serif;
     margin: 0;

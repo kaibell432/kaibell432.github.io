@@ -2,44 +2,55 @@
 <html>
 <head>
     <title>Kai Bell - Home</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css"/>
     <link rel="stylesheet" type="text/css" href="styles\base.css" />
 </head>
 <body>
     <header>
-        <h1>Home</h1>
-        <div class="dropdown">
-            <button>Menu</button>
-            <div class="dropdown-content">
-                <a href="index.html">Home</a>
-                <a href="portfolio.html">Portfolio</a>
-                <a href="skills.html">Skills</a>
-                <a href="contact.html">Contact</a>
+        <div class="ui top fixed menu">
+            <div class="ui container">
+                <a class="header item" href="index.html">
+                    Kai Bell
+                </a>
+                <a class="item" href="index.html">Home</a>
+                <a class="item" href="portfolio.html">Portfolio</a>
+                <a class="item" href="skills.html">Skills</a>
+                <a class="item" href="contact.html">Contact</a>
             </div>
         </div>
+            
     </header>
 
-    <section>
-        <h2>Welcome to My Website</h2>
-        <img src="images\myphoto.JPG" alt="Photo of Me!" style="max-width:20%;height:auto;">
-        <p>
-            <!-- Add your introduction or about me content here -->
-            Hello, I'm Kai! Welcome to my personal website.
-        </p>
-    </section>
+    <div class="first-section">
+        <section >
+            <h2>Welcome to My Website</h2>
+            <img src="images\myphoto.JPG" alt="Photo of Me!" style="max-width:10%;height:auto;">
+            <p>
+                <!-- Add your introduction or about me content here -->
+                Hello, I'm Kai! Welcome to my personal website.
+            </p>
+        </section>
+    </div>
 
-    <section>
-        <h2>About Me</h2>
-        <p>I am a Computer Science student from the University of Virginia graduating in Spring 2024! I am interested in Data Science and Software Engineering.</p>
-    </section>
 
-    <section>
-        <p>Currently under construction!</p>
-    </section>
+    <div>
+        <section>
+            <h2>About Me</h2>
+            <p>I am a Computer Science student from the University of Virginia graduating in Spring 2024! I am interested in Data Science and Software Engineering.</p>
+        </section>
+    </div>
 
-    <!-- Add more sections as needed -->
+    <div>
+        <section>
+            <p>Currently under construction!</p>
+        </section>
+    </div>
 
     <footer>
         <p>&copy; 2023 Kai Bell. All Rights Reserved. </p>
     </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
+
 </body>
 </html>
