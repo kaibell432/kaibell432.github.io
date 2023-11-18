@@ -12,6 +12,7 @@
 .ui.menu .item {
     color: #FC6A03; /* Change text color */
     margin-left: 0;
+    transition: background-color 0.3s ease;
 }
 
 /* Custom Hover Effect for Menu Items */
