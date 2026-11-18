@@ -1,7 +1,7 @@
 import { Dialog } from '@base-ui/react/dialog';
 import { ArrowTopRightIcon, Cross1Icon, LockClosedIcon, PlusIcon } from '@radix-ui/react-icons';
 import { projects, type Project } from '../content';
-import { cn, Section, Tag } from './ui';
+import { button, cn, Section, Tag } from './ui';
 
 export function Projects() {
   const work = projects.filter((p) => p.kind === 'work');
@@ -15,15 +15,13 @@ export function Projects() {
       title="Selected work."
       intro="Two React apps I’ve built at KBR, plus personal and university projects. Open any card for the details."
     >
-      <div className="space-y-5">
-        <div className="grid gap-5 md:grid-cols-2">
+      <div className="space-y-6">
+        <div className="grid gap-6 md:grid-cols-2">
           {work.map((p) => (
-            <div key={p.id}>
-              <ProjectCard project={p} />
-            </div>
+            <ProjectCard key={p.id} project={p} />
           ))}
         </div>
-        <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {other.map((p, i) => (
             <div key={p.id} className={cn(i === other.length - 1 && 'md:col-span-2 lg:col-span-1')}>
               <ProjectCard project={p} />
@@ -46,7 +44,7 @@ function ProjectCard({ project: p }: { project: Project }) {
           'group relative flex h-full flex-col overflow-hidden rounded-xl p-6 transition-[box-shadow,translate] duration-300 ease-out-expo hover:-translate-y-0.5 sm:p-7',
           dark
             ? 'bg-main text-on-main ring-1 ring-on-main/10 hover:shadow-xl hover:shadow-black/20'
-            : 'bg-white ring-1 ring-black/[0.07] hover:shadow-lg hover:shadow-black/[0.06]',
+            : 'bg-white ring-1 ring-black/[0.08] hover:shadow-lg hover:shadow-black/[0.06]',
         )}
       >
         {dark ? <CornerContours /> : null}
@@ -62,7 +60,7 @@ function ProjectCard({ project: p }: { project: Project }) {
           </span>
           <p
             className={cn(
-              'flex items-center gap-1.5 pt-1 text-right font-mono text-[11px] tracking-wider uppercase',
+              'flex items-center gap-1.5 pt-1 text-right font-mono text-label-sm uppercase',
               dark ? 'text-on-main-subtle' : 'text-muted',
             )}
           >
@@ -128,7 +126,7 @@ function ProjectDialog({ project: p }: { project: Project }) {
             </Dialog.Close>
           </div>
 
-          <p className="mt-5 font-mono text-[11px] tracking-wider text-muted uppercase">
+          <p className="mt-5 font-mono text-label-sm text-muted uppercase">
             {[p.context, p.year].filter(Boolean).join(' · ')}
           </p>
           <Dialog.Title className="mt-1.5 text-2xl font-bold tracking-tight font-stretch-semi-expanded sm:text-3xl">
@@ -168,12 +166,7 @@ function ProjectDialog({ project: p }: { project: Project }) {
                   href={link.href}
                   target="_blank"
                   rel="noreferrer"
-                  className={cn(
-                    'inline-flex h-10 items-center gap-2 rounded-lg px-4 text-sm font-semibold transition-colors',
-                    i === 0
-                      ? 'bg-accent text-on-accent hover:bg-accent-600'
-                      : 'border border-black/15 hover:border-black/30 hover:bg-black/[0.03]',
-                  )}
+                  className={i === 0 ? button.primary : button.ghostLight}
                 >
                   {link.label}
                   <ArrowTopRightIcon aria-hidden />

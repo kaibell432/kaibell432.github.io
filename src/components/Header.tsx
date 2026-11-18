@@ -77,7 +77,7 @@ export function Header() {
               <Dialog.Backdrop className="fixed inset-0 supports-[-webkit-touch-callout:none]:absolute bg-black/50 backdrop-blur-[2px] transition-opacity duration-300 data-ending-style:opacity-0 data-starting-style:opacity-0" />
               <Dialog.Popup className="fixed inset-y-0 right-0 flex w-[min(20rem,86vw)] flex-col bg-main px-6 pt-4 pb-8 text-on-main shadow-2xl ring-1 ring-on-main/10 transition-transform duration-300 ease-out-expo data-ending-style:translate-x-full data-starting-style:translate-x-full">
                 <div className="flex h-12 items-center justify-between">
-                  <Dialog.Title className="font-mono text-xs tracking-[0.18em] text-on-main-subtle uppercase">
+                  <Dialog.Title className="font-mono text-label text-on-main-subtle uppercase">
                     Menu
                   </Dialog.Title>
                   <Dialog.Close

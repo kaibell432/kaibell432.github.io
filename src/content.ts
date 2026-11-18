@@ -1,10 +1,14 @@
 import {
   ArchiveIcon,
   BarChartIcon,
+  CheckCircledIcon,
   Component1Icon,
   Crosshair2Icon,
   GlobeIcon,
+  IdCardIcon,
   MagicWandIcon,
+  ReaderIcon,
+  SewingPinFilledIcon,
   TargetIcon,
 } from '@radix-ui/react-icons';
 
@@ -35,11 +39,19 @@ export const site = {
   themePicker: true,
 };
 
+/** Map-legend symbols. The hero's facts strip is the key; the same symbol marks that fact further down the page. */
+export const legend = {
+  now: IdCardIcon,
+  certified: CheckCircledIcon,
+  studied: ReaderIcon,
+  based: SewingPinFilledIcon,
+};
+
 export const facts = [
-  { label: 'Now', value: 'KBR · National Security Solutions' },
-  { label: 'Certified', value: 'AWS Solutions Architect – Associate' },
-  { label: 'Studied', value: 'Computer Science, UVA ’24' },
-  { label: 'Based', value: 'Washington, DC area' },
+  { label: 'Now', value: 'KBR · National Security Solutions', icon: legend.now },
+  { label: 'Certified', value: 'AWS Solutions Architect – Associate', icon: legend.certified },
+  { label: 'Studied', value: 'Computer Science, UVA ’24', icon: legend.studied },
+  { label: 'Based', value: 'Washington, DC area', icon: legend.based },
 ];
 
 export const about = {

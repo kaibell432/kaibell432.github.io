@@ -6,6 +6,14 @@
   --font-sans: 'Archivo Variable', ui-sans-serif, system-ui, sans-serif;
   --font-mono: 'JetBrains Mono Variable', ui-monospace, SFMono-Regular, Menlo, monospace;
 
+  /* Annotation labels (DESIGN.md typography.label / label-sm) */
+  --text-label: 0.75rem;
+  --text-label--line-height: 1.33;
+  --text-label--letter-spacing: 0.18em;
+  --text-label-sm: 0.6875rem;
+  --text-label-sm--line-height: 1;
+  --text-label-sm--letter-spacing: 0.08em;
+
   --ease-out-expo: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
@@ -50,6 +58,20 @@
     outline: 2px solid var(--color-accent);
     outline-offset: 3px;
   }
+}
+
+/*
+ * Faint survey grid behind the light bands, continuing the 64px grid of the
+ * dark bands. It fades out from the top right, where each section's callout sits.
+ */
+.map-grid {
+  --grid-line: color-mix(in oklab, var(--color-ink) 6%, transparent);
+  background-image:
+    linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
+  background-size: 64px 64px;
+  background-position: center top;
+  mask-image: radial-gradient(ellipse 70% 85% at 100% 0%, black, transparent 75%);
 }
 
 /*

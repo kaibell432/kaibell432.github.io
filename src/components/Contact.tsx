@@ -41,36 +41,34 @@ export function Contact() {
         </div>
       }
     >
-      <div>
-        <div className="flex flex-col gap-4 rounded-xl bg-main-800/80 p-5 ring-1 ring-on-main/10 backdrop-blur-sm sm:flex-row sm:items-center sm:justify-between sm:p-6">
-          <a
-            href={`mailto:${profile.email}`}
-            className="min-w-0 rounded-md text-xl font-semibold break-all text-on-main decoration-accent decoration-2 underline-offset-[6px] hover:underline sm:text-3xl sm:font-stretch-semi-expanded"
-          >
-            {profile.email}
+      <div className="flex flex-col gap-4 rounded-xl bg-main-800/80 p-5 ring-1 ring-on-main/10 backdrop-blur-sm sm:flex-row sm:items-center sm:justify-between sm:p-6">
+        <a
+          href={`mailto:${profile.email}`}
+          className="min-w-0 rounded-md text-xl font-semibold break-all text-on-main decoration-accent decoration-2 underline-offset-[6px] hover:underline sm:text-3xl sm:font-stretch-semi-expanded"
+        >
+          {profile.email}
+        </a>
+        <div className="flex shrink-0 gap-3">
+          <button type="button" onClick={copyEmail} className={button.ghostDark} aria-live="polite">
+            {copied ? <CheckIcon aria-hidden /> : <CopyIcon aria-hidden />}
+            {copied ? 'Copied' : 'Copy'}
+          </button>
+          <a href={`mailto:${profile.email}`} className={button.primary}>
+            <EnvelopeClosedIcon aria-hidden />
+            Email me
           </a>
-          <div className="flex shrink-0 gap-3">
-            <button type="button" onClick={copyEmail} className={button.ghostDark} aria-live="polite">
-              {copied ? <CheckIcon aria-hidden /> : <CopyIcon aria-hidden />}
-              {copied ? 'Copied' : 'Copy'}
-            </button>
-            <a href={`mailto:${profile.email}`} className={button.primary}>
-              <EnvelopeClosedIcon aria-hidden />
-              Email me
-            </a>
-          </div>
         </div>
+      </div>
 
-        <div className="mt-6 flex flex-wrap gap-3">
-          <a href={profile.linkedin} target="_blank" rel="noreferrer" className={button.ghostDark}>
-            <LinkedInLogoIcon aria-hidden />
-            LinkedIn
-          </a>
-          <a href={profile.github} target="_blank" rel="noreferrer" className={button.ghostDark}>
-            <GitHubLogoIcon aria-hidden />
-            GitHub
-          </a>
-        </div>
+      <div className="mt-6 flex flex-wrap gap-3">
+        <a href={profile.linkedin} target="_blank" rel="noreferrer" className={button.ghostDark}>
+          <LinkedInLogoIcon aria-hidden />
+          LinkedIn
+        </a>
+        <a href={profile.github} target="_blank" rel="noreferrer" className={button.ghostDark}>
+          <GitHubLogoIcon aria-hidden />
+          GitHub
+        </a>
       </div>
     </Section>
   );

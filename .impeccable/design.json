@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-11-18T03:21:49.327Z",
+  "generatedAt": "2026-11-18T11:06:54.000Z",
   "title": "Design System: Kai Bell",
   "extensions": {
     "colorMeta": {
@@ -253,11 +253,11 @@
       },
       "label": {
         "displayName": "Label",
-        "purpose": "Uppercase eyebrows, section indexes and dates."
+        "purpose": "Section callouts, card labels and skill group headings (Tailwind text-label)."
       },
       "label-sm": {
         "displayName": "Label small",
-        "purpose": "Tags, card metadata, fact labels and small UI labels."
+        "purpose": "Tags, card metadata, legend labels, tooltips and small UI labels (Tailwind text-label-sm)."
       }
     },
     "shadows": [
@@ -276,12 +276,22 @@
       {
         "name": "ease-out-expo",
         "value": "cubic-bezier(0.22, 1, 0.36, 1)",
-        "purpose": "Reveals, dialogs, card lift and the menu sheet."
+        "purpose": "Line draw-ins, dialogs, card lift and the menu sheet."
       },
       {
-        "name": "reveal",
-        "value": "700ms",
-        "purpose": "Scroll-in fade and rise for section content; off under reduced motion."
+        "name": "draw-line",
+        "value": "900ms",
+        "purpose": "Callout and timeline leader lines scale in from zero once on first view; finished under reduced motion."
+      },
+      {
+        "name": "draw-rail",
+        "value": "1600ms",
+        "purpose": "The experience rail draws downward; stops and waypoints pop in over 500ms as it reaches them."
+      },
+      {
+        "name": "hero-in",
+        "value": "900ms",
+        "purpose": "One staggered load-in for the hero; off under reduced motion."
       },
       {
         "name": "reticle-spin",
@@ -327,7 +337,7 @@
       "refersTo": "tag",
       "description": "Stack and focus-area tags on cards.",
       "html": "<span class=\"ds-tag\">React</span> <span class=\"ds-tag\">Base UI</span> <span class=\"ds-tag\">Tailwind CSS</span>",
-      "css": ".ds-tag { display: inline-flex; align-items: center; padding: 4px 8px; border-radius: 6px; background: rgb(0 0 0 / 0.04); box-shadow: inset 0 0 0 1px rgb(0 0 0 / 0.06); color: var(--color-ink); font-family: 'JetBrains Mono Variable', ui-monospace, monospace; font-size: 11px; line-height: 1; }"
+      "css": ".ds-tag { display: inline-flex; align-items: center; padding: 4px 8px; border-radius: 6px; background: rgb(0 0 0 / 0.04); box-shadow: inset 0 0 0 1px rgb(0 0 0 / 0.08); color: var(--color-ink); font-family: 'JetBrains Mono Variable', ui-monospace, monospace; font-size: 11px; letter-spacing: 0.08em; line-height: 1; }"
     },
     {
       "name": "Project Card",
@@ -335,7 +345,7 @@
       "refersTo": "card",
       "description": "Clickable white card for personal and academic projects; lifts on hover.",
       "html": "<article class=\"ds-card\"><p class=\"ds-card-meta\">Personal project</p><h3 class=\"ds-card-title\">AI meal planner</h3><p class=\"ds-card-body\">A full-stack web app that generates personalized meal plans with AI.</p><span class=\"ds-card-link\">+ Details</span></article>",
-      "css": ".ds-card { max-width: 320px; padding: 28px; border-radius: 16px; background: #fff; box-shadow: inset 0 0 0 1px rgb(0 0 0 / 0.07); color: var(--color-ink); font-family: 'Archivo Variable', ui-sans-serif, system-ui, sans-serif; transition: transform 300ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 300ms; cursor: pointer; } .ds-card:hover { transform: translateY(-2px); box-shadow: inset 0 0 0 1px rgb(0 0 0 / 0.07), 0 10px 15px -3px rgb(0 0 0 / 0.06); } .ds-card-meta { margin: 0; font-family: 'JetBrains Mono Variable', ui-monospace, monospace; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-muted); } .ds-card-title { margin: 16px 0 0; font-size: 22px; font-weight: 700; letter-spacing: -0.025em; font-stretch: 112.5%; } .ds-card-body { margin: 8px 0 0; line-height: 1.6; color: var(--color-muted); } .ds-card-link { display: inline-block; margin-top: 20px; font-size: 14px; font-weight: 600; color: var(--color-accent-ink); }"
+      "css": ".ds-card { max-width: 320px; padding: 28px; border-radius: 12px; background: #fff; box-shadow: inset 0 0 0 1px rgb(0 0 0 / 0.08); color: var(--color-ink); font-family: 'Archivo Variable', ui-sans-serif, system-ui, sans-serif; transition: transform 300ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 300ms; cursor: pointer; } .ds-card:hover { transform: translateY(-2px); box-shadow: inset 0 0 0 1px rgb(0 0 0 / 0.08), 0 10px 15px -3px rgb(0 0 0 / 0.06); } .ds-card-meta { margin: 0; font-family: 'JetBrains Mono Variable', ui-monospace, monospace; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-muted); } .ds-card-title { margin: 16px 0 0; font-size: 22px; font-weight: 700; letter-spacing: -0.025em; font-stretch: 112.5%; } .ds-card-body { margin: 8px 0 0; line-height: 1.6; color: var(--color-muted); } .ds-card-link { display: inline-block; margin-top: 20px; font-size: 14px; font-weight: 600; color: var(--color-accent-ink); }"
     },
     {
       "name": "Feature Card",
@@ -343,7 +353,7 @@
       "refersTo": "card-feature",
       "description": "Main-color card for professional work and the certification.",
       "html": "<article class=\"ds-feature\"><p class=\"ds-feature-meta\">KBR · Internal</p><h3 class=\"ds-feature-title\">Geospatial analysis app</h3><p class=\"ds-feature-body\">A React front end over a high-volume geospatial data source API.</p></article>",
-      "css": ".ds-feature { max-width: 360px; padding: 28px; border-radius: 16px; background: var(--color-main); color: var(--color-on-main); font-family: 'Archivo Variable', ui-sans-serif, system-ui, sans-serif; } .ds-feature-meta { margin: 0; font-family: 'JetBrains Mono Variable', ui-monospace, monospace; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-on-main-subtle); } .ds-feature-title { margin: 16px 0 0; font-size: 22px; font-weight: 700; letter-spacing: -0.025em; font-stretch: 112.5%; } .ds-feature-body { margin: 8px 0 0; line-height: 1.6; color: var(--color-on-main-muted); }"
+      "css": ".ds-feature { max-width: 360px; padding: 28px; border-radius: 12px; background: var(--color-main); box-shadow: inset 0 0 0 1px color-mix(in oklab, var(--color-on-main) 10%, transparent); color: var(--color-on-main); font-family: 'Archivo Variable', ui-sans-serif, system-ui, sans-serif; } .ds-feature-meta { margin: 0; font-family: 'JetBrains Mono Variable', ui-monospace, monospace; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-on-main-subtle); } .ds-feature-title { margin: 16px 0 0; font-size: 22px; font-weight: 700; letter-spacing: -0.025em; font-stretch: 112.5%; } .ds-feature-body { margin: 8px 0 0; line-height: 1.6; color: var(--color-on-main-muted); }"
     },
     {
       "name": "Hex Input",
@@ -351,7 +361,7 @@
       "refersTo": "input",
       "description": "Text field from the theme picker.",
       "html": "<label class=\"ds-field\"><span class=\"ds-field-label\">Main</span><input class=\"ds-input\" value=\"#333333\" maxlength=\"7\"></label>",
-      "css": ".ds-field { display: grid; gap: 6px; max-width: 160px; } .ds-field-label { font-family: 'JetBrains Mono Variable', ui-monospace, monospace; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--color-muted); } .ds-input { height: 36px; padding: 0 10px; border-radius: 8px; border: 1px solid rgb(0 0 0 / 0.15); background: var(--color-paper); color: var(--color-ink); font-family: 'JetBrains Mono Variable', ui-monospace, monospace; font-size: 14px; text-transform: uppercase; outline: none; } .ds-input:focus { border-color: var(--color-accent-ink); box-shadow: 0 0 0 2px color-mix(in oklab, var(--color-accent) 30%, transparent); }"
+      "css": ".ds-field { display: grid; gap: 6px; max-width: 160px; } .ds-field-label { font-family: 'JetBrains Mono Variable', ui-monospace, monospace; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-muted); } .ds-input { height: 36px; padding: 0 10px; border-radius: 8px; border: 1px solid rgb(0 0 0 / 0.15); background: var(--color-paper); color: var(--color-ink); font-family: 'JetBrains Mono Variable', ui-monospace, monospace; font-size: 14px; text-transform: uppercase; outline: none; } .ds-input:focus { border-color: var(--color-accent-ink); box-shadow: 0 0 0 2px color-mix(in oklab, var(--color-accent) 30%, transparent); }"
     },
     {
       "name": "Nav Link",
@@ -362,22 +372,31 @@
       "css": ".ds-nav { display: flex; gap: 4px; padding: 0 12px; background: var(--color-main); border-radius: 12px; } .ds-nav-link { position: relative; padding: 18px 12px; font-family: 'Archivo Variable', ui-sans-serif, system-ui, sans-serif; font-size: 14px; color: var(--color-on-main-muted); text-decoration: none; transition: color 150ms; } .ds-nav-link:hover, .ds-nav-link.is-active { color: var(--color-on-main); } .ds-nav-link::after { content: ''; position: absolute; left: 12px; right: 12px; bottom: 8px; height: 2px; background: var(--color-accent); transform: scaleX(0); transform-origin: left; transition: transform 300ms; } .ds-nav-link.is-active::after { transform: scaleX(1); } .ds-nav-link:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 3px; }"
     },
     {
-      "name": "Section Eyebrow",
+      "name": "Section Callout",
       "kind": "custom",
       "refersTo": null,
-      "description": "Index, rule and label above every section headline (The Map Legend Rule).",
-      "html": "<div><p class=\"ds-eyebrow\"><span>02</span><span class=\"ds-eyebrow-rule\"></span><span>Experience</span></p><h2 class=\"ds-headline\">Where I’ve worked.</h2></div>",
-      "css": ".ds-eyebrow { display: flex; align-items: center; gap: 12px; margin: 0; font-family: 'JetBrains Mono Variable', ui-monospace, monospace; font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--color-accent-ink); } .ds-eyebrow-rule { width: 32px; height: 1px; background: currentColor; } .ds-headline { margin: 16px 0 0; font-family: 'Archivo Variable', ui-sans-serif, system-ui, sans-serif; font-size: 40px; font-weight: 700; line-height: 1.1; letter-spacing: -0.025em; font-stretch: 112.5%; color: var(--color-ink); }"
+      "description": "Headline with a leader line running to the section's marker, index and name (The Map Legend Rule).",
+      "html": "<div class=\"ds-callout\"><h2 class=\"ds-headline\">Where I’ve worked.</h2><p class=\"ds-callout-label\" aria-hidden=\"true\"><span class=\"ds-callout-leader\"></span><span class=\"ds-callout-marker\"></span><span>02 · Experience</span></p></div>",
+      "css": ".ds-callout { display: flex; align-items: baseline; gap: 24px; } .ds-headline { margin: 0; font-family: 'Archivo Variable', ui-sans-serif, system-ui, sans-serif; font-size: 40px; font-weight: 700; line-height: 1.1; letter-spacing: -0.025em; font-stretch: 112.5%; color: var(--color-ink); } .ds-callout-label { display: flex; flex: 1; min-width: 144px; align-items: center; gap: 12px; margin: 0; font-family: 'JetBrains Mono Variable', ui-monospace, monospace; font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--color-accent-ink); white-space: nowrap; } .ds-callout-leader { flex: 1; height: 1px; background: color-mix(in oklab, var(--color-ink) 20%, transparent); } .ds-callout-marker { width: 6px; height: 6px; background: var(--color-accent); }"
+    },
+    {
+      "name": "Map Legend",
+      "kind": "custom",
+      "refersTo": null,
+      "description": "The hero facts strip: a symbol, label and value per fact. The same symbol marks the fact further down the page.",
+      "html": "<dl class=\"ds-legend\"><div><dt><svg width=\"14\" height=\"14\" viewBox=\"0 0 15 15\" fill=\"none\"><path d=\"M7.5 0.875a6.625 6.625 0 1 0 0 13.25 6.625 6.625 0 0 0 0-13.25ZM1.825 7.5a5.675 5.675 0 1 1 11.35 0 5.675 5.675 0 0 1-11.35 0Zm8.508-2.164a.45.45 0 0 0-.666-.604L6.582 8.13 5.31 6.881a.45.45 0 1 0-.63.643l1.6 1.57a.45.45 0 0 0 .648-.017l3.405-3.741Z\" fill=\"currentColor\"/></svg>Certified</dt><dd>AWS Solutions Architect – Associate</dd></div></dl>",
+      "css": ".ds-legend { margin: 0; padding: 20px; background: var(--color-main-800); color: var(--color-on-main); font-family: 'Archivo Variable', ui-sans-serif, system-ui, sans-serif; border-radius: 12px; } .ds-legend dt { display: flex; align-items: center; gap: 8px; font-family: 'JetBrains Mono Variable', ui-monospace, monospace; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-on-main-subtle); } .ds-legend dt svg { color: var(--color-accent-glow); flex-shrink: 0; } .ds-legend dd { margin: 8px 0 0; padding-left: 22px; font-size: 15px; font-weight: 500; }"
     }
   ],
   "narrative": {
     "northStar": "The Annotated Map",
-    "overview": "The site reads like a clean map with annotations laid over it. The content is the terrain: plain, readable, generously spaced on light paper. On top of it sit the annotations: monospaced uppercase labels, small accent squares as markers, thin hairline rings, a survey reticle around the portrait, and faint topographic contours in the dark bands. The annotations orient the visitor; they never compete with the content.\n\nTwo dark bands in the main color bracket the page: the hero at the top and the contact band at the bottom, with the header pinned in the same color. Everything between alternates paper and white. The single accent color is the signal: actions, the current state, and the markers that make the map legible. Components are precise and confident: crisp radii, solid accent fills, tight labels.\n\nThe whole palette comes from two inputs, main and accent, and every text color is solved for WCAG contrast against its background, so the system holds for any pair.",
+    "overview": "The site reads like a clean map with annotations laid over it. The content is the terrain: plain, readable, generously spaced on light paper. On top of it sit the annotations: callouts whose leader lines run from each headline to its label, a legend of symbols, dates set in the margin like coordinates, small accent squares as markers, thin hairline rings, a survey reticle around the portrait, a faint survey grid under every band and topographic contours in the dark ones. Only the annotation lines move, drawing themselves in as they come into view. The annotations orient the visitor; they never compete with the content.\n\nTwo dark bands in the main color bracket the page: the hero at the top and the contact band at the bottom, with the header pinned in the same color. Everything between alternates paper and white. The single accent color is the signal: actions, the current state, and the markers that make the map legible. Components are precise and confident: crisp radii, solid accent fills, tight labels.\n\nThe whole palette comes from two inputs, main and accent, and every text color is solved for WCAG contrast against its background, so the system holds for any pair.",
     "keyCharacteristics": [
       "Two input colors; every other shade derived and contrast-solved.",
       "Expanded-width Archivo headings over plain Archivo body text, with JetBrains Mono as the annotation voice.",
       "Flat surfaces with hairline rings; depth appears only on interaction and for floating layers.",
-      "Map motifs (contours, grid, reticle, square markers) used as line art, never as fills."
+      "Map motifs (contours, grid, reticle, square markers) used as line art, never as fills.",
+      "Annotations behave like a map's: callouts with leader lines, a symbol legend, coordinates in the margin, and lines that draw themselves in."
     ],
     "rules": [
       {
@@ -407,7 +426,12 @@
       },
       {
         "name": "The Square Marker Rule",
-        "body": "List bullets and eyebrow markers are small accent squares. Round dots are reserved for status (the current-role indicator).",
+        "body": "List bullets, callout markers and timeline waypoints are small accent squares. Round dots are reserved for the timeline's company stops (filled accent for the current one).",
+        "section": "shapes"
+      },
+      {
+        "name": "The Survey Line Rule",
+        "body": "Only annotation lines move. Callout leaders, the timeline rail, its stops and its leaders draw in once, the first time they scroll into view. Content is never hidden waiting for scroll, and reduced motion shows the finished lines.",
         "section": "shapes"
       }
     ],
@@ -416,13 +440,16 @@
       "**Do** style with the theme tokens (`bg-main`, `text-on-main-muted`, `text-accent-ink`, and so on) so every color follows the theme.",
       "**Do** keep orange small text on `accent-ink` or `accent-glow` (The Small-Text Rule).",
       "**Do** use Radix icons for every icon.",
-      "**Do** respect reduced motion: reveals, the pulsing status dot and the reticle rotation all switch off."
+      "**Do** respect reduced motion: the line draw-ins, the hero load-in and the reticle rotation all switch off.",
+      "**Do** reuse a legend symbol wherever its fact appears, and add new facts to `legend` first."
     ],
     "donts": [
       "**Don't** hard-code hex values or Tailwind palette colors (`text-white`, `neutral-*`) in components. The exceptions are white card surfaces, black-alpha hairlines and shadows, and the status colors in the contrast grades.",
       "**Don't** use thick colored side stripes on cards or toasts as an accent.",
       "**Don't** set sentences in the uppercase mono label style (The Map Legend Rule).",
-      "**Don't** add shadows to surfaces at rest (The Lift-On-Intent Rule)."
+      "**Don't** add shadows to surfaces at rest (The Lift-On-Intent Rule).",
+      "**Don't** put a label or kicker above a headline; the section name belongs in the callout beside it.",
+      "**Don't** fade or slide content in on scroll; only lines move (The Survey Line Rule)."
     ]
   }
 }

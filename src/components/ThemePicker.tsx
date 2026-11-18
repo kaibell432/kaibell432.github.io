@@ -18,7 +18,7 @@ import {
   type ThemeInput,
   type Token,
 } from '../theme';
-import { cn } from './ui';
+import { cn, tooltipPopup } from './ui';
 
 const MAIN_TOKENS: Token[] = ['main-950', 'main-800', 'main', 'main-700', 'on-main', 'on-main-muted', 'on-main-subtle', 'paper', 'ink', 'muted'];
 const ACCENT_TOKENS: Token[] = ['accent-ink', 'accent-600', 'accent', 'accent-glow', 'on-accent'];
@@ -151,11 +151,8 @@ export function ThemePicker() {
   );
 }
 
-const tooltipPopup =
-  'rounded-md bg-main-950 px-2.5 py-1.5 font-mono text-[11px] text-on-main shadow-lg ring-1 ring-on-main/10 origin-[var(--transform-origin)] transition-[transform,opacity] duration-150 data-starting-style:scale-95 data-starting-style:opacity-0 data-ending-style:scale-95 data-ending-style:opacity-0 data-instant:transition-none';
-
 function SectionLabel({ children }: { children: string }) {
-  return <p className="mt-5 mb-2 font-mono text-[11px] tracking-[0.16em] text-muted uppercase">{children}</p>;
+  return <p className="mt-5 mb-2 font-mono text-label-sm text-muted uppercase">{children}</p>;
 }
 
 function ColorField({ label, value, onChange }: { label: string; value: string; onChange: (hex: string) => void }) {
@@ -165,7 +162,7 @@ function ColorField({ label, value, onChange }: { label: string; value: string; 
 
   return (
     <Field.Root invalid={invalid} className="min-w-0">
-      <Field.Label className="font-mono text-[11px] tracking-[0.16em] text-muted uppercase">{label}</Field.Label>
+      <Field.Label className="font-mono text-label-sm text-muted uppercase">{label}</Field.Label>
       <div className="mt-1.5 flex items-center gap-2">
         <label
           className="relative size-9 shrink-0 cursor-pointer overflow-hidden rounded-full shadow-inner ring-1 ring-black/15 focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-accent"
@@ -277,5 +274,5 @@ function Grade({ ratio }: { ratio: number }) {
         : ratio >= 3
           ? ['Large', 'bg-amber-100 text-amber-800']
           : ['Fail', 'bg-red-100 text-red-800'];
-  return <span className={cn('w-12 rounded px-1.5 py-0.5 text-center font-mono text-[11px] font-semibold', tone)}>{label}</span>;
+  return <span className={cn('w-12 rounded px-1.5 py-0.5 text-center font-mono text-label-sm font-semibold', tone)}>{label}</span>;
 }

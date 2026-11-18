@@ -20,7 +20,7 @@ export function Hero() {
       <div className="relative mx-auto grid max-w-6xl items-center gap-14 px-4 pt-32 pb-16 sm:px-6 lg:grid-cols-[minmax(0,1fr)_auto] lg:gap-20 lg:pt-40 lg:pb-24">
         <div>
           <p
-            className="hero-in flex items-center gap-2.5 font-mono text-xs tracking-[0.18em] text-accent-glow uppercase"
+            className="hero-in flex items-center gap-2.5 font-mono text-label text-accent-glow uppercase"
             style={delay(0)}
           >
             <span aria-hidden className="size-1.5 bg-accent" />
@@ -91,8 +91,11 @@ export function Hero() {
                 i > 0 && 'lg:border-l lg:pl-6',
               )}
             >
-              <dt className="font-mono text-[11px] tracking-[0.18em] text-on-main-subtle uppercase">{fact.label}</dt>
-              <dd className="mt-1.5 text-sm font-medium text-pretty sm:text-base">{fact.value}</dd>
+              <dt className="flex items-center gap-2 font-mono text-label-sm text-on-main-subtle uppercase">
+                <fact.icon aria-hidden className="size-3.5 shrink-0 text-accent-glow" />
+                {fact.label}
+              </dt>
+              <dd className="mt-2 pl-5.5 text-sm font-medium text-pretty sm:text-base">{fact.value}</dd>
             </div>
           ))}
         </dl>

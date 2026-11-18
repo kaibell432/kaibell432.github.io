@@ -88,3 +88,37 @@ export function useReveal<T extends HTMLElement>() {
 
   return ref;
 }
+
+/**
+ * Shrinks a wrapping block to its widest rendered line. A wrapped heading
+ * otherwise keeps the full available width, leaving a gap before whatever
+ * follows it on the row (here, the section callout's leader line).
+ * Use with greedy wrapping: lines that fit the old width still fit the new one.
+ */
+export function useShrinkWrap<T extends HTMLElement>() {
+  const ref = useRef<T>(null);
+
+  useEffect(() => {
+    const el = ref.current;
+    const row = el?.parentElement;
+    if (!el || !row || !('ResizeObserver' in window)) return;
+
+    const fit = () => {
+      el.style.width = '';
+      const range = document.createRange();
+      range.selectNodeContents(el);
+      const left = el.getBoundingClientRect().left;
+      let right = left;
+      for (const rect of range.getClientRects()) right = Math.max(right, rect.right);
+      if (right > left) el.style.width = `${Math.ceil(right - left) + 1}px`;
+    };
+
+    fit();
+    const observer = new ResizeObserver(fit);
+    observer.observe(row);
+    void document.fonts?.ready.then(fit);
+    return () => observer.disconnect();
+  }, []);
+
+  return ref;
+}
