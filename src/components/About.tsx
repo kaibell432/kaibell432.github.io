@@ -1,18 +1,18 @@
 import { about } from '../content';
-import { Reveal, Section } from './ui';
+import { Section } from './ui';
 
 export function About() {
   return (
     <Section id="about" index="01" label="About" title={about.title}>
       <div className="grid gap-12 lg:grid-cols-[minmax(0,1.5fr)_minmax(0,1fr)] lg:gap-16">
-        <Reveal className="space-y-6 text-lg leading-relaxed text-pretty text-ink/90">
+        <div className="space-y-6 text-lg leading-relaxed text-pretty text-ink/90">
           {about.paragraphs.map((p) => (
             <p key={p.slice(0, 24)}>{p}</p>
           ))}
-        </Reveal>
+        </div>
 
         <div className="space-y-6">
-          <Reveal delay={100}>
+          <div>
             <ul className="grid gap-px overflow-hidden rounded-xl bg-black/[0.07] ring-1 ring-black/[0.07] sm:grid-cols-2 lg:grid-cols-1">
               {about.focus.map(({ icon: Icon, title, body }) => (
                 <li key={title} className="flex gap-4 bg-white p-5">
@@ -26,18 +26,18 @@ export function About() {
                 </li>
               ))}
             </ul>
-          </Reveal>
+          </div>
 
-          <Reveal delay={180}>
+          <div>
             <h3 className="font-mono text-xs tracking-[0.18em] text-muted uppercase">Off the clock</h3>
             <ul className="mt-3 flex flex-wrap gap-2">
               {about.hobbies.map((hobby) => (
-                <li key={hobby} className="rounded-full bg-white px-3.5 py-1.5 text-sm ring-1 ring-black/[0.08]">
+                <li key={hobby} className="rounded-md bg-white px-3.5 py-1.5 text-sm ring-1 ring-black/[0.08]">
                   {hobby}
                 </li>
               ))}
             </ul>
-          </Reveal>
+          </div>
         </div>
       </div>
     </Section>

@@ -72,7 +72,7 @@ export function ThemePicker() {
 
       <Popover.Portal>
         <Popover.Positioner sideOffset={10} align="end" collisionPadding={12} className="z-50">
-          <Popover.Popup className="w-[22rem] max-w-[calc(100vw-1.5rem)] origin-[var(--transform-origin)] rounded-2xl bg-white p-5 text-ink shadow-2xl shadow-black/25 ring-1 ring-black/10 transition-[scale,opacity] duration-150 ease-out-expo data-ending-style:scale-95 data-ending-style:opacity-0 data-starting-style:scale-95 data-starting-style:opacity-0">
+          <Popover.Popup className="w-[22rem] max-w-[calc(100vw-1.5rem)] origin-[var(--transform-origin)] rounded-xl bg-white p-5 text-ink shadow-2xl shadow-black/25 ring-1 ring-black/10 transition-[scale,opacity] duration-150 ease-out-expo data-ending-style:scale-95 data-ending-style:opacity-0 data-starting-style:scale-95 data-starting-style:opacity-0">
             <div className="flex items-start justify-between gap-4">
               <div>
                 <Popover.Title className="text-base font-bold tracking-tight font-stretch-semi-expanded">Theme</Popover.Title>

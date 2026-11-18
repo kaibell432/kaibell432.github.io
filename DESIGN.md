@@ -105,12 +105,12 @@ components:
   card:
     backgroundColor: "#ffffff"
     textColor: "{colors.ink}"
-    rounded: "{rounded.xl}"
+    rounded: "{rounded.lg}"
     padding: "28px"
   card-feature:
     backgroundColor: "{colors.main}"
     textColor: "{colors.on-main}"
-    rounded: "{rounded.xl}"
+    rounded: "{rounded.lg}"
     padding: "28px"
   input:
     backgroundColor: "{colors.paper}"
@@ -209,14 +209,14 @@ Mostly flat. Surfaces sit at rest with a 1px hairline ring (black at 6–8% on l
 
 ### Shadow Vocabulary
 - **Hover lift** (`box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.06)` with a 2px upward move): project cards on hover.
-- **Floating layer** (`box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25)`): dialogs, popovers, toasts, the portrait.
+- **Floating layer** (`box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25)`): dialogs, popovers, toasts, the mobile menu.
 
 ### Named Rules
 **The Lift-On-Intent Rule.** Nothing casts a shadow at rest except floating layers. Shadows answer interaction or mark something that floats above the page.
 
 ## Shapes
 
-Crisp, consistent radii: 6px for tags and small controls, 8px for buttons and inputs, 12px for icon tiles, 16px for cards and dialogs, fully round for the portrait, presets and status dots. Markers are small accent squares (6px), not dots. Line art carries the map motif: topographic contour rings and a faint 64px grid in the dark bands, and a survey reticle (dashed orbit, compass ticks, an accent arc) around the circular portrait.
+Crisp, consistent radii: 6px for tags, pills and small controls, 8px for buttons, inputs and icon tiles, 12px for cards and dialogs, fully round for the portrait, presets and status dots. Markers are small accent squares (6px), not dots. Line art carries the map motif: topographic contour rings and a faint 64px grid in the dark bands, and a survey reticle (dashed orbit, compass ticks, an accent arc) around the circular portrait.
 
 ### Named Rules
 **The Square Marker Rule.** List bullets and eyebrow markers are small accent squares. Round dots are reserved for status (the current-role indicator).
@@ -232,10 +232,10 @@ Crisp, consistent radii: 6px for tags and small controls, 8px for buttons and in
 
 ### Chips
 - **Tags:** mono 11px text on a 4% black wash with a 6% hairline (on main: 7% white wash, 10% ring), 6px radius. Used for stacks and focus areas.
-- **Pills:** hobbies and coursework use white rounded pills with a hairline.
+- **Pills:** hobbies and coursework use white 6px-radius chips with a hairline.
 
 ### Cards / Containers
-- **Corner Style:** 16px.
+- **Corner Style:** 12px.
 - **Background:** white or paper on light bands; `main` for featured work and the certification.
 - **Shadow Strategy:** flat at rest; hover lift on clickable cards (see Elevation & Depth).
 - **Border:** a 1px hairline ring.
@@ -262,7 +262,7 @@ Procedurally drawn contour rings and a 64px grid in `on-main` at 3–11% opacity
 - **Do** style with the theme tokens (`bg-main`, `text-on-main-muted`, `text-accent-ink`, and so on) so every color follows the theme.
 - **Do** keep orange small text on `accent-ink` or `accent-glow` (The Small-Text Rule).
 - **Do** use Radix icons for every icon.
-- **Do** respect reduced motion: reveals, the pulsing status dot and the reticle rotation all switch off.
+- **Do** respect reduced motion: the line draw-ins, the pulsing status dot and the reticle rotation all switch off.
 
 ### Don't:
 - **Don't** hard-code hex values or Tailwind palette colors (`text-white`, `neutral-*`) in components. The exceptions are white card surfaces, black-alpha hairlines and shadows, and the status colors in the contrast grades.

@@ -52,19 +52,46 @@
   }
 }
 
-/* Scroll-in reveal. Content is fully visible when motion is reduced. */
-.reveal {
-  opacity: 0;
-  translate: 0 1.25rem;
-  transition:
-    opacity 700ms var(--ease-out-expo),
-    translate 700ms var(--ease-out-expo);
-  transition-delay: var(--reveal-delay, 0ms);
+/*
+ * Survey lines: content is always visible; only the annotation lines draw
+ * themselves in the first time their `.reveal` container scrolls into view
+ * (useReveal sets `data-shown`). Reduced motion gets the finished lines.
+ */
+.draw-x {
+  transform-origin: left center;
 }
 
-.reveal[data-shown] {
-  opacity: 1;
-  translate: 0 0;
+.draw-y {
+  transform-origin: center top;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .draw-x,
+  .draw-y,
+  .draw-dot {
+    transition: scale 900ms var(--ease-out-expo);
+    transition-delay: var(--draw-delay, 120ms);
+  }
+
+  .draw-y {
+    transition-duration: 1600ms;
+  }
+
+  .draw-dot {
+    transition-duration: 500ms;
+  }
+
+  .reveal:not([data-shown]) .draw-x {
+    scale: 0 1;
+  }
+
+  .reveal:not([data-shown]) .draw-y {
+    scale: 1 0;
+  }
+
+  .reveal:not([data-shown]) .draw-dot {
+    scale: 0;
+  }
 }
 
 .hero-in {
@@ -80,12 +107,6 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .reveal {
-    opacity: 1;
-    translate: none;
-    transition: none;
-  }
-
   .hero-in {
     animation: none;
   }

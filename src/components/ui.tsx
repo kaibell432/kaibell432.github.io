@@ -1,4 +1,4 @@
-import type { CSSProperties, ReactNode } from 'react';
+import type { ReactNode } from 'react';
 import { Toast } from '@base-ui/react/toast';
 import { Tooltip } from '@base-ui/react/tooltip';
 import { CheckIcon, Cross2Icon } from '@radix-ui/react-icons';
@@ -48,27 +48,6 @@ export function Eyebrow({ children, tone = 'light' }: { children: ReactNode; ton
   );
 }
 
-export function Reveal({
-  children,
-  className,
-  delay = 0,
-}: {
-  children: ReactNode;
-  className?: string;
-  delay?: number;
-}) {
-  const ref = useReveal<HTMLDivElement>();
-  return (
-    <div
-      ref={ref}
-      className={cn('reveal', className)}
-      style={{ '--reveal-delay': `${delay}ms` } as CSSProperties}
-    >
-      {children}
-    </div>
-  );
-}
-
 export function Section({
   id,
   index,
@@ -91,6 +70,8 @@ export function Section({
   backdrop?: ReactNode;
   children: ReactNode;
 }) {
+  const headerRef = useReveal<HTMLDivElement>();
+
   return (
     <section
       id={id}
@@ -103,10 +84,10 @@ export function Section({
     >
       {backdrop}
       <div className="relative mx-auto max-w-6xl px-4 sm:px-6">
-        <Reveal className="mb-12 max-w-3xl sm:mb-16">
+        <div ref={headerRef} className="reveal mb-12 max-w-3xl sm:mb-16">
           <Eyebrow tone={tone}>
             <span>{index}</span>
-            <span aria-hidden className="h-px w-8 bg-current" />
+            <span aria-hidden className="draw-x h-px w-8 bg-current" />
             <span>{label}</span>
           </Eyebrow>
           <h2
@@ -125,7 +106,7 @@ export function Section({
               {intro}
             </p>
           ) : null}
-        </Reveal>
+        </div>
         {children}
       </div>
     </section>

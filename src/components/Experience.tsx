@@ -1,7 +1,11 @@
+import type { CSSProperties } from 'react';
 import { experience, type Job } from '../content';
-import { cn, Reveal, Section, Tag } from './ui';
+import { useReveal } from '../hooks';
+import { cn, Section, Tag } from './ui';
 
 export function Experience() {
+  const railRef = useReveal<HTMLOListElement>();
+
   return (
     <Section
       id="experience"
@@ -11,21 +15,22 @@ export function Experience() {
       intro="Building the tools now. Before that, getting to know the data that flows through them."
       className="bg-white"
     >
-      <ol className="relative space-y-6 sm:space-y-8">
+      <ol ref={railRef} className="reveal relative space-y-6 sm:space-y-8">
         {/* timeline rail */}
-        <span aria-hidden className="absolute top-3 bottom-3 left-[7px] hidden w-px bg-black/10 sm:block" />
+        <span aria-hidden className="draw-y absolute top-3 bottom-3 left-[7px] hidden w-px bg-black/10 sm:block" />
         {experience.map((job, i) => (
           <li key={job.company} className="relative sm:pl-12">
             <span
               aria-hidden
+              style={{ '--draw-delay': `${250 + i * 300}ms` } as CSSProperties}
               className={cn(
-                'absolute top-7 left-0 hidden size-[15px] rounded-full border-2 sm:block',
+                'draw-dot absolute top-7 left-0 hidden size-[15px] rounded-full border-2 sm:block',
                 job.current ? 'border-accent bg-accent ring-[5px] ring-accent/15' : 'border-black/25 bg-white',
               )}
             />
-            <Reveal delay={i * 60}>
+            <div>
               <JobCard job={job} />
-            </Reveal>
+            </div>
           </li>
         ))}
       </ol>
@@ -35,7 +40,7 @@ export function Experience() {
 
 function JobCard({ job }: { job: Job }) {
   return (
-    <article className="rounded-2xl bg-paper p-6 ring-1 ring-black/[0.06] sm:p-8">
+    <article className="rounded-xl bg-paper p-6 ring-1 ring-black/[0.06] sm:p-8">
       <header className="flex flex-wrap items-start justify-between gap-x-6 gap-y-2">
         <div>
           <h3 className="text-xl font-bold tracking-tight font-stretch-semi-expanded sm:text-2xl">{job.company}</h3>
@@ -44,7 +49,7 @@ function JobCard({ job }: { job: Job }) {
           ) : null}
         </div>
         {job.current ? (
-          <span className="inline-flex items-center gap-1.5 rounded-full bg-accent/10 px-2.5 py-1 font-mono text-[11px] font-medium tracking-wider text-accent-ink uppercase">
+          <span className="inline-flex items-center gap-1.5 rounded-md bg-accent/10 px-2.5 py-1 font-mono text-[11px] font-medium tracking-wider text-accent-ink uppercase">
             <span aria-hidden className="size-1.5 animate-pulse rounded-full bg-accent motion-reduce:animate-none" />
             Current
           </span>

@@ -2,7 +2,7 @@ import type { ReactNode } from 'react';
 import { Accordion } from '@base-ui/react/accordion';
 import { ArrowTopRightIcon, PlusIcon } from '@radix-ui/react-icons';
 import { certification, education, skills } from '../content';
-import { Reveal, Section } from './ui';
+import { Section } from './ui';
 
 export function Skills() {
   return (
@@ -14,8 +14,8 @@ export function Skills() {
       className="bg-white"
     >
       <div className="space-y-6 lg:space-y-8">
-        <Reveal>
-          <div className="grid gap-px overflow-hidden rounded-2xl bg-black/[0.07] ring-1 ring-black/[0.07] sm:grid-cols-2 lg:grid-cols-4">
+        <div>
+          <div className="grid gap-px overflow-hidden rounded-xl bg-black/[0.07] ring-1 ring-black/[0.07] sm:grid-cols-2 lg:grid-cols-4">
             {skills.map((group) => (
               <div key={group.group} className="bg-paper p-6">
                 <h3 className="font-mono text-xs tracking-[0.18em] text-accent-ink uppercase">{group.group}</h3>
@@ -32,11 +32,11 @@ export function Skills() {
               </div>
             ))}
           </div>
-        </Reveal>
+        </div>
 
         <div className="grid gap-6 lg:grid-cols-2 lg:items-start lg:gap-8">
-          <Reveal delay={80}>
-            <article className="relative flex h-full flex-col overflow-hidden rounded-2xl bg-main p-6 text-on-main sm:p-7">
+          <div>
+            <article className="relative flex h-full flex-col overflow-hidden rounded-xl bg-main p-6 text-on-main ring-1 ring-on-main/10 sm:p-7">
               <p className="font-mono text-[11px] tracking-[0.18em] text-accent-glow uppercase">Certification</p>
               <h3 className="mt-3 text-xl leading-snug font-bold tracking-tight font-stretch-semi-expanded">
                 {certification.name}
@@ -60,10 +60,10 @@ export function Skills() {
                 </a>
               </div>
             </article>
-          </Reveal>
+          </div>
 
-          <Reveal delay={160}>
-            <article className="h-full rounded-2xl bg-paper p-6 ring-1 ring-black/[0.06] sm:p-7">
+          <div>
+            <article className="h-full rounded-xl bg-paper p-6 ring-1 ring-black/[0.06] sm:p-7">
               <p className="font-mono text-[11px] tracking-[0.18em] text-accent-ink uppercase">Education</p>
               <div className="mt-3 flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
                 <h3 className="text-xl font-bold tracking-tight font-stretch-semi-expanded">{education.school}</h3>
@@ -97,7 +97,7 @@ export function Skills() {
                 ))}
               </Accordion.Root>
             </article>
-          </Reveal>
+          </div>
         </div>
       </div>
     </Section>

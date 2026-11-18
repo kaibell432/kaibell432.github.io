@@ -1,7 +1,7 @@
 import { Dialog } from '@base-ui/react/dialog';
 import { ArrowTopRightIcon, Cross1Icon, LockClosedIcon, PlusIcon } from '@radix-ui/react-icons';
 import { projects, type Project } from '../content';
-import { cn, Reveal, Section, Tag } from './ui';
+import { cn, Section, Tag } from './ui';
 
 export function Projects() {
   const work = projects.filter((p) => p.kind === 'work');
@@ -17,17 +17,17 @@ export function Projects() {
     >
       <div className="space-y-5">
         <div className="grid gap-5 md:grid-cols-2">
-          {work.map((p, i) => (
-            <Reveal key={p.id} delay={i * 80}>
+          {work.map((p) => (
+            <div key={p.id}>
               <ProjectCard project={p} />
-            </Reveal>
+            </div>
           ))}
         </div>
         <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
           {other.map((p, i) => (
-            <Reveal key={p.id} delay={i * 80} className={cn(i === other.length - 1 && 'md:col-span-2 lg:col-span-1')}>
+            <div key={p.id} className={cn(i === other.length - 1 && 'md:col-span-2 lg:col-span-1')}>
               <ProjectCard project={p} />
-            </Reveal>
+            </div>
           ))}
         </div>
       </div>
@@ -43,9 +43,9 @@ function ProjectCard({ project: p }: { project: Project }) {
     <Dialog.Root>
       <article
         className={cn(
-          'group relative flex h-full flex-col overflow-hidden rounded-2xl p-6 transition-[box-shadow,translate] duration-300 ease-out-expo hover:-translate-y-0.5 sm:p-7',
+          'group relative flex h-full flex-col overflow-hidden rounded-xl p-6 transition-[box-shadow,translate] duration-300 ease-out-expo hover:-translate-y-0.5 sm:p-7',
           dark
-            ? 'bg-main text-on-main shadow-lg shadow-black/10 hover:shadow-xl hover:shadow-black/20'
+            ? 'bg-main text-on-main ring-1 ring-on-main/10 hover:shadow-xl hover:shadow-black/20'
             : 'bg-white ring-1 ring-black/[0.07] hover:shadow-lg hover:shadow-black/[0.06]',
         )}
       >
@@ -54,7 +54,7 @@ function ProjectCard({ project: p }: { project: Project }) {
         <div className="relative flex items-start justify-between gap-4">
           <span
             className={cn(
-              'grid size-11 place-items-center rounded-xl',
+              'grid size-11 place-items-center rounded-lg',
               dark ? 'bg-accent text-on-accent' : 'bg-accent/10 text-accent-ink',
             )}
           >
@@ -115,9 +115,9 @@ function ProjectDialog({ project: p }: { project: Project }) {
     <Dialog.Portal>
       <Dialog.Backdrop className="fixed inset-0 supports-[-webkit-touch-callout:none]:absolute bg-main-950/60 backdrop-blur-[2px] transition-opacity duration-200 data-ending-style:opacity-0 data-starting-style:opacity-0" />
       <Dialog.Viewport className="fixed inset-0 grid place-items-end overflow-y-auto sm:place-items-center sm:p-6">
-        <Dialog.Popup className="relative w-full max-w-xl rounded-t-2xl bg-white p-6 text-ink shadow-2xl transition-[translate,scale,opacity] duration-300 ease-out-expo data-ending-style:translate-y-6 data-ending-style:opacity-0 data-starting-style:translate-y-6 data-starting-style:opacity-0 sm:rounded-2xl sm:p-8 sm:data-ending-style:translate-y-0 sm:data-ending-style:scale-[0.97] sm:data-starting-style:translate-y-0 sm:data-starting-style:scale-[0.97]">
+        <Dialog.Popup className="relative w-full max-w-xl rounded-t-xl bg-white p-6 text-ink shadow-2xl transition-[translate,scale,opacity] duration-300 ease-out-expo data-ending-style:translate-y-6 data-ending-style:opacity-0 data-starting-style:translate-y-6 data-starting-style:opacity-0 sm:rounded-xl sm:p-8 sm:data-ending-style:translate-y-0 sm:data-ending-style:scale-[0.97] sm:data-starting-style:translate-y-0 sm:data-starting-style:scale-[0.97]">
           <div className="flex items-start justify-between gap-4">
-            <span className="grid size-11 place-items-center rounded-xl bg-accent text-on-accent">
+            <span className="grid size-11 place-items-center rounded-lg bg-accent text-on-accent">
               <Icon aria-hidden className="size-5" />
             </span>
             <Dialog.Close

@@ -9,7 +9,7 @@ import {
 } from '@radix-ui/react-icons';
 import { profile } from '../content';
 import { TopoBackground } from './TopoBackground';
-import { button, Reveal, Section } from './ui';
+import { button, Section } from './ui';
 
 export function Contact() {
   const toast = Toast.useToastManager();
@@ -41,8 +41,8 @@ export function Contact() {
         </div>
       }
     >
-      <Reveal>
-        <div className="flex flex-col gap-4 rounded-2xl bg-main-800/80 p-5 ring-1 ring-on-main/10 backdrop-blur-sm sm:flex-row sm:items-center sm:justify-between sm:p-6">
+      <div>
+        <div className="flex flex-col gap-4 rounded-xl bg-main-800/80 p-5 ring-1 ring-on-main/10 backdrop-blur-sm sm:flex-row sm:items-center sm:justify-between sm:p-6">
           <a
             href={`mailto:${profile.email}`}
             className="min-w-0 rounded-md text-xl font-semibold break-all text-on-main decoration-accent decoration-2 underline-offset-[6px] hover:underline sm:text-3xl sm:font-stretch-semi-expanded"
@@ -71,7 +71,7 @@ export function Contact() {
             GitHub
           </a>
         </div>
-      </Reveal>
+      </div>
     </Section>
   );
 }

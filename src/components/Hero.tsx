@@ -147,7 +147,7 @@ function Portrait() {
         </svg>
       </div>
 
-      <div className="relative size-full overflow-hidden rounded-full bg-main-700 shadow-2xl shadow-black/40 ring-2 ring-accent ring-offset-[6px] ring-offset-main">
+      <div className="relative size-full overflow-hidden rounded-full bg-main-700 ring-2 ring-accent ring-offset-[6px] ring-offset-main">
         <img
           src="/kai-bell.webp"
           width={800}
