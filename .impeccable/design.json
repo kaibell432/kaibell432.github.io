@@ -1,0 +1,428 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-18T03:21:49.327Z",
+  "title": "Design System: Kai Bell",
+  "extensions": {
+    "colorMeta": {
+      "main-950": {
+        "role": "neutral",
+        "displayName": "Deep Graphite",
+        "canonical": "#161616",
+        "tonalRamp": [
+          "#0b0b0b",
+          "#252525",
+          "#424242",
+          "#616161",
+          "#828282",
+          "#a5a5a5",
+          "#c9c9c9",
+          "#eeeeee"
+        ]
+      },
+      "main-800": {
+        "role": "neutral",
+        "displayName": "Night Graphite",
+        "canonical": "#2a2a2a",
+        "tonalRamp": [
+          "#0b0b0b",
+          "#252525",
+          "#424242",
+          "#616161",
+          "#828282",
+          "#a5a5a5",
+          "#c9c9c9",
+          "#eeeeee"
+        ]
+      },
+      "main": {
+        "role": "neutral",
+        "displayName": "Graphite",
+        "canonical": "#333333",
+        "tonalRamp": [
+          "#0b0b0b",
+          "#252525",
+          "#424242",
+          "#616161",
+          "#828282",
+          "#a5a5a5",
+          "#c9c9c9",
+          "#eeeeee"
+        ]
+      },
+      "main-700": {
+        "role": "neutral",
+        "displayName": "Raised Graphite",
+        "canonical": "#404040",
+        "tonalRamp": [
+          "#0b0b0b",
+          "#252525",
+          "#424242",
+          "#616161",
+          "#828282",
+          "#a5a5a5",
+          "#c9c9c9",
+          "#eeeeee"
+        ]
+      },
+      "on-main": {
+        "role": "neutral",
+        "displayName": "Signal White",
+        "canonical": "#ffffff",
+        "tonalRamp": [
+          "#0b0b0b",
+          "#252525",
+          "#424242",
+          "#616161",
+          "#828282",
+          "#a5a5a5",
+          "#c9c9c9",
+          "#eeeeee"
+        ]
+      },
+      "on-main-muted": {
+        "role": "neutral",
+        "displayName": "Fog",
+        "canonical": "#cecece",
+        "tonalRamp": [
+          "#0b0b0b",
+          "#252525",
+          "#424242",
+          "#616161",
+          "#828282",
+          "#a5a5a5",
+          "#c9c9c9",
+          "#eeeeee"
+        ]
+      },
+      "on-main-subtle": {
+        "role": "neutral",
+        "displayName": "Ash",
+        "canonical": "#a3a3a3",
+        "tonalRamp": [
+          "#0b0b0b",
+          "#252525",
+          "#424242",
+          "#616161",
+          "#828282",
+          "#a5a5a5",
+          "#c9c9c9",
+          "#eeeeee"
+        ]
+      },
+      "accent-ink": {
+        "role": "primary",
+        "displayName": "Ink Orange",
+        "canonical": "#b64a00",
+        "tonalRamp": [
+          "#130804",
+          "#3e1907",
+          "#6e2a00",
+          "#9f4000",
+          "#ca5e25",
+          "#de8f6b",
+          "#eebda7",
+          "#fdeae2"
+        ]
+      },
+      "accent-600": {
+        "role": "primary",
+        "displayName": "Burnt Survey Orange",
+        "canonical": "#e05d00",
+        "tonalRamp": [
+          "#150703",
+          "#411600",
+          "#6e2a00",
+          "#9f4000",
+          "#d25700",
+          "#e68a5f",
+          "#f3baa1",
+          "#ffe9e0"
+        ]
+      },
+      "accent": {
+        "role": "primary",
+        "displayName": "Survey Orange",
+        "canonical": "#fc6a03",
+        "tonalRamp": [
+          "#150703",
+          "#411600",
+          "#6e2a00",
+          "#9f4000",
+          "#d25700",
+          "#eb8757",
+          "#f7b99d",
+          "#ffe9e0"
+        ]
+      },
+      "accent-glow": {
+        "role": "primary",
+        "displayName": "Glow Orange",
+        "canonical": "#ff782f",
+        "tonalRamp": [
+          "#150703",
+          "#411600",
+          "#6e2a00",
+          "#9f4000",
+          "#d25700",
+          "#e6895e",
+          "#f4baa1",
+          "#ffe9e0"
+        ]
+      },
+      "on-accent": {
+        "role": "primary",
+        "displayName": "Near Black",
+        "canonical": "#0d0d0d",
+        "tonalRamp": [
+          "#0b0b0b",
+          "#252525",
+          "#424242",
+          "#616161",
+          "#828282",
+          "#a5a5a5",
+          "#c9c9c9",
+          "#eeeeee"
+        ]
+      },
+      "paper": {
+        "role": "neutral",
+        "displayName": "Map Paper",
+        "canonical": "#f4f4f4",
+        "tonalRamp": [
+          "#0b0b0b",
+          "#252525",
+          "#424242",
+          "#616161",
+          "#828282",
+          "#a5a5a5",
+          "#c9c9c9",
+          "#eeeeee"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Graphite Ink",
+        "canonical": "#333333",
+        "tonalRamp": [
+          "#0b0b0b",
+          "#252525",
+          "#424242",
+          "#616161",
+          "#828282",
+          "#a5a5a5",
+          "#c9c9c9",
+          "#eeeeee"
+        ]
+      },
+      "muted": {
+        "role": "neutral",
+        "displayName": "Pencil Gray",
+        "canonical": "#5c5c5c",
+        "tonalRamp": [
+          "#0b0b0b",
+          "#252525",
+          "#424242",
+          "#616161",
+          "#828282",
+          "#a5a5a5",
+          "#c9c9c9",
+          "#eeeeee"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "The name in the hero, once per page."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Section titles."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Company names, project titles, card headings."
+      },
+      "lede": {
+        "displayName": "Lede",
+        "purpose": "The one-sentence statement under the name in the hero."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Running text."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Uppercase eyebrows, section indexes and dates."
+      },
+      "label-sm": {
+        "displayName": "Label small",
+        "purpose": "Tags, card metadata, fact labels and small UI labels."
+      }
+    },
+    "shadows": [
+      {
+        "name": "hover-lift",
+        "value": "0 10px 15px -3px rgb(0 0 0 / 0.06)",
+        "purpose": "Project cards on hover, with a 2px upward move."
+      },
+      {
+        "name": "floating-layer",
+        "value": "0 25px 50px -12px rgb(0 0 0 / 0.25)",
+        "purpose": "Dialogs, popovers, toasts and the portrait."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-out-expo",
+        "value": "cubic-bezier(0.22, 1, 0.36, 1)",
+        "purpose": "Reveals, dialogs, card lift and the menu sheet."
+      },
+      {
+        "name": "reveal",
+        "value": "700ms",
+        "purpose": "Scroll-in fade and rise for section content; off under reduced motion."
+      },
+      {
+        "name": "reticle-spin",
+        "value": "90s linear infinite",
+        "purpose": "Portrait orbit rotation; off under reduced motion."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "sm",
+        "value": "640px"
+      },
+      {
+        "name": "md",
+        "value": "768px"
+      },
+      {
+        "name": "lg",
+        "value": "1024px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Main call to action: See my work, Email me, Copy CSS.",
+      "html": "<button class=\"ds-btn-primary\">See my work <svg width=\"15\" height=\"15\" viewBox=\"0 0 15 15\" fill=\"none\"><path d=\"M8.146 3.146a.5.5 0 0 1 .708 0l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L11.293 8H2.5a.5.5 0 0 1 0-1h8.793L8.146 3.854a.5.5 0 0 1 0-.708Z\" fill=\"currentColor\"/></svg></button>",
+      "css": ".ds-btn-primary { display: inline-flex; align-items: center; gap: 8px; height: 44px; padding: 0 20px; border: none; border-radius: 8px; background: var(--color-accent); color: var(--color-on-accent); font-family: 'Archivo Variable', ui-sans-serif, system-ui, sans-serif; font-size: 14px; font-weight: 600; cursor: pointer; transition: background-color 150ms; } .ds-btn-primary:hover { background: var(--color-accent-600); } .ds-btn-primary:active { transform: translateY(1px); } .ds-btn-primary:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 3px; }"
+    },
+    {
+      "name": "Ghost Button (on main)",
+      "kind": "button",
+      "refersTo": "button-ghost-on-main",
+      "description": "Secondary action on dark bands: Résumé, LinkedIn, GitHub.",
+      "html": "<div class=\"ds-band\"><button class=\"ds-btn-ghost\">Résumé</button></div>",
+      "css": ".ds-band { background: var(--color-main); padding: 20px; border-radius: 12px; } .ds-btn-ghost { height: 44px; padding: 0 20px; border-radius: 8px; border: 1px solid color-mix(in oklab, var(--color-on-main) 20%, transparent); background: transparent; color: var(--color-on-main); font-family: 'Archivo Variable', ui-sans-serif, system-ui, sans-serif; font-size: 14px; font-weight: 600; cursor: pointer; transition: background-color 150ms, border-color 150ms; } .ds-btn-ghost:hover { border-color: color-mix(in oklab, var(--color-on-main) 40%, transparent); background: color-mix(in oklab, var(--color-on-main) 5%, transparent); } .ds-btn-ghost:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 3px; }"
+    },
+    {
+      "name": "Tag",
+      "kind": "chip",
+      "refersTo": "tag",
+      "description": "Stack and focus-area tags on cards.",
+      "html": "<span class=\"ds-tag\">React</span> <span class=\"ds-tag\">Base UI</span> <span class=\"ds-tag\">Tailwind CSS</span>",
+      "css": ".ds-tag { display: inline-flex; align-items: center; padding: 4px 8px; border-radius: 6px; background: rgb(0 0 0 / 0.04); box-shadow: inset 0 0 0 1px rgb(0 0 0 / 0.06); color: var(--color-ink); font-family: 'JetBrains Mono Variable', ui-monospace, monospace; font-size: 11px; line-height: 1; }"
+    },
+    {
+      "name": "Project Card",
+      "kind": "card",
+      "refersTo": "card",
+      "description": "Clickable white card for personal and academic projects; lifts on hover.",
+      "html": "<article class=\"ds-card\"><p class=\"ds-card-meta\">Personal project</p><h3 class=\"ds-card-title\">AI meal planner</h3><p class=\"ds-card-body\">A full-stack web app that generates personalized meal plans with AI.</p><span class=\"ds-card-link\">+ Details</span></article>",
+      "css": ".ds-card { max-width: 320px; padding: 28px; border-radius: 16px; background: #fff; box-shadow: inset 0 0 0 1px rgb(0 0 0 / 0.07); color: var(--color-ink); font-family: 'Archivo Variable', ui-sans-serif, system-ui, sans-serif; transition: transform 300ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 300ms; cursor: pointer; } .ds-card:hover { transform: translateY(-2px); box-shadow: inset 0 0 0 1px rgb(0 0 0 / 0.07), 0 10px 15px -3px rgb(0 0 0 / 0.06); } .ds-card-meta { margin: 0; font-family: 'JetBrains Mono Variable', ui-monospace, monospace; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-muted); } .ds-card-title { margin: 16px 0 0; font-size: 22px; font-weight: 700; letter-spacing: -0.025em; font-stretch: 112.5%; } .ds-card-body { margin: 8px 0 0; line-height: 1.6; color: var(--color-muted); } .ds-card-link { display: inline-block; margin-top: 20px; font-size: 14px; font-weight: 600; color: var(--color-accent-ink); }"
+    },
+    {
+      "name": "Feature Card",
+      "kind": "card",
+      "refersTo": "card-feature",
+      "description": "Main-color card for professional work and the certification.",
+      "html": "<article class=\"ds-feature\"><p class=\"ds-feature-meta\">KBR · Internal</p><h3 class=\"ds-feature-title\">Geospatial analysis app</h3><p class=\"ds-feature-body\">A React front end over a high-volume geospatial data source API.</p></article>",
+      "css": ".ds-feature { max-width: 360px; padding: 28px; border-radius: 16px; background: var(--color-main); color: var(--color-on-main); font-family: 'Archivo Variable', ui-sans-serif, system-ui, sans-serif; } .ds-feature-meta { margin: 0; font-family: 'JetBrains Mono Variable', ui-monospace, monospace; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-on-main-subtle); } .ds-feature-title { margin: 16px 0 0; font-size: 22px; font-weight: 700; letter-spacing: -0.025em; font-stretch: 112.5%; } .ds-feature-body { margin: 8px 0 0; line-height: 1.6; color: var(--color-on-main-muted); }"
+    },
+    {
+      "name": "Hex Input",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "Text field from the theme picker.",
+      "html": "<label class=\"ds-field\"><span class=\"ds-field-label\">Main</span><input class=\"ds-input\" value=\"#333333\" maxlength=\"7\"></label>",
+      "css": ".ds-field { display: grid; gap: 6px; max-width: 160px; } .ds-field-label { font-family: 'JetBrains Mono Variable', ui-monospace, monospace; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--color-muted); } .ds-input { height: 36px; padding: 0 10px; border-radius: 8px; border: 1px solid rgb(0 0 0 / 0.15); background: var(--color-paper); color: var(--color-ink); font-family: 'JetBrains Mono Variable', ui-monospace, monospace; font-size: 14px; text-transform: uppercase; outline: none; } .ds-input:focus { border-color: var(--color-accent-ink); box-shadow: 0 0 0 2px color-mix(in oklab, var(--color-accent) 30%, transparent); }"
+    },
+    {
+      "name": "Nav Link",
+      "kind": "nav",
+      "refersTo": null,
+      "description": "Header link with the accent underline for the section in view.",
+      "html": "<nav class=\"ds-nav\"><a class=\"ds-nav-link\" href=\"#\">About</a><a class=\"ds-nav-link is-active\" href=\"#\">Experience</a><a class=\"ds-nav-link\" href=\"#\">Projects</a></nav>",
+      "css": ".ds-nav { display: flex; gap: 4px; padding: 0 12px; background: var(--color-main); border-radius: 12px; } .ds-nav-link { position: relative; padding: 18px 12px; font-family: 'Archivo Variable', ui-sans-serif, system-ui, sans-serif; font-size: 14px; color: var(--color-on-main-muted); text-decoration: none; transition: color 150ms; } .ds-nav-link:hover, .ds-nav-link.is-active { color: var(--color-on-main); } .ds-nav-link::after { content: ''; position: absolute; left: 12px; right: 12px; bottom: 8px; height: 2px; background: var(--color-accent); transform: scaleX(0); transform-origin: left; transition: transform 300ms; } .ds-nav-link.is-active::after { transform: scaleX(1); } .ds-nav-link:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 3px; }"
+    },
+    {
+      "name": "Section Eyebrow",
+      "kind": "custom",
+      "refersTo": null,
+      "description": "Index, rule and label above every section headline (The Map Legend Rule).",
+      "html": "<div><p class=\"ds-eyebrow\"><span>02</span><span class=\"ds-eyebrow-rule\"></span><span>Experience</span></p><h2 class=\"ds-headline\">Where I’ve worked.</h2></div>",
+      "css": ".ds-eyebrow { display: flex; align-items: center; gap: 12px; margin: 0; font-family: 'JetBrains Mono Variable', ui-monospace, monospace; font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--color-accent-ink); } .ds-eyebrow-rule { width: 32px; height: 1px; background: currentColor; } .ds-headline { margin: 16px 0 0; font-family: 'Archivo Variable', ui-sans-serif, system-ui, sans-serif; font-size: 40px; font-weight: 700; line-height: 1.1; letter-spacing: -0.025em; font-stretch: 112.5%; color: var(--color-ink); }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Annotated Map",
+    "overview": "The site reads like a clean map with annotations laid over it. The content is the terrain: plain, readable, generously spaced on light paper. On top of it sit the annotations: monospaced uppercase labels, small accent squares as markers, thin hairline rings, a survey reticle around the portrait, and faint topographic contours in the dark bands. The annotations orient the visitor; they never compete with the content.\n\nTwo dark bands in the main color bracket the page: the hero at the top and the contact band at the bottom, with the header pinned in the same color. Everything between alternates paper and white. The single accent color is the signal: actions, the current state, and the markers that make the map legible. Components are precise and confident: crisp radii, solid accent fills, tight labels.\n\nThe whole palette comes from two inputs, main and accent, and every text color is solved for WCAG contrast against its background, so the system holds for any pair.",
+    "keyCharacteristics": [
+      "Two input colors; every other shade derived and contrast-solved.",
+      "Expanded-width Archivo headings over plain Archivo body text, with JetBrains Mono as the annotation voice.",
+      "Flat surfaces with hairline rings; depth appears only on interaction and for floating layers.",
+      "Map motifs (contours, grid, reticle, square markers) used as line art, never as fills."
+    ],
+    "rules": [
+      {
+        "name": "The Two-Input Rule",
+        "body": "Only `main` and `accent` are chosen. Every other color is derived by `npm run tokens` and never edited by hand.",
+        "section": "colors"
+      },
+      {
+        "name": "The Signal Rule",
+        "body": "The accent marks action, current state and markers. It is never a background for large areas or a decoration for its own sake.",
+        "section": "colors"
+      },
+      {
+        "name": "The Small-Text Rule",
+        "body": "Small orange text always uses `accent-ink` on light surfaces and `accent-glow` on main, never the raw `accent`.",
+        "section": "colors"
+      },
+      {
+        "name": "The Map Legend Rule",
+        "body": "Uppercase mono with wide tracking is for labels, dates and metadata only. Sentences are never set in it.",
+        "section": "typography"
+      },
+      {
+        "name": "The Lift-On-Intent Rule",
+        "body": "Nothing casts a shadow at rest except floating layers. Shadows answer interaction or mark something that floats above the page.",
+        "section": "elevation"
+      },
+      {
+        "name": "The Square Marker Rule",
+        "body": "List bullets and eyebrow markers are small accent squares. Round dots are reserved for status (the current-role indicator).",
+        "section": "shapes"
+      }
+    ],
+    "dos": [
+      "**Do** change the palette by editing `colors.main` and `colors.accent` in this file and running `npm run tokens`.",
+      "**Do** style with the theme tokens (`bg-main`, `text-on-main-muted`, `text-accent-ink`, and so on) so every color follows the theme.",
+      "**Do** keep orange small text on `accent-ink` or `accent-glow` (The Small-Text Rule).",
+      "**Do** use Radix icons for every icon.",
+      "**Do** respect reduced motion: reveals, the pulsing status dot and the reticle rotation all switch off."
+    ],
+    "donts": [
+      "**Don't** hard-code hex values or Tailwind palette colors (`text-white`, `neutral-*`) in components. The exceptions are white card surfaces, black-alpha hairlines and shadows, and the status colors in the contrast grades.",
+      "**Don't** use thick colored side stripes on cards or toasts as an accent.",
+      "**Don't** set sentences in the uppercase mono label style (The Map Legend Rule).",
+      "**Don't** add shadows to surfaces at rest (The Lift-On-Intent Rule)."
+    ]
+  }
+}
