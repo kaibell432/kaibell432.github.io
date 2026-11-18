@@ -8,6 +8,8 @@ import {
 } from '@radix-ui/react-icons';
 import { facts, profile } from '../content';
 import { TopoBackground } from './TopoBackground';
+import { ViewerLink } from './Viewer';
+import { Traverse } from './Traverse';
 import { button, cn, IconLink } from './ui';
 
 const delay = (ms: number) => ({ '--reveal-delay': `${ms}ms` }) as CSSProperties;
@@ -17,7 +19,7 @@ export function Hero() {
     <section id="top" aria-label="Introduction" className="relative overflow-hidden bg-main text-on-main">
       <TopoBackground />
 
-      <div className="relative mx-auto grid max-w-6xl items-center gap-14 px-4 pt-32 pb-16 sm:px-6 lg:grid-cols-[minmax(0,1fr)_auto] lg:gap-20 lg:pt-40 lg:pb-24">
+      <div className="container-site relative grid items-center gap-14 pt-32 pb-16 lg:grid-cols-2 lg:gap-12 lg:pt-36 lg:pb-20">
         <div>
           <h1
             className="hero-in text-6xl leading-[0.95] font-extrabold tracking-tight font-stretch-semi-expanded sm:text-7xl lg:text-8xl"
@@ -54,10 +56,10 @@ export function Hero() {
               <ArrowRightIcon aria-hidden />
             </a>
             {profile.resumeUrl ? (
-              <a href={profile.resumeUrl} target="_blank" rel="noreferrer" className={button.ghostDark}>
+              <ViewerLink item={{ kind: 'pdf', title: 'Résumé', src: profile.resumeUrl }} className={button.ghostDark}>
                 <FileTextIcon aria-hidden />
                 Résumé
-              </a>
+              </ViewerLink>
             ) : (
               <a href="#contact" className={button.ghostDark}>
                 Get in touch
@@ -77,11 +79,11 @@ export function Hero() {
           </div>
         </div>
 
-        <Portrait />
+        <Traverse />
       </div>
 
       <div className="relative border-t border-on-main/10 bg-main-800/70 backdrop-blur-sm">
-        <dl className="mx-auto grid max-w-6xl grid-cols-2 px-4 sm:px-6 lg:grid-cols-4">
+        <dl className="container-site grid grid-cols-2 lg:grid-cols-4">
           {facts.map((fact, i) => (
             <div
               key={fact.label}
@@ -102,65 +104,5 @@ export function Hero() {
         </dl>
       </div>
     </section>
-  );
-}
-
-/** Point on a circle of radius r centred at (50, 50), angle in degrees from 12 o'clock. */
-const polar = (r: number, deg: number) => {
-  const a = ((deg - 90) * Math.PI) / 180;
-  return `${(50 + r * Math.cos(a)).toFixed(2)} ${(50 + r * Math.sin(a)).toFixed(2)}`;
-};
-
-function Portrait() {
-  return (
-    <figure className="hero-in relative mx-auto size-56 sm:size-64 lg:size-76" style={delay(200)}>
-      {/* Survey-reticle ring: slow dashed orbit, compass ticks, and an accent arc */}
-      <div aria-hidden className="pointer-events-none absolute -inset-7 sm:-inset-9">
-        <svg viewBox="0 0 100 100" className="size-full overflow-visible motion-safe:animate-[spin_90s_linear_infinite]">
-          <circle
-            cx="50"
-            cy="50"
-            r="49.5"
-            fill="none"
-            stroke="var(--color-on-main)"
-            strokeOpacity="0.22"
-            strokeWidth="0.35"
-            strokeDasharray="0.5 1.6"
-          />
-          <path
-            d={`M ${polar(49.5, 28)} A 49.5 49.5 0 0 1 ${polar(49.5, 74)}`}
-            fill="none"
-            stroke="var(--color-accent)"
-            strokeWidth="0.9"
-            strokeLinecap="round"
-          />
-        </svg>
-        <svg viewBox="0 0 100 100" className="absolute inset-0 size-full overflow-visible">
-          {[0, 90, 180, 270].map((deg) => (
-            <line
-              key={deg}
-              x1="50"
-              y1="-1.5"
-              x2="50"
-              y2="3.5"
-              stroke="var(--color-accent)"
-              strokeWidth="0.7"
-              transform={`rotate(${deg} 50 50)`}
-            />
-          ))}
-        </svg>
-      </div>
-
-      <div className="relative size-full overflow-hidden rounded-full bg-main-700 ring-2 ring-accent ring-offset-[6px] ring-offset-main">
-        <img
-          src="/kai-bell.webp"
-          width={800}
-          height={800}
-          alt="Portrait of Kai Bell"
-          fetchPriority="high"
-          className="size-full object-cover"
-        />
-      </div>
-    </figure>
   );
 }

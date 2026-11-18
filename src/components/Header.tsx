@@ -12,6 +12,7 @@ import { profile, site } from '../content';
 import { useActiveSection } from '../hooks';
 import { ThemePicker } from './ThemePicker';
 import { button, cn } from './ui';
+import { ViewerLink } from './Viewer';
 
 const NAV = [
   { id: 'about', label: 'About' },
@@ -29,7 +30,7 @@ export function Header() {
 
   return (
     <header className="fixed inset-x-0 top-0 z-40 border-b border-on-main/10 bg-main/90 backdrop-blur-md">
-      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-6 px-4 sm:px-6">
+      <div className="container-site flex h-16 items-center justify-between gap-6">
         <a href="#top" className="flex items-center gap-2.5 rounded-md text-on-main" aria-label="Kai Bell, back to top">
           <Monogram />
           <span className="text-base font-semibold tracking-tight font-stretch-semi-expanded">Kai Bell</span>
@@ -55,15 +56,10 @@ export function Header() {
           {site.themePicker ? <ThemePicker /> : null}
 
           {profile.resumeUrl ? (
-            <a
-              href={profile.resumeUrl}
-              target="_blank"
-              rel="noreferrer"
-              className={cn(button.primaryCompact, 'ml-1 hidden md:inline-flex')}
-            >
+            <ViewerLink item={{ kind: 'pdf', title: 'Résumé', src: profile.resumeUrl }} className={cn(button.primaryCompact, 'ml-1 hidden md:inline-flex')}>
               <FileTextIcon aria-hidden />
               Résumé
-            </a>
+            </ViewerLink>
           ) : null}
 
           <Dialog.Root open={menuOpen} onOpenChange={setMenuOpen}>
@@ -108,10 +104,10 @@ export function Header() {
 
                 <div className="mt-auto space-y-4">
                   {profile.resumeUrl ? (
-                    <a href={profile.resumeUrl} target="_blank" rel="noreferrer" className={cn(button.primary, 'w-full')}>
+                    <ViewerLink item={{ kind: 'pdf', title: 'Résumé', src: profile.resumeUrl }} className={cn(button.primary, 'w-full')}>
                       <FileTextIcon aria-hidden />
                       Résumé
-                    </a>
+                    </ViewerLink>
                   ) : null}
                   <div className="flex gap-2 border-t border-on-main/10 pt-4 text-on-main-muted">
                     <a href={profile.github} target="_blank" rel="noreferrer" aria-label="GitHub" className="grid size-11 place-items-center rounded-lg hover:bg-on-main/10 hover:text-on-main">

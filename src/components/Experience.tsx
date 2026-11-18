@@ -1,7 +1,7 @@
 import type { CSSProperties } from 'react';
 import { experience, legend, type Job } from '../content';
 import { useReveal } from '../hooks';
-import { cn, Section, Tag } from './ui';
+import { cn, InlineList, Section } from './ui';
 
 export function Experience() {
   const railRef = useReveal<HTMLOListElement>();
@@ -47,7 +47,7 @@ function JobCard({ job, order }: { job: Job; order: number }) {
           ) : null}
         </div>
         {job.current ? (
-          <span className="inline-flex items-center gap-1.5 rounded-md bg-white px-2.5 py-1 font-mono text-label-sm font-medium text-accent-ink uppercase ring-1 ring-accent/30">
+          <span className="inline-flex items-center gap-1.5 font-mono text-label-sm font-medium text-accent-ink uppercase">
             <legend.now aria-hidden className="size-3 shrink-0" />
             Current
           </span>
@@ -90,13 +90,7 @@ function JobCard({ job, order }: { job: Job; order: number }) {
       </div>
 
       {job.stack ? (
-        <ul className="mt-6 flex flex-wrap gap-1.5" aria-label="Technologies and focus areas">
-          {job.stack.map((s) => (
-            <li key={s}>
-              <Tag>{s}</Tag>
-            </li>
-          ))}
-        </ul>
+        <InlineList className="mt-6" label="Technologies and focus areas" items={job.stack} />
       ) : null}
     </article>
   );

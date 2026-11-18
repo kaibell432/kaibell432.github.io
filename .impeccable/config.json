@@ -1,0 +1,20 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "design-system-font",
+        "value": "archivo",
+        "createdAt": "2026-11-18T22:12:04.758Z",
+        "reason": "Claude: decision sketches load DESIGN.md's Archivo Variable / JetBrains Mono Variable families by their Google Fonts names"
+      },
+      {
+        "rule": "design-system-font",
+        "value": "jetbrains mono",
+        "createdAt": "2026-11-18T22:12:04.936Z",
+        "reason": "Claude: decision sketches load DESIGN.md's Archivo Variable / JetBrains Mono Variable families by their Google Fonts names"
+      }
+    ]
+  }
+}
