@@ -1,69 +1,28 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Kai Bell - Home</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css"/>
-    <link rel="stylesheet" type="text/css" href="styles\base.css" />
-</head>
-<body>
-    <header>
-        <div class="ui top fixed menu">
-            <a class="header item" href="index.html">
-                Kai Bell
-            </a>
-            <a class="item" href="index.html">Home</a>
-            <a class="item" href="portfolio.html">Portfolio</a>
-            <a class="item" href="skills.html">Skills</a>
-            <div class="ui dropdown item">
-                Contact
-                <i class="dropdown icon"></i>
-                <div class="menu">
-                    <a class="item" href="mailto:kaibell241@gmail.com">Email Me</a>
-                    <a class="item" href="https://www.linkedin.com/in/kai-bell/" target="_blank">LinkedIn</a>
-                    <a class="item" href="https://github.com/kaibell432" target="_blank">GitHub</a>
-                    <!-- Add other contact methods here -->
-                </div>
-            </div>
-        </div>
-            
-    </header>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kai Bell</title>
+    <meta
+      name="description"
+      content="Kai Bell builds React front ends for data-heavy work, from geospatial analysis to data repositories. Associate Technical Professional at KBR."
+    />
+    <meta name="theme-color" content="#333333" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
-    <div class="first-container">
-        <section >
-            <h2>Welcome to My Website</h2>
-            <img src="images\myphoto.JPG" alt="Photo of Me!" style="max-width:10%;height:auto;">
-            <p>
-                <!-- Add your introduction or about me content here -->
-                Hello, I'm Kai! Welcome to my personal website.
-            </p>
-        </section>
-    </div>
-
-
-    <div>
-        <section>
-            <h2>About Me</h2>
-            <p>I am a Computer Science student from the University of Virginia graduating in Spring 2024! I am interested in Data Science and Software Engineering.</p>
-        </section>
-    </div>
-
-    <div>
-        <section>
-            <p>Currently under construction!</p>
-        </section>
-    </div>
-
-    <footer>
-        <p>&copy; 2024 Kai Bell. All Rights Reserved. </p>
-    </footer>
-
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
-    <script>
-        $(document).ready(function() {
-            $('.ui.dropdown').dropdown();
-        });
-    </script>
-    
-</body>
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://kaibell432.github.io/" />
+    <meta property="og:title" content="Kai Bell" />
+    <meta
+      property="og:description"
+      content="React front ends for data-heavy work, from geospatial analysis to data repositories."
+    />
+    <meta property="og:image" content="https://kaibell432.github.io/og-image.jpg" />
+    <meta name="twitter:card" content="summary_large_image" />
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
 </html>
