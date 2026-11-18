@@ -136,22 +136,6 @@ export const experience: Job[] = [
     ],
     stack: ['Imagery', 'FMV', 'SAR', 'AI/ML training data', 'Quality control'],
   },
-  {
-    company: 'Physician’s Premier Weight & Wellness Center',
-    location: 'Ashburn, VA',
-    roles: [
-      {
-        title: 'Practice Business Assistant',
-        start: 'Jun 2023',
-        end: 'Jan 2024',
-        bullets: [
-          'Built and ran scheduling, patient-communication, and supply-tracking systems for a multi-location practice.',
-          'Designed a new system that improved how the clinical and administrative departments worked together.',
-          'Delivered customer service that contributed to fewer patient complaints and higher product sales.',
-        ],
-      },
-    ],
-  },
 ];
 
 export type ProjectLink = { label: string; href: string };
