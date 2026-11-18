@@ -69,7 +69,7 @@ function ProjectCard({ project: p }: { project: Project }) {
           </p>
         </div>
 
-        <h3 className="relative mt-6 text-xl font-bold tracking-tight font-stretch-semi-expanded sm:text-2xl">
+        <h3 className="relative mt-6 text-xl font-bold tracking-tight text-balance font-stretch-semi-expanded sm:text-2xl">
           {p.title}
         </h3>
         <p className={cn('relative mt-2 leading-relaxed text-pretty', dark ? 'text-on-main-muted' : 'text-muted')}>

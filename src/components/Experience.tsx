@@ -41,13 +41,13 @@ function JobCard({ job, order }: { job: Job; order: number }) {
     <article className="rounded-xl bg-paper p-6 ring-1 ring-black/[0.08] sm:p-7">
       <header className="flex flex-wrap items-start justify-between gap-x-6 gap-y-2">
         <div>
-          <h3 className="text-xl font-bold tracking-tight font-stretch-semi-expanded sm:text-2xl">{job.company}</h3>
+          <h3 className="text-xl font-bold tracking-tight text-balance font-stretch-semi-expanded sm:text-2xl">{job.company}</h3>
           {job.detail || job.location ? (
             <p className="mt-1 text-sm text-muted">{[job.detail, job.location].filter(Boolean).join(' · ')}</p>
           ) : null}
         </div>
         {job.current ? (
-          <span className="inline-flex items-center gap-1.5 rounded-md bg-accent/10 px-2.5 py-1 font-mono text-label-sm font-medium text-accent-ink uppercase">
+          <span className="inline-flex items-center gap-1.5 rounded-md bg-white px-2.5 py-1 font-mono text-label-sm font-medium text-accent-ink uppercase ring-1 ring-accent/30">
             <legend.now aria-hidden className="size-3 shrink-0" />
             Current
           </span>

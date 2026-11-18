@@ -2,7 +2,7 @@ import type { ReactNode } from 'react';
 import { Accordion } from '@base-ui/react/accordion';
 import { ArrowTopRightIcon, PlusIcon } from '@radix-ui/react-icons';
 import { certification, education, legend, skills } from '../content';
-import { Section } from './ui';
+import { cn, Section } from './ui';
 
 export function Skills() {
   return (
@@ -34,14 +34,15 @@ export function Skills() {
 
         <div className="grid gap-6 lg:grid-cols-2 lg:items-start">
           <article className="relative flex h-full flex-col overflow-hidden rounded-xl bg-main p-6 text-on-main ring-1 ring-on-main/10 sm:p-7">
-            <p className="flex items-center gap-2 font-mono text-label text-accent-glow uppercase">
-              <legend.certified aria-hidden className="size-3.5 shrink-0" />
-              Certification
-            </p>
-            <h3 className="mt-3 text-xl leading-snug font-bold tracking-tight font-stretch-semi-expanded">
-              {certification.name}
-            </h3>
-            <p className="mt-1 font-mono text-xs text-on-main-subtle">
+            <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between sm:gap-6">
+              <h3 className="text-xl leading-snug font-bold tracking-tight text-balance font-stretch-semi-expanded">
+                {certification.name}
+              </h3>
+              <CornerTag tone="dark" icon={legend.certified}>
+                Certification
+              </CornerTag>
+            </div>
+            <p className="mt-2 font-mono text-xs text-on-main-subtle">
               {certification.issuer} · {certification.code}
             </p>
             <p className="mt-4 mb-6 text-sm leading-relaxed text-pretty text-on-main-muted">{certification.description}</p>
@@ -62,17 +63,16 @@ export function Skills() {
           </article>
 
           <article className="h-full rounded-xl bg-paper p-6 ring-1 ring-black/[0.08] sm:p-7">
-            <p className="flex items-center gap-2 font-mono text-label text-accent-ink uppercase">
-              <legend.studied aria-hidden className="size-3.5 shrink-0" />
-              Education
-            </p>
-            <div className="mt-3 flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
-              <h3 className="text-xl font-bold tracking-tight font-stretch-semi-expanded">{education.school}</h3>
-              <p className="font-mono text-xs text-muted">{education.graduated}</p>
+            <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between sm:gap-6">
+              <h3 className="text-xl leading-snug font-bold tracking-tight text-balance font-stretch-semi-expanded">
+                {education.school}
+              </h3>
+              <CornerTag icon={legend.studied}>Education</CornerTag>
             </div>
-            <p className="mt-1 text-muted">
+            <p className="mt-2 text-muted">
               {education.degree} · {education.location}
             </p>
+            <p className="mt-1 font-mono text-xs text-muted">{education.graduated}</p>
 
             <Accordion.Root className="mt-5 border-t border-black/[0.08]">
               <CourseItem title="Relevant coursework">
@@ -120,5 +120,28 @@ function CourseItem({ title, children }: { title: string; children: ReactNode })
         <div className="pb-4">{children}</div>
       </Accordion.Panel>
     </Accordion.Item>
+  );
+}
+
+/** Legend symbol and label in a card's top-right corner, like the project cards' context line. */
+function CornerTag({
+  icon: Icon,
+  tone = 'light',
+  children,
+}: {
+  icon: (typeof legend)[keyof typeof legend];
+  tone?: 'light' | 'dark';
+  children: ReactNode;
+}) {
+  return (
+    <p
+      className={cn(
+        'flex shrink-0 items-center gap-1.5 font-mono text-label-sm uppercase sm:pt-1.5',
+        tone === 'dark' ? 'text-on-main-subtle' : 'text-muted',
+      )}
+    >
+      <Icon aria-hidden className={cn('size-3.5 shrink-0', tone === 'dark' ? 'text-accent-glow' : 'text-accent-ink')} />
+      {children}
+    </p>
   );
 }

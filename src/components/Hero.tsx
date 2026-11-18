@@ -19,20 +19,21 @@ export function Hero() {
 
       <div className="relative mx-auto grid max-w-6xl items-center gap-14 px-4 pt-32 pb-16 sm:px-6 lg:grid-cols-[minmax(0,1fr)_auto] lg:gap-20 lg:pt-40 lg:pb-24">
         <div>
-          <p
-            className="hero-in flex items-center gap-2.5 font-mono text-label text-accent-glow uppercase"
-            style={delay(0)}
-          >
-            <span aria-hidden className="size-1.5 bg-accent" />
-            {profile.role} · {profile.company}
-          </p>
-
           <h1
-            className="hero-in mt-5 text-6xl leading-[0.95] font-extrabold tracking-tight font-stretch-semi-expanded sm:text-7xl lg:text-8xl"
-            style={delay(80)}
+            className="hero-in text-6xl leading-[0.95] font-extrabold tracking-tight font-stretch-semi-expanded sm:text-7xl lg:text-8xl"
+            style={delay(0)}
           >
             Kai Bell
           </h1>
+
+          {/* Current title as the name's byline; the accent square marks the current position. */}
+          <p
+            className="hero-in mt-4 flex items-center gap-3 text-lg font-medium text-on-main-muted sm:text-xl"
+            style={delay(80)}
+          >
+            <span aria-hidden className="size-1.5 shrink-0 bg-accent" />
+            {profile.role} · {profile.company}
+          </p>
 
           <p
             className="hero-in mt-7 max-w-2xl text-2xl leading-snug font-medium text-balance sm:text-[1.75rem]"

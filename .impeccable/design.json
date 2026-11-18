@@ -253,11 +253,11 @@
       },
       "label": {
         "displayName": "Label",
-        "purpose": "Section callouts, card labels and skill group headings (Tailwind text-label)."
+        "purpose": "Section callouts and skill group headings (Tailwind text-label)."
       },
       "label-sm": {
         "displayName": "Label small",
-        "purpose": "Tags, card metadata, legend labels, tooltips and small UI labels (Tailwind text-label-sm)."
+        "purpose": "Tags, card corner tags and metadata, legend labels, tooltips and small UI labels (Tailwind text-label-sm)."
       }
     },
     "shadows": [
@@ -448,7 +448,7 @@
       "**Don't** use thick colored side stripes on cards or toasts as an accent.",
       "**Don't** set sentences in the uppercase mono label style (The Map Legend Rule).",
       "**Don't** add shadows to surfaces at rest (The Lift-On-Intent Rule).",
-      "**Don't** put a label or kicker above a headline; the section name belongs in the callout beside it.",
+      "**Don't** put a label or kicker above a headline or card title; section names go in the callout and card categories in a corner tag.",
       "**Don't** fade or slide content in on scroll; only lines move (The Survey Line Rule)."
     ]
   }

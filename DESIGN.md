@@ -185,13 +185,13 @@ Cards and panels on light bands use plain white (#ffffff), with hairlines drawn 
 **Character:** One grotesque in two widths. Headings run Archivo at semi-expanded width (112.5%) for a broad, map-title presence, while body text stays at normal width for reading. JetBrains Mono is the annotation layer.
 
 ### Hierarchy
-- **Display** (800, 3.75rem on phones up to 6rem, line-height 0.95): the name in the hero, once per page.
+- **Display** (800, 3.75rem on phones up to 6rem, line-height 0.95): the name in the hero, once per page. Directly under it the current title runs as a byline (500, 1.125rem up to 1.25rem, `on-main-muted`) after a 6px accent square.
 - **Headline** (700, 1.875rem up to 3rem, line-height 1.1): section titles.
 - **Title** (700, 1.25rem up to 1.5rem): company names, project titles, card headings.
 - **Lede** (500, 1.5rem up to 1.75rem, line-height 1.375): the one-sentence statement under the name in the hero.
 - **Body** (400, 1rem, line-height 1.625): running text; the About narrative steps up to 1.125rem. Bullets are capped near 48rem so lines stay readable.
-- **Label** (400, 0.75rem, letter-spacing 0.18em, uppercase; Tailwind `text-label`): section callouts, card labels, skill group headings, the hero role line.
-- **Label small** (400, 0.6875rem, letter-spacing 0.08em; Tailwind `text-label-sm`): tags, card metadata, legend labels, tooltips and small UI labels.
+- **Label** (400, 0.75rem, letter-spacing 0.18em, uppercase; Tailwind `text-label`): section callouts and skill group headings.
+- **Label small** (400, 0.6875rem, letter-spacing 0.08em; Tailwind `text-label-sm`): tags, card corner tags and metadata, legend labels, tooltips and small UI labels.
 - **Data** (mono 400, 0.75rem, normal tracking): dates, codes and issue numbers.
 
 Body-adjacent UI text (buttons, nav links, secondary copy) uses 0.875rem; small headings and triggers use 1rem.
@@ -245,6 +245,8 @@ Crisp, consistent radii: 6px for tags, pills and small controls, 8px for buttons
 - **Shadow Strategy:** flat at rest; hover lift on clickable cards (see Elevation & Depth).
 - **Border:** a 1px hairline ring.
 - **Internal Padding:** 24px, 28px from 640px up.
+- **Corner tag:** a card's category (legend symbol plus `label-sm`) sits top right beside the title and drops below it on phones; it never sits above the title.
+- **Status badge:** "Current" is `accent-ink` on white with a 30% accent hairline, so it stays above 4.5:1 for any accent.
 
 ### Inputs / Fields
 - **Style:** paper background, 1px hairline border at 15% black, 8px radius, mono uppercase hex values.
@@ -264,7 +266,7 @@ Procedurally drawn contour rings and a 64px grid in `on-main` at 3–11% opacity
 The headline and its callout share a row. A 1px leader line (ink at 20%, `on-main` at 25% on dark bands) runs from the end of the headline's first line to a 6px accent square and the two-digit index and section name in `label`, set right. The headline shrink-wraps to its widest line (`useShrinkWrap`) so the leader always starts at the text. On phones the callout drops below the headline. The callout is decorative (`aria-hidden`); the headline carries the meaning.
 
 ### Map Legend (signature)
-The facts strip under the hero is the page's key: each fact has a Radix symbol in `accent-glow` beside its `label-sm` name (Now: ID card, Certified: check circle, Studied: reader, Based: pin). The same symbol marks that fact wherever it reappears: the current-role badge, the certification card and the education card. The mapping lives in `legend` in `src/content.ts`.
+The facts strip under the hero is the page's key: each fact has a Radix symbol in `accent-glow` beside its `label-sm` name (Now: ID card, Certified: check circle, Studied: reader, Based: pin). The same symbol marks that fact wherever it reappears: the current-role badge and the corner tags on the certification and education cards. The mapping lives in `legend` in `src/content.ts`.
 
 ### Experience Timeline (signature)
 A 1px rail with a round stop for each company. From 1024px the cards move 224px in, and each role's dates sit in that margin like coordinates: mono 12px, right-aligned, with a leader line crossing the rail to the card edge. A move within the same company gets a 7px accent square waypoint on the rail. Below 1024px the dates return to the role row.
@@ -287,5 +289,5 @@ Lines draw by scaling from zero on `ease-out-expo`: callout leaders and timeline
 - **Don't** use thick colored side stripes on cards or toasts as an accent.
 - **Don't** set sentences in the uppercase mono label style (The Map Legend Rule).
 - **Don't** add shadows to surfaces at rest (The Lift-On-Intent Rule).
-- **Don't** put a label or kicker above a headline; the section name belongs in the callout beside it.
+- **Don't** put a label or kicker above a headline or card title; section names go in the callout and card categories in a corner tag.
 - **Don't** fade or slide content in on scroll; only lines move (The Survey Line Rule).
