@@ -8,7 +8,7 @@ import {
   HamburgerMenuIcon,
   LinkedInLogoIcon,
 } from '@radix-ui/react-icons';
-import { profile, site } from '../content';
+import { profile } from '../content';
 import { useActiveSection } from '../hooks';
 import { ThemePicker } from './ThemePicker';
 import { button, cn } from './ui';
@@ -53,7 +53,8 @@ export function Header() {
             </ul>
           </nav>
 
-          {site.themePicker ? <ThemePicker /> : null}
+          {/* Dev tool only: tuning main and accent writes DESIGN.md. Dropped from production builds. */}
+          {import.meta.env.DEV ? <ThemePicker /> : null}
 
           {profile.resumeUrl ? (
             <ViewerLink item={{ kind: 'pdf', title: 'Résumé', src: profile.resumeUrl }} className={cn(button.primaryCompact, 'ml-1 hidden md:inline-flex')}>

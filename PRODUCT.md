@@ -31,7 +31,7 @@ Kai builds React front ends for data-heavy work, coming from the data side: firs
 - **Static hosting only:** GitHub Pages, deployed by GitHub Actions from `main`. No server, backend, analytics, or forms that need one.
 - **Work projects stay vague:** KBR projects (a geospatial analysis app on Base UI + Tailwind with AI, and a Fluent UI data-repository UI on SharePoint's API) are described at a high level only: no screenshots, internal names, or specifics. They have no public demo or source.
 - Stack: React + TypeScript (Vite), Base UI components, Tailwind CSS v4, Radix icons for every icon.
-- Existing capability (not a binding constraint): a theme engine derives the full palette from a main and an accent color, with a visitor-facing picker in the header (`src/theme.ts`, `site.themePicker`).
+- Existing capability (not a binding constraint): a theme engine derives the full palette from a main and an accent color, and a picker in the header that is a dev tool only: it renders under `npm run dev`, saves a pair to DESIGN.md, and is left out of production builds (`src/theme.ts`, `ThemePicker.tsx`).
 
 ## Brand Commitments
 

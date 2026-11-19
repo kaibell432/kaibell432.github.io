@@ -3,14 +3,13 @@ import { Field } from '@base-ui/react/field';
 import { Popover } from '@base-ui/react/popover';
 import { Toast } from '@base-ui/react/toast';
 import { Tooltip } from '@base-ui/react/tooltip';
-import { ClipboardCopyIcon, ColorWheelIcon, Cross2Icon, ResetIcon } from '@radix-ui/react-icons';
+import { ColorWheelIcon, Cross2Icon, FileTextIcon, ResetIcon } from '@radix-ui/react-icons';
 import { DESIGN_THEME } from '../design-tokens';
 import {
   PRESETS,
   applyPalette,
   contrastReport,
   derivePalette,
-  designSnippet,
   loadTheme,
   parseHex,
   saveTheme,
@@ -27,6 +26,10 @@ const sameTheme = (a: ThemeInput, b: ThemeInput) => a.main === b.main && a.accen
 
 const ALL_PRESETS = [{ name: 'Site default', theme: DESIGN_THEME }, ...PRESETS];
 
+/** Dev server only (vite.config.ts): writes main and accent into DESIGN.md and re-derives its color list. */
+const DESIGN_THEME_ENDPOINT = '/__design-theme';
+
+/** Dev tool (rendered only under `npm run dev`): preview a main/accent pair, then save it to DESIGN.md. */
 export function ThemePicker() {
   const [theme, setTheme] = useState<ThemeInput>(() => loadTheme(DESIGN_THEME));
   const palette = useMemo(() => derivePalette(theme), [theme]);
@@ -38,15 +41,26 @@ export function ThemePicker() {
     saveTheme(next, DESIGN_THEME);
   }
 
-  async function copyForDesignMd() {
+  const [saving, setSaving] = useState(false);
+
+  async function saveToDesignMd() {
+    setSaving(true);
     try {
-      await navigator.clipboard.writeText(designSnippet(theme));
-      toast.add({
-        title: 'Copied for DESIGN.md',
-        description: 'Replace main and accent under colors: in DESIGN.md, then run npm run tokens.',
+      const res = await fetch(DESIGN_THEME_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(theme),
       });
-    } catch {
-      toast.add({ title: 'Couldn’t copy', description: 'Clipboard access was blocked by the browser.' });
+      if (!res.ok) throw new Error((await res.json().catch(() => null))?.error ?? res.statusText);
+      saveTheme(theme, theme); // the pair is the site default now, so drop the stored preview
+      toast.add({
+        title: 'Saved to DESIGN.md',
+        description: 'main and accent are updated and every derived color in the file was regenerated.',
+      });
+    } catch (error) {
+      toast.add({ title: 'Couldn’t save', description: error instanceof Error ? error.message : String(error) });
+    } finally {
+      setSaving(false);
     }
   }
 
@@ -137,11 +151,12 @@ export function ThemePicker() {
               </button>
               <button
                 type="button"
-                onClick={copyForDesignMd}
-                className="inline-flex h-9 flex-1 items-center justify-center gap-2 rounded-lg bg-accent text-sm font-semibold text-on-accent transition-colors hover:bg-accent-600"
+                onClick={saveToDesignMd}
+                disabled={saving || sameTheme(theme, DESIGN_THEME)}
+                className="inline-flex h-9 flex-1 items-center justify-center gap-2 rounded-lg bg-accent text-sm font-semibold text-on-accent transition-colors hover:bg-accent-600 disabled:cursor-not-allowed disabled:opacity-45"
               >
-                <ClipboardCopyIcon aria-hidden />
-                Copy theme
+                <FileTextIcon aria-hidden />
+                {saving ? 'Saving…' : 'Save to DESIGN.md'}
               </button>
             </div>
           </Popover.Popup>

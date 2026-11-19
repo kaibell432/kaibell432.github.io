@@ -1,25 +1,27 @@
 ---
 name: Kai Bell
 description: Personal site of Kai Bell, React front ends for data-heavy work.
-# Edit only `main` and `accent`. Every other color is derived from them by
+# Edit only `main` and `accent` (here, or with Save to DESIGN.md in the dev-only
+# theme picker during `npm run dev`). Every other color is derived from them by
 # `npm run tokens` (src/theme.ts) and written back here, so hand edits to the
-# derived keys are overwritten. The script also generates src/tokens.css.
+# derived keys are overwritten. While the dev server runs, saving this file
+# regenerates the list. The script also generates src/tokens.css.
 colors:
-  main-950: "#161616"
-  main-800: "#2a2a2a"
-  main: "#333333"
-  main-700: "#404040"
+  main-950: "#040d09"
+  main-800: "#15211c"
+  main: "#1d2924"
+  main-700: "#293630"
   on-main: "#ffffff"
-  on-main-muted: "#cecece"
-  on-main-subtle: "#a3a3a3"
-  accent-ink: "#b64a00"
-  accent-600: "#e05d00"
-  accent: "#fc6a03"
-  accent-glow: "#ff782f"
-  on-accent: "#0d0d0d"
-  paper: "#f4f4f4"
-  ink: "#333333"
-  muted: "#5c5c5c"
+  on-main-muted: "#c8cbc9"
+  on-main-subtle: "#989e9b"
+  accent-ink: "#507600"
+  accent-600: "#90c247"
+  accent: "#a3d65c"
+  accent-glow: "#a3d65c"
+  on-accent: "#090f0c"
+  paper: "#f1f5f3"
+  ink: "#1d2924"
+  muted: "#555f5b"
 typography:
   display:
     fontFamily: "Archivo Variable, ui-sans-serif, system-ui, sans-serif"
@@ -147,35 +149,42 @@ The whole palette comes from two inputs, main and accent, and every text color i
 
 ## Colors
 
-One graphite family carries the structure and one orange signal carries the meaning; names below describe the default inputs.
+The palette is generated, not picked. Two inputs, `main` and `accent`, go through `derivePalette` in `src/theme.ts`, which computes every other token in OKLCH (perceptual lightness), maps it back into sRGB by reducing chroma, and solves each text color for WCAG contrast against the surface it sits on. The same function runs in two places: `npm run tokens` derives the defaults from this file's frontmatter and writes them back here, into `src/tokens.css` and into the sidecar; the theme picker, a dev tool shown only under `npm run dev` and left out of every build, runs it live in the browser on whatever pair you try and sets the same CSS variables. The frontmatter list follows its inputs: while `npm run dev` runs, saving this file re-derives every color, and the picker's Save to DESIGN.md button writes a new pair here and does the same. Visitors always get the palette in this file. So the hex values in the frontmatter are just the output for the default pair (spruce `#1d2924`, lime `#a3d65c`), and every role below must hold for any pair.
 
-### Primary
-- **Survey Orange** (`accent`): primary buttons, the active nav underline, list markers, KBR station marks, the current-role dot, the portrait ring. Large text and fills only.
-- **Burnt Survey Orange** (`accent-600`): hover state for accent fills.
-- **Ink Orange** (`accent-ink`): accent for small text on light surfaces (callout labels, links, label text), solved to at least 4.8:1 on paper.
-- **Glow Orange** (`accent-glow`): accent for small text on the main color, solved to at least 4.8:1 on main.
-- **Near Black** (`on-accent`): text and icons on accent fills.
+The display names describe the default pair. Roles and derivations are what stay true. Below, "tint" means the chroma of `main`, capped at 0.03, so neutrals pick up only a trace of the main hue; "solved" means moved by the smallest lightness step, away from the background, that reaches the stated ratio.
 
-### Neutral
-- **Graphite** (`main`): header, hero, contact band, featured cards, certification card.
-- **Deep Graphite** (`main-950`): tooltips and toasts.
-- **Night Graphite** (`main-800`): the facts strip under the hero, the footer, inset panels on dark bands.
-- **Raised Graphite** (`main-700`): small raised elements on dark bands (the monogram tile).
-- **Signal White** (`on-main`): primary text on main.
-- **Fog** (`on-main-muted`): secondary text on main (at least 7:1).
-- **Ash** (`on-main-subtle`): labels and metadata on main (at least 4.6:1).
-- **Map Paper** (`paper`): the page background; a near-white tinted by the main hue.
-- **Graphite Ink** (`ink`): body text on light surfaces (at least 7:1 on paper).
-- **Pencil Gray** (`muted`): secondary text on light surfaces (at least 6:1 on paper).
+### Inputs
+- **Spruce** (`main`): the structure color. Header, hero, contact band, featured cards, certification card. Chosen in the frontmatter or with the dev-only theme picker.
+- **Survey Lime** (`accent`): the signal color. Primary buttons, the active nav underline, list markers, KBR station marks, the current-role dot, the portrait ring. Large text and fills only. Chosen in the frontmatter or with the dev-only theme picker.
 
-Cards and panels on light bands use plain white (#ffffff), with hairlines drawn in black at 8% opacity.
+### Derived from main
+- **Deep Spruce** (`main-950`): tooltips and toasts. *Derived:* `main` with lightness lowered by 0.12.
+- **Night Spruce** (`main-800`): the facts strip under the hero, the footer, inset panels on main bands. *Derived:* `main` with lightness lowered by 0.035.
+- **Raised Spruce** (`main-700`): small raised elements on main bands (the monogram tile). *Derived:* `main` with lightness raised by 0.05.
+- **Signal White** (`on-main`): primary text and icons on main. *Derived:* White or a near-black in the main hue (L 0.17), whichever contrasts more with `main`.
+- **Fog** (`on-main-muted`): secondary text on main. *Derived:* `on-main` blended 22% toward `main`, solved to at least 7:1 on `main`.
+- **Ash** (`on-main-subtle`): labels and metadata on main. *Derived:* `on-main` blended 42% toward `main`, solved to at least 4.6:1 on `main`.
+- **Map Paper** (`paper`): the page background. *Derived:* L 0.967 in the main hue, chroma a quarter of the tint.
+- **Spruce Ink** (`ink`): body text on light surfaces. *Derived:* The main hue at L 0.32 (or `main`'s lightness if darker) with the full tint, solved to at least 7:1 on `paper`.
+- **Pencil Gray** (`muted`): secondary text on light surfaces. *Derived:* The main hue at L 0.62 with 80% of the tint, solved to at least 6:1 on `paper`.
+
+### Derived from accent
+- **Shaded Survey Lime** (`accent-600`): hover state for accent fills. *Derived:* `accent` with lightness lowered by 0.06.
+- **Ink Lime** (`accent-ink`): accent for small text on light surfaces (callout labels, links, label text). *Derived:* `accent` solved to at least 4.8:1 on `paper`.
+- **Glow Lime** (`accent-glow`): accent for small text and lines on main. *Derived:* `accent` solved to at least 4.8:1 on `main`.
+- **Near Black** (`on-accent`): text and icons on accent fills. *Derived:* White or a near-black in the main hue (L 0.16), whichever keeps the higher contrast against both `accent` and `accent-600`.
+
+### Fixed values
+Three things sit outside the generator and do not change with the theme: white (`#ffffff`) for cards, panels, dialogs and popovers on light bands; black at low alpha (8% hairlines, 15% field borders, shadows, the menu backdrop); and the status colors in the dev-only theme picker (green, amber and red contrast grades, the red invalid-hex error). Everything else is a token.
 
 ### Named Rules
-**The Two-Input Rule.** Only `main` and `accent` are chosen. Every other color is derived by `npm run tokens` and never edited by hand.
+**The Two-Input Rule.** Only `main` and `accent` are chosen, in the frontmatter or with the dev-only theme picker's Save to DESIGN.md. Every other color is derived by `src/theme.ts` and never edited by hand; `npm run tokens` overwrites the derived keys.
+
+**The Any-Pair Rule.** Components reference roles, never the default pair. Text on `main` uses the `on-main` family and text on `accent` uses `on-accent`, because either may flip between white and near-black. Nothing assumes `main` is dark or `accent` is any particular hue.
 
 **The Signal Rule.** The accent marks action, current state and markers. It is never a background for large areas or a decoration for its own sake.
 
-**The Small-Text Rule.** Small orange text always uses `accent-ink` on light surfaces and `accent-glow` on main, never the raw `accent`.
+**The Small-Text Rule.** Small accent-colored text always uses `accent-ink` on light surfaces and `accent-glow` on main, never the raw `accent`.
 
 ## Typography
 
@@ -208,7 +217,7 @@ Breakpoints: 640px (gutters and section spacing grow), 768px (the header switche
 
 ## Elevation & Depth
 
-Mostly flat. Surfaces sit at rest with a 1px hairline ring (black at 8% on light surfaces, `on-main` at 10% on main) instead of shadows. Depth appears in two cases only: on interaction, when a card lifts 2px and gains a soft shadow, and for floating layers (dialogs, the theme popover, toasts, the mobile menu), which carry a large diffuse shadow over a dimmed backdrop.
+Mostly flat. Surfaces sit at rest with a 1px hairline ring (black at 8% on light surfaces, `on-main` at 10% on main) instead of shadows. Depth appears in two cases only: on interaction, when a card lifts 2px and gains a soft shadow, and for floating layers (dialogs, toasts, the mobile menu, and the dev-only theme popover), which carry a large diffuse shadow over a dimmed backdrop.
 
 ### Shadow Vocabulary
 - **Hover lift** (`box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.06)` with a 2px upward move): project cards on hover.
@@ -230,7 +239,7 @@ Crisp, consistent radii: 6px for tags, pills and small controls, 8px for buttons
 
 ### Buttons
 - **Shape:** gently rounded (8px).
-- **Primary:** solid accent fill with near-black text, 44px tall, 20px side padding, semibold 14px; hover darkens to `accent-600`; pressing nudges it down 1px. Never a gradient, glow or outline-only variant.
+- **Primary:** solid accent fill with `on-accent` text, 44px tall, 20px side padding, semibold 14px; hover darkens to `accent-600`; pressing nudges it down 1px. Never a gradient, glow or outline-only variant.
 - **Ghost on light:** transparent with a 1px black ring at 15%, used next to a primary in the project dialog.
 - **Compact:** the same fill at 36px tall with 16px padding, used in the header.
 - **Ghost on main:** transparent with a 1px `on-main` ring at 20%, brightening to 40% with a faint wash on hover.
@@ -279,7 +288,7 @@ A 22px survey symbol: a ring (1.5px) filled with the band color and a solid tria
 The hero's right half plots the five projects on a 600×500 sheet over the topography, top to bottom 03.1–03.5, labels on alternating sides so the dashed legs (5/6 dash, `on-main` at 50%) run between them. Each station is a link to its data sheet: title in semi-expanded 18px semibold, then `03.n · context` in `label-sm`, accent-glow for KBR. Hovering or focusing a station lights the leg that reaches it (solid accent, 2px). Below 1024px the same ordered list runs down a vertical dashed line under the hero actions. The element is a `nav` labelled Projects.
 
 ### Station Data Sheets (signature)
-Projects is the traverse's second half: one sheet per station, in order, joined by dashed legs drawn station to station. Sheets share the Experience geometry: from 1024px the station mark sits on the line at 168px, `Stn 03.n · year` sits in the margin like a coordinate, and a leader crosses to the sheet. KBR sheets are graphite, the rest white; each holds title, context, summary, tags, Details and links, plus a small schematic contour sketch (the topography generator, one seed per station, decorative and aria-hidden) from 768px. Below 1024px the number moves beside the title.
+Projects is the traverse's second half: one sheet per station, in order, joined by dashed legs drawn station to station. Sheets share the Experience geometry: from 1024px the station mark sits on the line at 168px, `Stn 03.n · year` sits in the margin like a coordinate, and a leader crosses to the sheet. KBR sheets are `main`, the rest white; each holds title, context, summary, tags, Details and links, plus a small schematic contour sketch (the topography generator, one seed per station, decorative and aria-hidden) from 768px. Below 1024px the number moves beside the title.
 
 ### Experience Timeline (signature)
 A 1px rail with a round stop for each company. From 1024px the cards move 224px in, and each role's dates sit in that margin like coordinates: mono 12px, right-aligned, with a leader line crossing the rail to the card edge. A move within the same company gets a 7px accent square waypoint on the rail. Below 1024px the dates return to the role row.
@@ -292,7 +301,7 @@ Lines draw by scaling from zero on `ease-out-expo`: callout leaders and timeline
 ### Do:
 - **Do** change the palette by editing `colors.main` and `colors.accent` in this file and running `npm run tokens`.
 - **Do** style with the theme tokens (`bg-main`, `text-on-main-muted`, `text-accent-ink`, and so on) so every color follows the theme.
-- **Do** keep orange small text on `accent-ink` or `accent-glow` (The Small-Text Rule).
+- **Do** keep accent-colored small text on `accent-ink` or `accent-glow` (The Small-Text Rule).
 - **Do** use Radix icons for every icon.
 - **Do** respect reduced motion: the line draw-ins, the hero load-in and the reticle rotation all switch off.
 - **Do** reuse a legend symbol wherever its fact appears, and add new facts to `legend` first.

@@ -8,9 +8,12 @@ import { DESIGN_THEME } from './design-tokens';
 import { installInPageLinks } from './hooks';
 import { applyPalette, derivePalette, loadTheme } from './theme';
 
-// Apply a visitor's saved custom theme before the first render to avoid a flash of defaults.
-const saved = loadTheme(DESIGN_THEME);
-if (saved !== DESIGN_THEME) applyPalette(derivePalette(saved));
+// Dev only: re-apply the theme picker's unsaved preview before the first render.
+// Production always ships the DESIGN.md palette from tokens.css.
+if (import.meta.env.DEV) {
+  const saved = loadTheme(DESIGN_THEME);
+  if (saved !== DESIGN_THEME) applyPalette(derivePalette(saved));
+}
 
 installInPageLinks();
 

@@ -1,68 +1,72 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-11-18T22:54:58.000Z",
+  "generatedAt": "2026-11-19T01:09:21.453Z",
   "title": "Design System: Kai Bell",
   "extensions": {
     "colorMeta": {
       "main-950": {
         "role": "neutral",
-        "displayName": "Deep Graphite",
-        "canonical": "#161616",
+        "displayName": "Deep Spruce",
+        "canonical": "#040d09",
         "tonalRamp": [
-          "#0b0b0b",
-          "#252525",
-          "#424242",
-          "#616161",
-          "#828282",
-          "#a5a5a5",
-          "#c9c9c9",
-          "#eeeeee"
-        ]
+          "#0a0b0b",
+          "#222624",
+          "#3c4441",
+          "#58655f",
+          "#798680",
+          "#9ea8a3",
+          "#c5cbc8",
+          "#edefee"
+        ],
+        "derivation": "`main` with lightness lowered by 0.12."
       },
       "main-800": {
         "role": "neutral",
-        "displayName": "Night Graphite",
-        "canonical": "#2a2a2a",
+        "displayName": "Night Spruce",
+        "canonical": "#15211c",
         "tonalRamp": [
-          "#0b0b0b",
-          "#252525",
-          "#424242",
-          "#616161",
-          "#828282",
-          "#a5a5a5",
-          "#c9c9c9",
-          "#eeeeee"
-        ]
+          "#0a0c0b",
+          "#222624",
+          "#3b4440",
+          "#57655f",
+          "#788680",
+          "#9da8a3",
+          "#c4cbc8",
+          "#edefee"
+        ],
+        "derivation": "`main` with lightness lowered by 0.035."
       },
       "main": {
         "role": "neutral",
-        "displayName": "Graphite",
-        "canonical": "#333333",
+        "displayName": "Spruce",
+        "canonical": "#1d2924",
         "tonalRamp": [
-          "#0b0b0b",
-          "#252525",
-          "#424242",
-          "#616161",
-          "#828282",
-          "#a5a5a5",
-          "#c9c9c9",
-          "#eeeeee"
-        ]
+          "#0a0c0b",
+          "#222624",
+          "#3c4440",
+          "#58655f",
+          "#788680",
+          "#9ea8a3",
+          "#c5cbc8",
+          "#edefee"
+        ],
+        "derivation": "Input. Chosen in DESIGN.md or with the dev-only theme picker."
       },
       "main-700": {
         "role": "neutral",
-        "displayName": "Raised Graphite",
-        "canonical": "#404040",
+        "displayName": "Raised Spruce",
+        "canonical": "#293630",
         "tonalRamp": [
-          "#0b0b0b",
-          "#252525",
-          "#424242",
-          "#616161",
-          "#828282",
-          "#a5a5a5",
-          "#c9c9c9",
-          "#eeeeee"
-        ]
+          "#0a0c0b",
+          "#212624",
+          "#3b4440",
+          "#57655e",
+          "#78867f",
+          "#9da8a3",
+          "#c4cbc8",
+          "#edefee"
+        ],
+        "derivation": "`main` with lightness raised by 0.05."
       },
       "on-main": {
         "role": "neutral",
@@ -77,157 +81,168 @@
           "#a5a5a5",
           "#c9c9c9",
           "#eeeeee"
-        ]
+        ],
+        "derivation": "White or a near-black in the main hue (L 0.17), whichever contrasts more with `main`."
       },
       "on-main-muted": {
         "role": "neutral",
         "displayName": "Fog",
-        "canonical": "#cecece",
+        "canonical": "#c8cbc9",
         "tonalRamp": [
           "#0b0b0b",
-          "#252525",
-          "#424242",
-          "#616161",
-          "#828282",
-          "#a5a5a5",
-          "#c9c9c9",
+          "#242525",
+          "#414241",
+          "#5f6260",
+          "#808381",
+          "#a3a5a4",
+          "#c8c9c9",
           "#eeeeee"
-        ]
+        ],
+        "derivation": "`on-main` blended 22% toward `main`, solved to at least 7:1 on `main`."
       },
       "on-main-subtle": {
         "role": "neutral",
         "displayName": "Ash",
-        "canonical": "#a3a3a3",
+        "canonical": "#989e9b",
         "tonalRamp": [
           "#0b0b0b",
-          "#252525",
-          "#424242",
-          "#616161",
-          "#828282",
-          "#a5a5a5",
-          "#c9c9c9",
-          "#eeeeee"
-        ]
+          "#242625",
+          "#3f4341",
+          "#5d6360",
+          "#7e8481",
+          "#a2a6a4",
+          "#c7cac8",
+          "#eeefee"
+        ],
+        "derivation": "`on-main` blended 42% toward `main`, solved to at least 4.6:1 on `main`."
       },
       "accent-ink": {
         "role": "primary",
-        "displayName": "Ink Orange",
-        "canonical": "#b64a00",
+        "displayName": "Ink Lime",
+        "canonical": "#507600",
         "tonalRamp": [
-          "#130804",
-          "#3e1907",
-          "#6e2a00",
-          "#9f4000",
-          "#ca5e25",
-          "#de8f6b",
-          "#eebda7",
-          "#fdeae2"
-        ]
+          "#090d05",
+          "#1d2a09",
+          "#324b06",
+          "#4a6e00",
+          "#6a912f",
+          "#93b170",
+          "#bed1aa",
+          "#eaf1e3"
+        ],
+        "derivation": "`accent` solved to at least 4.8:1 on `paper`."
       },
       "accent-600": {
         "role": "primary",
-        "displayName": "Burnt Survey Orange",
-        "canonical": "#e05d00",
+        "displayName": "Shaded Survey Lime",
+        "canonical": "#90c247",
         "tonalRamp": [
-          "#150703",
-          "#411600",
-          "#6e2a00",
-          "#9f4000",
-          "#d25700",
-          "#e68a5f",
-          "#f3baa1",
-          "#ffe9e0"
-        ]
+          "#080d04",
+          "#1b2b02",
+          "#324b00",
+          "#4a6e00",
+          "#659306",
+          "#90b364",
+          "#bcd2a4",
+          "#eaf2e1"
+        ],
+        "derivation": "`accent` with lightness lowered by 0.06."
       },
       "accent": {
         "role": "primary",
-        "displayName": "Survey Orange",
-        "canonical": "#fc6a03",
+        "displayName": "Survey Lime",
+        "canonical": "#a3d65c",
         "tonalRamp": [
-          "#150703",
-          "#411600",
-          "#6e2a00",
-          "#9f4000",
-          "#d25700",
-          "#eb8757",
-          "#f7b99d",
-          "#ffe9e0"
-        ]
+          "#080d04",
+          "#1b2b02",
+          "#324b00",
+          "#4a6e00",
+          "#659305",
+          "#90b364",
+          "#bcd2a4",
+          "#eaf2e1"
+        ],
+        "derivation": "Input. Chosen in DESIGN.md or with the dev-only theme picker."
       },
       "accent-glow": {
         "role": "primary",
-        "displayName": "Glow Orange",
-        "canonical": "#ff782f",
+        "displayName": "Glow Lime",
+        "canonical": "#a3d65c",
         "tonalRamp": [
-          "#150703",
-          "#411600",
-          "#6e2a00",
-          "#9f4000",
-          "#d25700",
-          "#e6895e",
-          "#f4baa1",
-          "#ffe9e0"
-        ]
+          "#080d04",
+          "#1b2b02",
+          "#324b00",
+          "#4a6e00",
+          "#659305",
+          "#90b364",
+          "#bcd2a4",
+          "#eaf2e1"
+        ],
+        "derivation": "`accent` solved to at least 4.8:1 on `main`."
       },
       "on-accent": {
         "role": "primary",
         "displayName": "Near Black",
-        "canonical": "#0d0d0d",
+        "canonical": "#090f0c",
         "tonalRamp": [
-          "#0b0b0b",
-          "#252525",
-          "#424242",
-          "#616161",
-          "#828282",
-          "#a5a5a5",
-          "#c9c9c9",
-          "#eeeeee"
-        ]
+          "#0a0b0b",
+          "#232624",
+          "#3e4341",
+          "#5c635f",
+          "#7d8580",
+          "#a1a7a3",
+          "#c6cac8",
+          "#edefee"
+        ],
+        "derivation": "White or a near-black in the main hue (L 0.16), whichever keeps the higher contrast against both `accent` and `accent-600`."
       },
       "paper": {
         "role": "neutral",
         "displayName": "Map Paper",
-        "canonical": "#f4f4f4",
+        "canonical": "#f1f5f3",
         "tonalRamp": [
           "#0b0b0b",
-          "#252525",
-          "#424242",
-          "#616161",
-          "#828282",
-          "#a5a5a5",
-          "#c9c9c9",
+          "#242525",
+          "#404341",
+          "#5f6260",
+          "#808381",
+          "#a3a6a4",
+          "#c8c9c9",
           "#eeeeee"
-        ]
+        ],
+        "derivation": "L 0.967 in the main hue, chroma a quarter of the tint."
       },
       "ink": {
         "role": "neutral",
-        "displayName": "Graphite Ink",
-        "canonical": "#333333",
+        "displayName": "Spruce Ink",
+        "canonical": "#1d2924",
         "tonalRamp": [
-          "#0b0b0b",
-          "#252525",
-          "#424242",
-          "#616161",
-          "#828282",
-          "#a5a5a5",
-          "#c9c9c9",
-          "#eeeeee"
-        ]
+          "#0a0c0b",
+          "#222624",
+          "#3c4440",
+          "#58655f",
+          "#788680",
+          "#9ea8a3",
+          "#c5cbc8",
+          "#edefee"
+        ],
+        "derivation": "The main hue at L 0.32 (or `main`'s lightness if darker) with the full tint, solved to at least 7:1 on `paper`."
       },
       "muted": {
         "role": "neutral",
         "displayName": "Pencil Gray",
-        "canonical": "#5c5c5c",
+        "canonical": "#555f5b",
         "tonalRamp": [
-          "#0b0b0b",
-          "#252525",
-          "#424242",
-          "#616161",
-          "#828282",
-          "#a5a5a5",
-          "#c9c9c9",
-          "#eeeeee"
-        ]
+          "#0a0b0b",
+          "#222625",
+          "#3d4441",
+          "#5a6460",
+          "#7b8581",
+          "#9fa7a4",
+          "#c6cac8",
+          "#edefee"
+        ],
+        "derivation": "The main hue at L 0.62 with 80% of the tint, solved to at least 6:1 on `paper`."
       }
     },
     "typographyMeta": {
@@ -369,8 +384,8 @@
       "name": "Hex Input",
       "kind": "input",
       "refersTo": "input",
-      "description": "Text field from the theme picker.",
-      "html": "<label class=\"ds-field\"><span class=\"ds-field-label\">Main</span><input class=\"ds-input\" value=\"#333333\" maxlength=\"7\"></label>",
+      "description": "Text field from the dev-only theme picker.",
+      "html": "<label class=\"ds-field\"><span class=\"ds-field-label\">Main</span><input class=\"ds-input\" value=\"#1D2924\" maxlength=\"7\"></label>",
       "css": ".ds-field { display: grid; gap: 6px; max-width: 160px; } .ds-field-label { font-family: 'JetBrains Mono Variable', ui-monospace, monospace; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-muted); } .ds-input { height: 36px; padding: 0 10px; border-radius: 8px; border: 1px solid rgb(0 0 0 / 0.15); background: var(--color-paper); color: var(--color-ink); font-family: 'JetBrains Mono Variable', ui-monospace, monospace; font-size: 14px; text-transform: uppercase; outline: none; } .ds-input:focus { border-color: var(--color-accent-ink); box-shadow: 0 0 0 2px color-mix(in oklab, var(--color-accent) 30%, transparent); }"
     },
     {
@@ -420,7 +435,12 @@
     "rules": [
       {
         "name": "The Two-Input Rule",
-        "body": "Only `main` and `accent` are chosen. Every other color is derived by `npm run tokens` and never edited by hand.",
+        "body": "Only `main` and `accent` are chosen, in the frontmatter or with the dev-only theme picker's Save to DESIGN.md. Every other color is derived by `src/theme.ts` and never edited by hand; `npm run tokens` overwrites the derived keys.",
+        "section": "colors"
+      },
+      {
+        "name": "The Any-Pair Rule",
+        "body": "Components reference roles, never the default pair. Text on `main` uses the `on-main` family and text on `accent` uses `on-accent`, because either may flip between white and near-black. Nothing assumes `main` is dark or `accent` is any particular hue.",
         "section": "colors"
       },
       {
@@ -430,7 +450,7 @@
       },
       {
         "name": "The Small-Text Rule",
-        "body": "Small orange text always uses `accent-ink` on light surfaces and `accent-glow` on main, never the raw `accent`.",
+        "body": "Small accent-colored text always uses `accent-ink` on light surfaces and `accent-glow` on main, never the raw `accent`.",
         "section": "colors"
       },
       {
@@ -457,7 +477,7 @@
     "dos": [
       "**Do** change the palette by editing `colors.main` and `colors.accent` in this file and running `npm run tokens`.",
       "**Do** style with the theme tokens (`bg-main`, `text-on-main-muted`, `text-accent-ink`, and so on) so every color follows the theme.",
-      "**Do** keep orange small text on `accent-ink` or `accent-glow` (The Small-Text Rule).",
+      "**Do** keep accent-colored small text on `accent-ink` or `accent-glow` (The Small-Text Rule).",
       "**Do** use Radix icons for every icon.",
       "**Do** respect reduced motion: the line draw-ins, the hero load-in and the reticle rotation all switch off.",
       "**Do** reuse a legend symbol wherever its fact appears, and add new facts to `legend` first."

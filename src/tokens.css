@@ -1,18 +1,18 @@
 /* Generated from DESIGN.md by `npm run tokens`. Do not edit by hand. */
 @theme {
-  --color-main-950: #161616;
-  --color-main-800: #2a2a2a;
-  --color-main: #333333;
-  --color-main-700: #404040;
+  --color-main-950: #040d09;
+  --color-main-800: #15211c;
+  --color-main: #1d2924;
+  --color-main-700: #293630;
   --color-on-main: #ffffff;
-  --color-on-main-muted: #cecece;
-  --color-on-main-subtle: #a3a3a3;
-  --color-accent-ink: #b64a00;
-  --color-accent-600: #e05d00;
-  --color-accent: #fc6a03;
-  --color-accent-glow: #ff782f;
-  --color-on-accent: #0d0d0d;
-  --color-paper: #f4f4f4;
-  --color-ink: #333333;
-  --color-muted: #5c5c5c;
+  --color-on-main-muted: #c8cbc9;
+  --color-on-main-subtle: #989e9b;
+  --color-accent-ink: #507600;
+  --color-accent-600: #90c247;
+  --color-accent: #a3d65c;
+  --color-accent-glow: #a3d65c;
+  --color-on-accent: #090f0c;
+  --color-paper: #f1f5f3;
+  --color-ink: #1d2924;
+  --color-muted: #555f5b;
 }
