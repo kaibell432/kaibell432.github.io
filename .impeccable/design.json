@@ -1,70 +1,70 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-11-19T01:12:02.492Z",
+  "generatedAt": "2026-11-19T01:09:21.453Z",
   "title": "Design System: Kai Bell",
   "extensions": {
     "colorMeta": {
       "main-950": {
         "role": "neutral",
         "displayName": "Deep Graphite",
-        "canonical": "#161616",
+        "canonical": "#040d09",
         "tonalRamp": [
-          "#0b0b0b",
-          "#252525",
-          "#424242",
-          "#616161",
-          "#828282",
-          "#a5a5a5",
-          "#c9c9c9",
-          "#eeeeee"
+          "#0a0b0b",
+          "#222624",
+          "#3c4441",
+          "#58655f",
+          "#798680",
+          "#9ea8a3",
+          "#c5cbc8",
+          "#edefee"
         ],
         "derivation": "`main` with lightness lowered by 0.12."
       },
       "main-800": {
         "role": "neutral",
         "displayName": "Night Graphite",
-        "canonical": "#2a2a2a",
+        "canonical": "#15211c",
         "tonalRamp": [
-          "#0b0b0b",
-          "#252525",
-          "#424242",
-          "#616161",
-          "#828282",
-          "#a5a5a5",
-          "#c9c9c9",
-          "#eeeeee"
+          "#0a0c0b",
+          "#222624",
+          "#3b4440",
+          "#57655f",
+          "#788680",
+          "#9da8a3",
+          "#c4cbc8",
+          "#edefee"
         ],
         "derivation": "`main` with lightness lowered by 0.035."
       },
       "main": {
         "role": "neutral",
         "displayName": "Graphite",
-        "canonical": "#333333",
+        "canonical": "#1d2924",
         "tonalRamp": [
-          "#0b0b0b",
-          "#252525",
-          "#424242",
-          "#616161",
-          "#828282",
-          "#a5a5a5",
-          "#c9c9c9",
-          "#eeeeee"
+          "#0a0c0b",
+          "#222624",
+          "#3c4440",
+          "#58655f",
+          "#788680",
+          "#9ea8a3",
+          "#c5cbc8",
+          "#edefee"
         ],
         "derivation": "Input. Chosen in DESIGN.md or with the dev-only theme picker."
       },
       "main-700": {
         "role": "neutral",
         "displayName": "Raised Graphite",
-        "canonical": "#404040",
+        "canonical": "#293630",
         "tonalRamp": [
-          "#0b0b0b",
-          "#252525",
-          "#424242",
-          "#616161",
-          "#828282",
-          "#a5a5a5",
-          "#c9c9c9",
-          "#eeeeee"
+          "#0a0c0b",
+          "#212624",
+          "#3b4440",
+          "#57655e",
+          "#78867f",
+          "#9da8a3",
+          "#c4cbc8",
+          "#edefee"
         ],
         "derivation": "`main` with lightness raised by 0.05."
       },
@@ -87,15 +87,15 @@
       "on-main-muted": {
         "role": "neutral",
         "displayName": "Fog",
-        "canonical": "#cecece",
+        "canonical": "#c8cbc9",
         "tonalRamp": [
           "#0b0b0b",
-          "#252525",
-          "#424242",
-          "#616161",
-          "#828282",
-          "#a5a5a5",
-          "#c9c9c9",
+          "#242525",
+          "#414241",
+          "#5f6260",
+          "#808381",
+          "#a3a5a4",
+          "#c8c9c9",
           "#eeeeee"
         ],
         "derivation": "`on-main` blended 22% toward `main`, solved to at least 7:1 on `main`."
@@ -103,111 +103,111 @@
       "on-main-subtle": {
         "role": "neutral",
         "displayName": "Ash",
-        "canonical": "#a3a3a3",
+        "canonical": "#989e9b",
         "tonalRamp": [
           "#0b0b0b",
-          "#252525",
-          "#424242",
-          "#616161",
-          "#828282",
-          "#a5a5a5",
-          "#c9c9c9",
-          "#eeeeee"
+          "#242625",
+          "#3f4341",
+          "#5d6360",
+          "#7e8481",
+          "#a2a6a4",
+          "#c7cac8",
+          "#eeefee"
         ],
         "derivation": "`on-main` blended 42% toward `main`, solved to at least 4.6:1 on `main`."
       },
       "accent-ink": {
         "role": "primary",
         "displayName": "Ink Orange",
-        "canonical": "#b64a00",
+        "canonical": "#507600",
         "tonalRamp": [
-          "#130804",
-          "#3e1907",
-          "#6e2a00",
-          "#9f4000",
-          "#ca5e25",
-          "#de8f6b",
-          "#eebda7",
-          "#fdeae2"
+          "#090d05",
+          "#1d2a09",
+          "#324b06",
+          "#4a6e00",
+          "#6a912f",
+          "#93b170",
+          "#bed1aa",
+          "#eaf1e3"
         ],
         "derivation": "`accent` solved to at least 4.8:1 on `paper`."
       },
       "accent-600": {
         "role": "primary",
         "displayName": "Burnt Survey Orange",
-        "canonical": "#e05d00",
+        "canonical": "#90c247",
         "tonalRamp": [
-          "#150703",
-          "#411600",
-          "#6e2a00",
-          "#9f4000",
-          "#d25700",
-          "#e68a5f",
-          "#f3baa1",
-          "#ffe9e0"
+          "#080d04",
+          "#1b2b02",
+          "#324b00",
+          "#4a6e00",
+          "#659306",
+          "#90b364",
+          "#bcd2a4",
+          "#eaf2e1"
         ],
         "derivation": "`accent` with lightness lowered by 0.06."
       },
       "accent": {
         "role": "primary",
         "displayName": "Survey Orange",
-        "canonical": "#fc6a03",
+        "canonical": "#a3d65c",
         "tonalRamp": [
-          "#150703",
-          "#411600",
-          "#6e2a00",
-          "#9f4000",
-          "#d25700",
-          "#eb8757",
-          "#f7b99d",
-          "#ffe9e0"
+          "#080d04",
+          "#1b2b02",
+          "#324b00",
+          "#4a6e00",
+          "#659305",
+          "#90b364",
+          "#bcd2a4",
+          "#eaf2e1"
         ],
         "derivation": "Input. Chosen in DESIGN.md or with the dev-only theme picker."
       },
       "accent-glow": {
         "role": "primary",
         "displayName": "Glow Orange",
-        "canonical": "#ff782f",
+        "canonical": "#a3d65c",
         "tonalRamp": [
-          "#150703",
-          "#411600",
-          "#6e2a00",
-          "#9f4000",
-          "#d25700",
-          "#e6895e",
-          "#f4baa1",
-          "#ffe9e0"
+          "#080d04",
+          "#1b2b02",
+          "#324b00",
+          "#4a6e00",
+          "#659305",
+          "#90b364",
+          "#bcd2a4",
+          "#eaf2e1"
         ],
         "derivation": "`accent` solved to at least 4.8:1 on `main`."
       },
       "on-accent": {
         "role": "primary",
         "displayName": "Near Black",
-        "canonical": "#0d0d0d",
+        "canonical": "#090f0c",
         "tonalRamp": [
-          "#0b0b0b",
-          "#252525",
-          "#424242",
-          "#616161",
-          "#828282",
-          "#a5a5a5",
-          "#c9c9c9",
-          "#eeeeee"
+          "#0a0b0b",
+          "#232624",
+          "#3e4341",
+          "#5c635f",
+          "#7d8580",
+          "#a1a7a3",
+          "#c6cac8",
+          "#edefee"
         ],
         "derivation": "White or a near-black in the main hue (L 0.16), whichever keeps the higher contrast against both `accent` and `accent-600`."
       },
       "paper": {
         "role": "neutral",
         "displayName": "Map Paper",
-        "canonical": "#f4f4f4",
+        "canonical": "#f1f5f3",
         "tonalRamp": [
           "#0b0b0b",
-          "#252525",
-          "#424242",
-          "#616161",
-          "#828282",
-          "#a5a5a5",
-          "#c9c9c9",
+          "#242525",
+          "#404341",
+          "#5f6260",
+          "#808381",
+          "#a3a6a4",
+          "#c8c9c9",
           "#eeeeee"
         ],
         "derivation": "L 0.967 in the main hue, chroma a quarter of the tint."
@@ -215,32 +215,32 @@
       "ink": {
         "role": "neutral",
         "displayName": "Graphite Ink",
-        "canonical": "#333333",
+        "canonical": "#1d2924",
         "tonalRamp": [
-          "#0b0b0b",
-          "#252525",
-          "#424242",
-          "#616161",
-          "#828282",
-          "#a5a5a5",
-          "#c9c9c9",
-          "#eeeeee"
+          "#0a0c0b",
+          "#222624",
+          "#3c4440",
+          "#58655f",
+          "#788680",
+          "#9ea8a3",
+          "#c5cbc8",
+          "#edefee"
         ],
         "derivation": "The main hue at L 0.32 (or `main`'s lightness if darker) with the full tint, solved to at least 7:1 on `paper`."
       },
       "muted": {
         "role": "neutral",
         "displayName": "Pencil Gray",
-        "canonical": "#5c5c5c",
+        "canonical": "#555f5b",
         "tonalRamp": [
-          "#0b0b0b",
-          "#252525",
-          "#424242",
-          "#616161",
-          "#828282",
-          "#a5a5a5",
-          "#c9c9c9",
-          "#eeeeee"
+          "#0a0b0b",
+          "#222625",
+          "#3d4441",
+          "#5a6460",
+          "#7b8581",
+          "#9fa7a4",
+          "#c6cac8",
+          "#edefee"
         ],
         "derivation": "The main hue at L 0.62 with 80% of the tint, solved to at least 6:1 on `paper`."
       }
