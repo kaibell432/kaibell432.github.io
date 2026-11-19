@@ -6,7 +6,7 @@
     "colorMeta": {
       "main-950": {
         "role": "neutral",
-        "displayName": "Deep Graphite",
+        "displayName": "Deep Spruce",
         "canonical": "#040d09",
         "tonalRamp": [
           "#0a0b0b",
@@ -22,7 +22,7 @@
       },
       "main-800": {
         "role": "neutral",
-        "displayName": "Night Graphite",
+        "displayName": "Night Spruce",
         "canonical": "#15211c",
         "tonalRamp": [
           "#0a0c0b",
@@ -38,7 +38,7 @@
       },
       "main": {
         "role": "neutral",
-        "displayName": "Graphite",
+        "displayName": "Spruce",
         "canonical": "#1d2924",
         "tonalRamp": [
           "#0a0c0b",
@@ -54,7 +54,7 @@
       },
       "main-700": {
         "role": "neutral",
-        "displayName": "Raised Graphite",
+        "displayName": "Raised Spruce",
         "canonical": "#293630",
         "tonalRamp": [
           "#0a0c0b",
@@ -118,7 +118,7 @@
       },
       "accent-ink": {
         "role": "primary",
-        "displayName": "Ink Orange",
+        "displayName": "Ink Lime",
         "canonical": "#507600",
         "tonalRamp": [
           "#090d05",
@@ -134,7 +134,7 @@
       },
       "accent-600": {
         "role": "primary",
-        "displayName": "Burnt Survey Orange",
+        "displayName": "Shaded Survey Lime",
         "canonical": "#90c247",
         "tonalRamp": [
           "#080d04",
@@ -150,7 +150,7 @@
       },
       "accent": {
         "role": "primary",
-        "displayName": "Survey Orange",
+        "displayName": "Survey Lime",
         "canonical": "#a3d65c",
         "tonalRamp": [
           "#080d04",
@@ -166,7 +166,7 @@
       },
       "accent-glow": {
         "role": "primary",
-        "displayName": "Glow Orange",
+        "displayName": "Glow Lime",
         "canonical": "#a3d65c",
         "tonalRamp": [
           "#080d04",
@@ -214,7 +214,7 @@
       },
       "ink": {
         "role": "neutral",
-        "displayName": "Graphite Ink",
+        "displayName": "Spruce Ink",
         "canonical": "#1d2924",
         "tonalRamp": [
           "#0a0c0b",
@@ -385,7 +385,7 @@
       "kind": "input",
       "refersTo": "input",
       "description": "Text field from the dev-only theme picker.",
-      "html": "<label class=\"ds-field\"><span class=\"ds-field-label\">Main</span><input class=\"ds-input\" value=\"#333333\" maxlength=\"7\"></label>",
+      "html": "<label class=\"ds-field\"><span class=\"ds-field-label\">Main</span><input class=\"ds-input\" value=\"#1D2924\" maxlength=\"7\"></label>",
       "css": ".ds-field { display: grid; gap: 6px; max-width: 160px; } .ds-field-label { font-family: 'JetBrains Mono Variable', ui-monospace, monospace; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-muted); } .ds-input { height: 36px; padding: 0 10px; border-radius: 8px; border: 1px solid rgb(0 0 0 / 0.15); background: var(--color-paper); color: var(--color-ink); font-family: 'JetBrains Mono Variable', ui-monospace, monospace; font-size: 14px; text-transform: uppercase; outline: none; } .ds-input:focus { border-color: var(--color-accent-ink); box-shadow: 0 0 0 2px color-mix(in oklab, var(--color-accent) 30%, transparent); }"
     },
     {
@@ -440,7 +440,7 @@
       },
       {
         "name": "The Any-Pair Rule",
-        "body": "Components reference roles, never the default pair. Text on `main` uses the `on-main` family and text on `accent` uses `on-accent`, because either may flip between white and near-black. Nothing assumes `main` is dark or `accent` is orange.",
+        "body": "Components reference roles, never the default pair. Text on `main` uses the `on-main` family and text on `accent` uses `on-accent`, because either may flip between white and near-black. Nothing assumes `main` is dark or `accent` is any particular hue.",
         "section": "colors"
       },
       {
@@ -477,7 +477,7 @@
     "dos": [
       "**Do** change the palette by editing `colors.main` and `colors.accent` in this file and running `npm run tokens`.",
       "**Do** style with the theme tokens (`bg-main`, `text-on-main-muted`, `text-accent-ink`, and so on) so every color follows the theme.",
-      "**Do** keep orange small text on `accent-ink` or `accent-glow` (The Small-Text Rule).",
+      "**Do** keep accent-colored small text on `accent-ink` or `accent-glow` (The Small-Text Rule).",
       "**Do** use Radix icons for every icon.",
       "**Do** respect reduced motion: the line draw-ins, the hero load-in and the reticle rotation all switch off.",
       "**Do** reuse a legend symbol wherever its fact appears, and add new facts to `legend` first."

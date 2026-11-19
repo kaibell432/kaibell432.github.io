@@ -149,29 +149,29 @@ The whole palette comes from two inputs, main and accent, and every text color i
 
 ## Colors
 
-The palette is generated, not picked. Two inputs, `main` and `accent`, go through `derivePalette` in `src/theme.ts`, which computes every other token in OKLCH (perceptual lightness), maps it back into sRGB by reducing chroma, and solves each text color for WCAG contrast against the surface it sits on. The same function runs in two places: `npm run tokens` derives the defaults from this file's frontmatter and writes them back here, into `src/tokens.css` and into the sidecar; the theme picker, a dev tool shown only under `npm run dev` and left out of every build, runs it live in the browser on whatever pair you try and sets the same CSS variables. The frontmatter list follows its inputs: while `npm run dev` runs, saving this file re-derives every color, and the picker's Save to DESIGN.md button writes a new pair here and does the same. Visitors always get the palette in this file. So the hex values in the frontmatter are just the output for the default pair (graphite `#333333`, orange `#fc6a03`), and every role below must hold for any pair.
+The palette is generated, not picked. Two inputs, `main` and `accent`, go through `derivePalette` in `src/theme.ts`, which computes every other token in OKLCH (perceptual lightness), maps it back into sRGB by reducing chroma, and solves each text color for WCAG contrast against the surface it sits on. The same function runs in two places: `npm run tokens` derives the defaults from this file's frontmatter and writes them back here, into `src/tokens.css` and into the sidecar; the theme picker, a dev tool shown only under `npm run dev` and left out of every build, runs it live in the browser on whatever pair you try and sets the same CSS variables. The frontmatter list follows its inputs: while `npm run dev` runs, saving this file re-derives every color, and the picker's Save to DESIGN.md button writes a new pair here and does the same. Visitors always get the palette in this file. So the hex values in the frontmatter are just the output for the default pair (spruce `#1d2924`, lime `#a3d65c`), and every role below must hold for any pair.
 
 The display names describe the default pair. Roles and derivations are what stay true. Below, "tint" means the chroma of `main`, capped at 0.03, so neutrals pick up only a trace of the main hue; "solved" means moved by the smallest lightness step, away from the background, that reaches the stated ratio.
 
 ### Inputs
-- **Graphite** (`main`): the structure color. Header, hero, contact band, featured cards, certification card. Chosen in the frontmatter or with the dev-only theme picker.
-- **Survey Orange** (`accent`): the signal color. Primary buttons, the active nav underline, list markers, KBR station marks, the current-role dot, the portrait ring. Large text and fills only. Chosen in the frontmatter or with the dev-only theme picker.
+- **Spruce** (`main`): the structure color. Header, hero, contact band, featured cards, certification card. Chosen in the frontmatter or with the dev-only theme picker.
+- **Survey Lime** (`accent`): the signal color. Primary buttons, the active nav underline, list markers, KBR station marks, the current-role dot, the portrait ring. Large text and fills only. Chosen in the frontmatter or with the dev-only theme picker.
 
 ### Derived from main
-- **Deep Graphite** (`main-950`): tooltips and toasts. *Derived:* `main` with lightness lowered by 0.12.
-- **Night Graphite** (`main-800`): the facts strip under the hero, the footer, inset panels on main bands. *Derived:* `main` with lightness lowered by 0.035.
-- **Raised Graphite** (`main-700`): small raised elements on main bands (the monogram tile). *Derived:* `main` with lightness raised by 0.05.
+- **Deep Spruce** (`main-950`): tooltips and toasts. *Derived:* `main` with lightness lowered by 0.12.
+- **Night Spruce** (`main-800`): the facts strip under the hero, the footer, inset panels on main bands. *Derived:* `main` with lightness lowered by 0.035.
+- **Raised Spruce** (`main-700`): small raised elements on main bands (the monogram tile). *Derived:* `main` with lightness raised by 0.05.
 - **Signal White** (`on-main`): primary text and icons on main. *Derived:* White or a near-black in the main hue (L 0.17), whichever contrasts more with `main`.
 - **Fog** (`on-main-muted`): secondary text on main. *Derived:* `on-main` blended 22% toward `main`, solved to at least 7:1 on `main`.
 - **Ash** (`on-main-subtle`): labels and metadata on main. *Derived:* `on-main` blended 42% toward `main`, solved to at least 4.6:1 on `main`.
 - **Map Paper** (`paper`): the page background. *Derived:* L 0.967 in the main hue, chroma a quarter of the tint.
-- **Graphite Ink** (`ink`): body text on light surfaces. *Derived:* The main hue at L 0.32 (or `main`'s lightness if darker) with the full tint, solved to at least 7:1 on `paper`.
+- **Spruce Ink** (`ink`): body text on light surfaces. *Derived:* The main hue at L 0.32 (or `main`'s lightness if darker) with the full tint, solved to at least 7:1 on `paper`.
 - **Pencil Gray** (`muted`): secondary text on light surfaces. *Derived:* The main hue at L 0.62 with 80% of the tint, solved to at least 6:1 on `paper`.
 
 ### Derived from accent
-- **Burnt Survey Orange** (`accent-600`): hover state for accent fills. *Derived:* `accent` with lightness lowered by 0.06.
-- **Ink Orange** (`accent-ink`): accent for small text on light surfaces (callout labels, links, label text). *Derived:* `accent` solved to at least 4.8:1 on `paper`.
-- **Glow Orange** (`accent-glow`): accent for small text and lines on main. *Derived:* `accent` solved to at least 4.8:1 on `main`.
+- **Shaded Survey Lime** (`accent-600`): hover state for accent fills. *Derived:* `accent` with lightness lowered by 0.06.
+- **Ink Lime** (`accent-ink`): accent for small text on light surfaces (callout labels, links, label text). *Derived:* `accent` solved to at least 4.8:1 on `paper`.
+- **Glow Lime** (`accent-glow`): accent for small text and lines on main. *Derived:* `accent` solved to at least 4.8:1 on `main`.
 - **Near Black** (`on-accent`): text and icons on accent fills. *Derived:* White or a near-black in the main hue (L 0.16), whichever keeps the higher contrast against both `accent` and `accent-600`.
 
 ### Fixed values
@@ -180,7 +180,7 @@ Three things sit outside the generator and do not change with the theme: white (
 ### Named Rules
 **The Two-Input Rule.** Only `main` and `accent` are chosen, in the frontmatter or with the dev-only theme picker's Save to DESIGN.md. Every other color is derived by `src/theme.ts` and never edited by hand; `npm run tokens` overwrites the derived keys.
 
-**The Any-Pair Rule.** Components reference roles, never the default pair. Text on `main` uses the `on-main` family and text on `accent` uses `on-accent`, because either may flip between white and near-black. Nothing assumes `main` is dark or `accent` is orange.
+**The Any-Pair Rule.** Components reference roles, never the default pair. Text on `main` uses the `on-main` family and text on `accent` uses `on-accent`, because either may flip between white and near-black. Nothing assumes `main` is dark or `accent` is any particular hue.
 
 **The Signal Rule.** The accent marks action, current state and markers. It is never a background for large areas or a decoration for its own sake.
 
@@ -301,7 +301,7 @@ Lines draw by scaling from zero on `ease-out-expo`: callout leaders and timeline
 ### Do:
 - **Do** change the palette by editing `colors.main` and `colors.accent` in this file and running `npm run tokens`.
 - **Do** style with the theme tokens (`bg-main`, `text-on-main-muted`, `text-accent-ink`, and so on) so every color follows the theme.
-- **Do** keep orange small text on `accent-ink` or `accent-glow` (The Small-Text Rule).
+- **Do** keep accent-colored small text on `accent-ink` or `accent-glow` (The Small-Text Rule).
 - **Do** use Radix icons for every icon.
 - **Do** respect reduced motion: the line draw-ins, the hero load-in and the reticle rotation all switch off.
 - **Do** reuse a legend symbol wherever its fact appears, and add new facts to `legend` first.
