@@ -34,11 +34,6 @@ export const profile = {
   resumeUrl: '/KaiBellResume.pdf' as string | null,
 };
 
-export const site = {
-  /** Show the theme color picker in the header. */
-  themePicker: true,
-};
-
 /** Map-legend symbols. The hero's facts strip is the key; the same symbol marks that fact further down the page. */
 export const legend = {
   now: IdCardIcon,

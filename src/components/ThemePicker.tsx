@@ -3,14 +3,13 @@ import { Field } from '@base-ui/react/field';
 import { Popover } from '@base-ui/react/popover';
 import { Toast } from '@base-ui/react/toast';
 import { Tooltip } from '@base-ui/react/tooltip';
-import { ClipboardCopyIcon, ColorWheelIcon, Cross2Icon, FileTextIcon, ResetIcon } from '@radix-ui/react-icons';
+import { ColorWheelIcon, Cross2Icon, FileTextIcon, ResetIcon } from '@radix-ui/react-icons';
 import { DESIGN_THEME } from '../design-tokens';
 import {
   PRESETS,
   applyPalette,
   contrastReport,
   derivePalette,
-  designSnippet,
   loadTheme,
   parseHex,
   saveTheme,
@@ -30,6 +29,7 @@ const ALL_PRESETS = [{ name: 'Site default', theme: DESIGN_THEME }, ...PRESETS];
 /** Dev server only (vite.config.ts): writes main and accent into DESIGN.md and re-derives its color list. */
 const DESIGN_THEME_ENDPOINT = '/__design-theme';
 
+/** Dev tool (rendered only under `npm run dev`): preview a main/accent pair, then save it to DESIGN.md. */
 export function ThemePicker() {
   const [theme, setTheme] = useState<ThemeInput>(() => loadTheme(DESIGN_THEME));
   const palette = useMemo(() => derivePalette(theme), [theme]);
@@ -61,18 +61,6 @@ export function ThemePicker() {
       toast.add({ title: 'Couldn’t save', description: error instanceof Error ? error.message : String(error) });
     } finally {
       setSaving(false);
-    }
-  }
-
-  async function copyForDesignMd() {
-    try {
-      await navigator.clipboard.writeText(designSnippet(theme));
-      toast.add({
-        title: 'Copied for DESIGN.md',
-        description: 'Replace main and accent under colors: in DESIGN.md, then run npm run tokens.',
-      });
-    } catch {
-      toast.add({ title: 'Couldn’t copy', description: 'Clipboard access was blocked by the browser.' });
     }
   }
 
@@ -161,26 +149,15 @@ export function ThemePicker() {
                 <ResetIcon aria-hidden />
                 Reset
               </button>
-              {import.meta.env.DEV ? (
-                <button
-                  type="button"
-                  onClick={saveToDesignMd}
-                  disabled={saving || sameTheme(theme, DESIGN_THEME)}
-                  className="inline-flex h-9 flex-1 items-center justify-center gap-2 rounded-lg bg-accent text-sm font-semibold text-on-accent transition-colors hover:bg-accent-600 disabled:cursor-not-allowed disabled:opacity-45"
-                >
-                  <FileTextIcon aria-hidden />
-                  {saving ? 'Saving…' : 'Save to DESIGN.md'}
-                </button>
-              ) : (
-                <button
-                  type="button"
-                  onClick={copyForDesignMd}
-                  className="inline-flex h-9 flex-1 items-center justify-center gap-2 rounded-lg bg-accent text-sm font-semibold text-on-accent transition-colors hover:bg-accent-600"
-                >
-                  <ClipboardCopyIcon aria-hidden />
-                  Copy theme
-                </button>
-              )}
+              <button
+                type="button"
+                onClick={saveToDesignMd}
+                disabled={saving || sameTheme(theme, DESIGN_THEME)}
+                className="inline-flex h-9 flex-1 items-center justify-center gap-2 rounded-lg bg-accent text-sm font-semibold text-on-accent transition-colors hover:bg-accent-600 disabled:cursor-not-allowed disabled:opacity-45"
+              >
+                <FileTextIcon aria-hidden />
+                {saving ? 'Saving…' : 'Save to DESIGN.md'}
+              </button>
             </div>
           </Popover.Popup>
         </Popover.Positioner>

@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-11-18T22:54:58.000Z",
+  "generatedAt": "2026-11-19T01:12:02.492Z",
   "title": "Design System: Kai Bell",
   "extensions": {
     "colorMeta": {
@@ -50,7 +50,7 @@
           "#c9c9c9",
           "#eeeeee"
         ],
-        "derivation": "Input. Chosen in DESIGN.md or the theme picker."
+        "derivation": "Input. Chosen in DESIGN.md or with the dev-only theme picker."
       },
       "main-700": {
         "role": "neutral",
@@ -162,7 +162,7 @@
           "#f7b99d",
           "#ffe9e0"
         ],
-        "derivation": "Input. Chosen in DESIGN.md or the theme picker."
+        "derivation": "Input. Chosen in DESIGN.md or with the dev-only theme picker."
       },
       "accent-glow": {
         "role": "primary",
@@ -384,7 +384,7 @@
       "name": "Hex Input",
       "kind": "input",
       "refersTo": "input",
-      "description": "Text field from the theme picker.",
+      "description": "Text field from the dev-only theme picker.",
       "html": "<label class=\"ds-field\"><span class=\"ds-field-label\">Main</span><input class=\"ds-input\" value=\"#333333\" maxlength=\"7\"></label>",
       "css": ".ds-field { display: grid; gap: 6px; max-width: 160px; } .ds-field-label { font-family: 'JetBrains Mono Variable', ui-monospace, monospace; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-muted); } .ds-input { height: 36px; padding: 0 10px; border-radius: 8px; border: 1px solid rgb(0 0 0 / 0.15); background: var(--color-paper); color: var(--color-ink); font-family: 'JetBrains Mono Variable', ui-monospace, monospace; font-size: 14px; text-transform: uppercase; outline: none; } .ds-input:focus { border-color: var(--color-accent-ink); box-shadow: 0 0 0 2px color-mix(in oklab, var(--color-accent) 30%, transparent); }"
     },
@@ -435,7 +435,7 @@
     "rules": [
       {
         "name": "The Two-Input Rule",
-        "body": "Only `main` and `accent` are chosen, in the frontmatter or the theme picker (Save to DESIGN.md in dev). Every other color is derived by `src/theme.ts` and never edited by hand; `npm run tokens` overwrites the derived keys.",
+        "body": "Only `main` and `accent` are chosen, in the frontmatter or with the dev-only theme picker's Save to DESIGN.md. Every other color is derived by `src/theme.ts` and never edited by hand; `npm run tokens` overwrites the derived keys.",
         "section": "colors"
       },
       {

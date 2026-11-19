@@ -202,11 +202,6 @@ export function contrastReport(p: Palette) {
   ];
 }
 
-/** The two DESIGN.md frontmatter inputs for a theme, ready to paste under `colors:`. */
-export function designSnippet({ main, accent }: ThemeInput) {
-  return `  main: "${main}"\n  accent: "${accent}"`;
-}
-
 /** 8-step dark-to-light ramp in a color's hue, for the DESIGN.md sidecar. */
 export function tonalRamp(hex: string) {
   const c = toLch(hex);

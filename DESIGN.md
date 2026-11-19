@@ -1,8 +1,8 @@
 ---
 name: Kai Bell
 description: Personal site of Kai Bell, React front ends for data-heavy work.
-# Edit only `main` and `accent` (here, or with Save to DESIGN.md in the theme
-# picker during `npm run dev`). Every other color is derived from them by
+# Edit only `main` and `accent` (here, or with Save to DESIGN.md in the dev-only
+# theme picker during `npm run dev`). Every other color is derived from them by
 # `npm run tokens` (src/theme.ts) and written back here, so hand edits to the
 # derived keys are overwritten. While the dev server runs, saving this file
 # regenerates the list. The script also generates src/tokens.css.
@@ -149,13 +149,13 @@ The whole palette comes from two inputs, main and accent, and every text color i
 
 ## Colors
 
-The palette is generated, not picked. Two inputs, `main` and `accent`, go through `derivePalette` in `src/theme.ts`, which computes every other token in OKLCH (perceptual lightness), maps it back into sRGB by reducing chroma, and solves each text color for WCAG contrast against the surface it sits on. The same function runs in two places: `npm run tokens` derives the defaults from this file's frontmatter and writes them back here, into `src/tokens.css` and into the sidecar; the theme picker runs it live in the browser on whatever pair a visitor chooses and sets the same CSS variables. The frontmatter list follows its inputs: while `npm run dev` runs, saving this file re-derives every color, and the picker's Save to DESIGN.md button (dev only; the live site keeps Copy theme) writes a new pair here and does the same. So the hex values in the frontmatter are just the output for the default pair (graphite `#333333`, orange `#fc6a03`), and every role below must hold for any pair.
+The palette is generated, not picked. Two inputs, `main` and `accent`, go through `derivePalette` in `src/theme.ts`, which computes every other token in OKLCH (perceptual lightness), maps it back into sRGB by reducing chroma, and solves each text color for WCAG contrast against the surface it sits on. The same function runs in two places: `npm run tokens` derives the defaults from this file's frontmatter and writes them back here, into `src/tokens.css` and into the sidecar; the theme picker, a dev tool shown only under `npm run dev` and left out of every build, runs it live in the browser on whatever pair you try and sets the same CSS variables. The frontmatter list follows its inputs: while `npm run dev` runs, saving this file re-derives every color, and the picker's Save to DESIGN.md button writes a new pair here and does the same. Visitors always get the palette in this file. So the hex values in the frontmatter are just the output for the default pair (graphite `#333333`, orange `#fc6a03`), and every role below must hold for any pair.
 
 The display names describe the default pair. Roles and derivations are what stay true. Below, "tint" means the chroma of `main`, capped at 0.03, so neutrals pick up only a trace of the main hue; "solved" means moved by the smallest lightness step, away from the background, that reaches the stated ratio.
 
 ### Inputs
-- **Graphite** (`main`): the structure color. Header, hero, contact band, featured cards, certification card. Chosen in the frontmatter or the theme picker.
-- **Survey Orange** (`accent`): the signal color. Primary buttons, the active nav underline, list markers, KBR station marks, the current-role dot, the portrait ring. Large text and fills only. Chosen in the frontmatter or the theme picker.
+- **Graphite** (`main`): the structure color. Header, hero, contact band, featured cards, certification card. Chosen in the frontmatter or with the dev-only theme picker.
+- **Survey Orange** (`accent`): the signal color. Primary buttons, the active nav underline, list markers, KBR station marks, the current-role dot, the portrait ring. Large text and fills only. Chosen in the frontmatter or with the dev-only theme picker.
 
 ### Derived from main
 - **Deep Graphite** (`main-950`): tooltips and toasts. *Derived:* `main` with lightness lowered by 0.12.
@@ -175,10 +175,10 @@ The display names describe the default pair. Roles and derivations are what stay
 - **Near Black** (`on-accent`): text and icons on accent fills. *Derived:* White or a near-black in the main hue (L 0.16), whichever keeps the higher contrast against both `accent` and `accent-600`.
 
 ### Fixed values
-Three things sit outside the generator and do not change with the theme: white (`#ffffff`) for cards, panels, dialogs and popovers on light bands; black at low alpha (8% hairlines, 15% field borders, shadows, the menu backdrop); and the status colors in the theme picker (green, amber and red contrast grades, the red invalid-hex error). Everything else is a token.
+Three things sit outside the generator and do not change with the theme: white (`#ffffff`) for cards, panels, dialogs and popovers on light bands; black at low alpha (8% hairlines, 15% field borders, shadows, the menu backdrop); and the status colors in the dev-only theme picker (green, amber and red contrast grades, the red invalid-hex error). Everything else is a token.
 
 ### Named Rules
-**The Two-Input Rule.** Only `main` and `accent` are chosen, in the frontmatter or the theme picker (Save to DESIGN.md in dev). Every other color is derived by `src/theme.ts` and never edited by hand; `npm run tokens` overwrites the derived keys.
+**The Two-Input Rule.** Only `main` and `accent` are chosen, in the frontmatter or with the dev-only theme picker's Save to DESIGN.md. Every other color is derived by `src/theme.ts` and never edited by hand; `npm run tokens` overwrites the derived keys.
 
 **The Any-Pair Rule.** Components reference roles, never the default pair. Text on `main` uses the `on-main` family and text on `accent` uses `on-accent`, because either may flip between white and near-black. Nothing assumes `main` is dark or `accent` is orange.
 
@@ -217,7 +217,7 @@ Breakpoints: 640px (gutters and section spacing grow), 768px (the header switche
 
 ## Elevation & Depth
 
-Mostly flat. Surfaces sit at rest with a 1px hairline ring (black at 8% on light surfaces, `on-main` at 10% on main) instead of shadows. Depth appears in two cases only: on interaction, when a card lifts 2px and gains a soft shadow, and for floating layers (dialogs, the theme popover, toasts, the mobile menu), which carry a large diffuse shadow over a dimmed backdrop.
+Mostly flat. Surfaces sit at rest with a 1px hairline ring (black at 8% on light surfaces, `on-main` at 10% on main) instead of shadows. Depth appears in two cases only: on interaction, when a card lifts 2px and gains a soft shadow, and for floating layers (dialogs, toasts, the mobile menu, and the dev-only theme popover), which carry a large diffuse shadow over a dimmed backdrop.
 
 ### Shadow Vocabulary
 - **Hover lift** (`box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.06)` with a 2px upward move): project cards on hover.
