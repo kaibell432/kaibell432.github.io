@@ -1,9 +1,11 @@
 ---
 name: Kai Bell
 description: Personal site of Kai Bell, React front ends for data-heavy work.
-# Edit only `main` and `accent`. Every other color is derived from them by
+# Edit only `main` and `accent` (here, or with Save to DESIGN.md in the theme
+# picker during `npm run dev`). Every other color is derived from them by
 # `npm run tokens` (src/theme.ts) and written back here, so hand edits to the
-# derived keys are overwritten. The script also generates src/tokens.css.
+# derived keys are overwritten. While the dev server runs, saving this file
+# regenerates the list. The script also generates src/tokens.css.
 colors:
   main-950: "#161616"
   main-800: "#2a2a2a"
@@ -147,7 +149,7 @@ The whole palette comes from two inputs, main and accent, and every text color i
 
 ## Colors
 
-The palette is generated, not picked. Two inputs, `main` and `accent`, go through `derivePalette` in `src/theme.ts`, which computes every other token in OKLCH (perceptual lightness), maps it back into sRGB by reducing chroma, and solves each text color for WCAG contrast against the surface it sits on. The same function runs in two places: `npm run tokens` derives the defaults from this file's frontmatter and writes them back here, into `src/tokens.css` and into the sidecar; the theme picker runs it live in the browser on whatever pair a visitor chooses and sets the same CSS variables. So the hex values in the frontmatter are just the output for the default pair (graphite `#333333`, orange `#fc6a03`), and every role below must hold for any pair.
+The palette is generated, not picked. Two inputs, `main` and `accent`, go through `derivePalette` in `src/theme.ts`, which computes every other token in OKLCH (perceptual lightness), maps it back into sRGB by reducing chroma, and solves each text color for WCAG contrast against the surface it sits on. The same function runs in two places: `npm run tokens` derives the defaults from this file's frontmatter and writes them back here, into `src/tokens.css` and into the sidecar; the theme picker runs it live in the browser on whatever pair a visitor chooses and sets the same CSS variables. The frontmatter list follows its inputs: while `npm run dev` runs, saving this file re-derives every color, and the picker's Save to DESIGN.md button (dev only; the live site keeps Copy theme) writes a new pair here and does the same. So the hex values in the frontmatter are just the output for the default pair (graphite `#333333`, orange `#fc6a03`), and every role below must hold for any pair.
 
 The display names describe the default pair. Roles and derivations are what stay true. Below, "tint" means the chroma of `main`, capped at 0.03, so neutrals pick up only a trace of the main hue; "solved" means moved by the smallest lightness step, away from the background, that reaches the stated ratio.
 
@@ -176,7 +178,7 @@ The display names describe the default pair. Roles and derivations are what stay
 Three things sit outside the generator and do not change with the theme: white (`#ffffff`) for cards, panels, dialogs and popovers on light bands; black at low alpha (8% hairlines, 15% field borders, shadows, the menu backdrop); and the status colors in the theme picker (green, amber and red contrast grades, the red invalid-hex error). Everything else is a token.
 
 ### Named Rules
-**The Two-Input Rule.** Only `main` and `accent` are chosen, in the frontmatter or the theme picker. Every other color is derived by `src/theme.ts` and never edited by hand; `npm run tokens` overwrites the derived keys.
+**The Two-Input Rule.** Only `main` and `accent` are chosen, in the frontmatter or the theme picker (Save to DESIGN.md in dev). Every other color is derived by `src/theme.ts` and never edited by hand; `npm run tokens` overwrites the derived keys.
 
 **The Any-Pair Rule.** Components reference roles, never the default pair. Text on `main` uses the `on-main` family and text on `accent` uses `on-accent`, because either may flip between white and near-black. Nothing assumes `main` is dark or `accent` is orange.
 

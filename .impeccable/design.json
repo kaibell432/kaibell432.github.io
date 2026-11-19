@@ -435,7 +435,7 @@
     "rules": [
       {
         "name": "The Two-Input Rule",
-        "body": "Only `main` and `accent` are chosen, in the frontmatter or the theme picker. Every other color is derived by `src/theme.ts` and never edited by hand; `npm run tokens` overwrites the derived keys.",
+        "body": "Only `main` and `accent` are chosen, in the frontmatter or the theme picker (Save to DESIGN.md in dev). Every other color is derived by `src/theme.ts` and never edited by hand; `npm run tokens` overwrites the derived keys.",
         "section": "colors"
       },
       {
