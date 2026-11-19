@@ -2,7 +2,7 @@ import type { ReactNode } from 'react';
 import { Accordion } from '@base-ui/react/accordion';
 import { ArrowTopRightIcon, PlusIcon } from '@radix-ui/react-icons';
 import { certification, education, legend, skills } from '../content';
-import { cn, Section } from './ui';
+import { cn, InlineList, Section } from './ui';
 
 export function Skills() {
   return (
@@ -18,14 +18,9 @@ export function Skills() {
           {skills.map((group) => (
             <div key={group.group} className="bg-paper p-6">
               <h3 className="font-mono text-label text-accent-ink uppercase">{group.group}</h3>
-              <ul className="mt-4 flex flex-wrap gap-2">
+              <ul className="mt-4 space-y-1.5 text-base font-medium">
                 {group.items.map((item) => (
-                  <li
-                    key={item}
-                    className="rounded-md bg-white px-3 py-1.5 text-sm font-medium ring-1 ring-black/[0.08]"
-                  >
-                    {item}
-                  </li>
+                  <li key={item}>{item}</li>
                 ))}
               </ul>
             </div>
@@ -76,13 +71,7 @@ export function Skills() {
 
             <Accordion.Root className="mt-5 border-t border-black/[0.08]">
               <CourseItem title="Relevant coursework">
-                <ul className="flex flex-wrap gap-1.5">
-                  {education.coursework.map((c) => (
-                    <li key={c} className="rounded-md bg-white px-2.5 py-1 text-sm ring-1 ring-black/[0.08]">
-                      {c}
-                    </li>
-                  ))}
-                </ul>
+                <InlineList mono={false} items={education.coursework} />
               </CourseItem>
               {education.highlights.map((h) => (
                 <CourseItem key={h.course} title={h.course}>

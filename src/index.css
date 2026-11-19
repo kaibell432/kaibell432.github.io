@@ -17,6 +17,20 @@
   --ease-out-expo: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
+/* Page content spans about 70% of the viewport from 1024px; phones and tablets keep 16/24px gutters. */
+@utility container-site {
+  margin-inline: auto;
+  width: calc(100% - 2rem);
+
+  @media (width >= 40rem) {
+    width: calc(100% - 3rem);
+  }
+
+  @media (width >= 64rem) {
+    width: 70%;
+  }
+}
+
 @layer base {
   html {
     scroll-padding-top: 4.5rem;
@@ -125,6 +139,41 @@
   from {
     opacity: 0;
     translate: 0 1.5rem;
+  }
+}
+
+/*
+ * Hero traverse: each dashed leg is revealed through a solid mask line that
+ * draws from one station to the next. Reduced motion gets the finished line.
+ */
+.leg-draw {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 0;
+}
+
+/* Vertical dashed traverse in Projects: revealed top-down (scaling would stretch the dashes). */
+.draw-clip-y {
+  clip-path: inset(0 0 0 0);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .leg-draw {
+    animation: leg-draw var(--leg-ms, 400ms) var(--ease-out-expo) both;
+    animation-delay: var(--leg-delay, 0ms);
+  }
+
+  .draw-clip-y {
+    transition: clip-path 900ms var(--ease-out-expo) var(--draw-delay, 120ms);
+  }
+
+  .reveal:not([data-shown]) .draw-clip-y {
+    clip-path: inset(0 0 100% 0);
+  }
+}
+
+@keyframes leg-draw {
+  from {
+    stroke-dashoffset: 1;
   }
 }
 

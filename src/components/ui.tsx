@@ -20,18 +20,40 @@ export const button = {
   ghostLight: cn(buttonBase, 'border border-black/15 text-ink hover:border-black/30 hover:bg-black/[0.03]'),
 };
 
-export function Tag({ children, tone = 'light' }: { children: ReactNode; tone?: 'light' | 'dark' }) {
+/**
+ * Plain inline list for stacks, coursework and hobbies, separated by small accent
+ * squares (the site's marker) instead of boxed chips.
+ */
+export function InlineList({
+  items,
+  label,
+  tone = 'light',
+  mono = true,
+  className,
+}: {
+  items: string[];
+  label?: string;
+  tone?: 'light' | 'dark';
+  mono?: boolean;
+  className?: string;
+}) {
   return (
-    <span
+    <ul
+      aria-label={label}
       className={cn(
-        'inline-flex items-center rounded-md px-2 py-1 font-mono text-label-sm whitespace-nowrap',
-        tone === 'dark'
-          ? 'bg-on-main/[0.07] text-on-main-muted ring-1 ring-on-main/10'
-          : 'bg-black/[0.04] text-ink ring-1 ring-black/[0.08]',
+        'flex flex-wrap items-center gap-x-2.5 gap-y-1.5',
+        mono ? 'font-mono text-xs' : 'text-base',
+        tone === 'dark' ? 'text-on-main-muted' : mono ? 'text-muted' : 'text-ink/90',
+        className,
       )}
     >
-      {children}
-    </span>
+      {items.map((item, i) => (
+        <li key={item} className="flex items-center gap-2.5">
+          {i > 0 ? <span aria-hidden className="size-1 shrink-0 bg-accent" /> : null}
+          {item}
+        </li>
+      ))}
+    </ul>
   );
 }
 
@@ -71,7 +93,7 @@ export function Section({
       )}
     >
       {backdrop ?? (tone === 'light' ? <div aria-hidden className="map-grid pointer-events-none absolute inset-0" /> : null)}
-      <div className="relative mx-auto max-w-6xl px-4 sm:px-6">
+      <div className="container-site relative">
         <div ref={headerRef} className="reveal mb-12 sm:mb-16">
           <div className="flex flex-col gap-4 sm:flex-row sm:items-baseline sm:gap-6">
             <h2

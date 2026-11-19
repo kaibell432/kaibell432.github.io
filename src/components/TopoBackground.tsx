@@ -6,7 +6,7 @@
 
 type Point = [number, number];
 
-type Hill = {
+export type Hill = {
   cx: number;
   cy: number;
   radius: number;
@@ -22,7 +22,7 @@ const HILLS: Hill[] = [
   { cx: 520, cy: -40, radius: 220, levels: 6, seed: 2.6 },
 ];
 
-function ring(hill: Hill, level: number): string {
+export function ring(hill: Hill, level: number): string {
   const steps = 72;
   const t = (level + 1) / hill.levels;
   const r0 = hill.radius * t;
