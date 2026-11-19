@@ -1,0 +1,4 @@
+# Check text files out with LF everywhere, matching what the repo stores and
+# what `npm run tokens` writes, so regenerated files don't show up as changed
+# on Windows (core.autocrlf would otherwise check them out as CRLF).
+* text=auto eol=lf
