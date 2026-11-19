@@ -17,7 +17,8 @@
           "#a5a5a5",
           "#c9c9c9",
           "#eeeeee"
-        ]
+        ],
+        "derivation": "`main` with lightness lowered by 0.12."
       },
       "main-800": {
         "role": "neutral",
@@ -32,7 +33,8 @@
           "#a5a5a5",
           "#c9c9c9",
           "#eeeeee"
-        ]
+        ],
+        "derivation": "`main` with lightness lowered by 0.035."
       },
       "main": {
         "role": "neutral",
@@ -47,7 +49,8 @@
           "#a5a5a5",
           "#c9c9c9",
           "#eeeeee"
-        ]
+        ],
+        "derivation": "Input. Chosen in DESIGN.md or the theme picker."
       },
       "main-700": {
         "role": "neutral",
@@ -62,7 +65,8 @@
           "#a5a5a5",
           "#c9c9c9",
           "#eeeeee"
-        ]
+        ],
+        "derivation": "`main` with lightness raised by 0.05."
       },
       "on-main": {
         "role": "neutral",
@@ -77,7 +81,8 @@
           "#a5a5a5",
           "#c9c9c9",
           "#eeeeee"
-        ]
+        ],
+        "derivation": "White or a near-black in the main hue (L 0.17), whichever contrasts more with `main`."
       },
       "on-main-muted": {
         "role": "neutral",
@@ -92,7 +97,8 @@
           "#a5a5a5",
           "#c9c9c9",
           "#eeeeee"
-        ]
+        ],
+        "derivation": "`on-main` blended 22% toward `main`, solved to at least 7:1 on `main`."
       },
       "on-main-subtle": {
         "role": "neutral",
@@ -107,7 +113,8 @@
           "#a5a5a5",
           "#c9c9c9",
           "#eeeeee"
-        ]
+        ],
+        "derivation": "`on-main` blended 42% toward `main`, solved to at least 4.6:1 on `main`."
       },
       "accent-ink": {
         "role": "primary",
@@ -122,7 +129,8 @@
           "#de8f6b",
           "#eebda7",
           "#fdeae2"
-        ]
+        ],
+        "derivation": "`accent` solved to at least 4.8:1 on `paper`."
       },
       "accent-600": {
         "role": "primary",
@@ -137,7 +145,8 @@
           "#e68a5f",
           "#f3baa1",
           "#ffe9e0"
-        ]
+        ],
+        "derivation": "`accent` with lightness lowered by 0.06."
       },
       "accent": {
         "role": "primary",
@@ -152,7 +161,8 @@
           "#eb8757",
           "#f7b99d",
           "#ffe9e0"
-        ]
+        ],
+        "derivation": "Input. Chosen in DESIGN.md or the theme picker."
       },
       "accent-glow": {
         "role": "primary",
@@ -167,7 +177,8 @@
           "#e6895e",
           "#f4baa1",
           "#ffe9e0"
-        ]
+        ],
+        "derivation": "`accent` solved to at least 4.8:1 on `main`."
       },
       "on-accent": {
         "role": "primary",
@@ -182,7 +193,8 @@
           "#a5a5a5",
           "#c9c9c9",
           "#eeeeee"
-        ]
+        ],
+        "derivation": "White or a near-black in the main hue (L 0.16), whichever keeps the higher contrast against both `accent` and `accent-600`."
       },
       "paper": {
         "role": "neutral",
@@ -197,7 +209,8 @@
           "#a5a5a5",
           "#c9c9c9",
           "#eeeeee"
-        ]
+        ],
+        "derivation": "L 0.967 in the main hue, chroma a quarter of the tint."
       },
       "ink": {
         "role": "neutral",
@@ -212,7 +225,8 @@
           "#a5a5a5",
           "#c9c9c9",
           "#eeeeee"
-        ]
+        ],
+        "derivation": "The main hue at L 0.32 (or `main`'s lightness if darker) with the full tint, solved to at least 7:1 on `paper`."
       },
       "muted": {
         "role": "neutral",
@@ -227,7 +241,8 @@
           "#a5a5a5",
           "#c9c9c9",
           "#eeeeee"
-        ]
+        ],
+        "derivation": "The main hue at L 0.62 with 80% of the tint, solved to at least 6:1 on `paper`."
       }
     },
     "typographyMeta": {
@@ -420,7 +435,12 @@
     "rules": [
       {
         "name": "The Two-Input Rule",
-        "body": "Only `main` and `accent` are chosen. Every other color is derived by `npm run tokens` and never edited by hand.",
+        "body": "Only `main` and `accent` are chosen, in the frontmatter or the theme picker. Every other color is derived by `src/theme.ts` and never edited by hand; `npm run tokens` overwrites the derived keys.",
+        "section": "colors"
+      },
+      {
+        "name": "The Any-Pair Rule",
+        "body": "Components reference roles, never the default pair. Text on `main` uses the `on-main` family and text on `accent` uses `on-accent`, because either may flip between white and near-black. Nothing assumes `main` is dark or `accent` is orange.",
         "section": "colors"
       },
       {
@@ -430,7 +450,7 @@
       },
       {
         "name": "The Small-Text Rule",
-        "body": "Small orange text always uses `accent-ink` on light surfaces and `accent-glow` on main, never the raw `accent`.",
+        "body": "Small accent-colored text always uses `accent-ink` on light surfaces and `accent-glow` on main, never the raw `accent`.",
         "section": "colors"
       },
       {
