@@ -22,7 +22,9 @@ All of the copy (bio, experience, projects, skills, education, links) lives in [
 
 ## Design system
 
-[`DESIGN.md`](DESIGN.md) is the design system and the source of truth for its tokens, in the [Impeccable](https://github.com/pbakaus/impeccable) / DESIGN.md format: YAML frontmatter tokens followed by the written guidance. [`PRODUCT.md`](PRODUCT.md) holds the product context. `.impeccable/design.json` is the sidecar (component snippets, color ramps, motion) for Impeccable's tooling.
+`DESIGN.md` is the design system and the source of truth for its tokens, in the [Impeccable](https://github.com/pbakaus/impeccable) / DESIGN.md format: YAML frontmatter tokens followed by the written guidance. `PRODUCT.md` holds the product context, and `.impeccable/` holds the sidecar (component snippets, color ramps, motion) and other Impeccable files.
+
+These design guidelines are kept locally and gitignored, so they are not in the repository. Without DESIGN.md, `npm run tokens` leaves the committed `src/tokens.css` and `src/design-tokens.ts` as they are, so the site still builds from a fresh clone.
 
 ### Theme
 
