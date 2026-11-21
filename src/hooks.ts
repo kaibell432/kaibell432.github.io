@@ -148,3 +148,30 @@ export function useHeightVar<T extends HTMLElement>(name: string) {
 
   return ref;
 }
+
+/**
+ * Tracks an element's height with every collapsible panel inside it shut
+ * (its height minus the height of each `[data-collapsible-panel]`). The value
+ * stays put while panels open or close, so a neighbour can match the element's
+ * resting height without growing along with it.
+ */
+export function useCollapsedHeight<T extends HTMLElement>() {
+  const ref = useRef<T>(null);
+  const [height, setHeight] = useState<number | null>(null);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el || !('ResizeObserver' in window)) return;
+    const measure = () => {
+      let h = el.getBoundingClientRect().height;
+      for (const panel of el.querySelectorAll('[data-collapsible-panel]')) h -= panel.getBoundingClientRect().height;
+      setHeight(Math.round(h));
+    };
+    measure();
+    const observer = new ResizeObserver(measure);
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  return [ref, height] as const;
+}
