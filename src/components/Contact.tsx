@@ -8,12 +8,15 @@ import {
   LinkedInLogoIcon,
 } from '@radix-ui/react-icons';
 import { profile } from '../content';
+import { useHeightVar } from '../hooks';
 import { TopoBackground } from './TopoBackground';
 import { button, Section } from './ui';
 
 export function Contact() {
   const toast = Toast.useToastManager();
   const [copied, setCopied] = useState(false);
+  // The backdrop fills the section, so its height is the band's: Skills lays its TerrainSeam out on it.
+  const backdropRef = useHeightVar<HTMLDivElement>('--contact-h');
 
   async function copyEmail() {
     try {
@@ -36,7 +39,12 @@ export function Contact() {
       intro="Whether it’s a role, a project, or a question about something on this page, email is the best way to reach me."
       className="overflow-hidden"
       backdrop={
-        <div aria-hidden className="absolute inset-0 opacity-70 [mask-image:linear-gradient(to_bottom,transparent,black_45%)]">
+        // Contours reach the top edge (faintly) so they meet the ink ones coming down from Skills.
+        <div
+          ref={backdropRef}
+          aria-hidden
+          className="deco absolute inset-0 opacity-70 [mask-image:linear-gradient(to_bottom,rgb(0_0_0/0.4),black_45%)]"
+        >
           <TopoBackground />
         </div>
       }

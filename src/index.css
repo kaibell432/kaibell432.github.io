@@ -35,6 +35,10 @@
   html {
     scroll-padding-top: 4.5rem;
     -webkit-text-size-adjust: 100%;
+    /* Browser surfaces follow the theme too: scrollbar on the paper, accent caret and native controls. */
+    scrollbar-color: color-mix(in oklab, var(--color-ink) 28%, transparent) var(--color-paper);
+    caret-color: var(--color-accent-ink);
+    accent-color: var(--color-accent-ink);
   }
 
   @media (prefers-reduced-motion: no-preference) {
@@ -75,6 +79,16 @@
 }
 
 /*
+ * Decorative layers (grid, contours, terrain seams) never serve as the browser's
+ * scroll anchor. A layer pinned to a section's bottom moves when content above it
+ * grows (an accordion opening), and anchoring to it would scroll the page to
+ * follow, making the content appear to jump up instead of dropping down.
+ */
+.deco {
+  overflow-anchor: none;
+}
+
+/*
  * Faint survey grid behind the light bands, continuing the 64px grid of the
  * dark bands. It fades out from the top right, where each section's callout sits.
  */
@@ -86,6 +100,7 @@
   background-size: 64px 64px;
   background-position: center top;
   mask-image: radial-gradient(ellipse 70% 85% at 100% 0%, black, transparent 75%);
+  overflow-anchor: none;
 }
 
 /*

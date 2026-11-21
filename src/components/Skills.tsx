@@ -1,22 +1,29 @@
-import type { ReactNode } from 'react';
+import type { CSSProperties, ReactNode } from 'react';
 import { Accordion } from '@base-ui/react/accordion';
 import { ArrowTopRightIcon, PlusIcon } from '@radix-ui/react-icons';
 import { certification, education, legend, skills } from '../content';
+import { useCollapsedHeight } from '../hooks';
+import { TerrainSeam } from './TopoBackground';
 import { cn, InlineList, Section } from './ui';
 
 export function Skills() {
+  // Side by side, the certification card matches the education card's height with
+  // its courses shut, so opening one grows only the education card.
+  const [educationRef, educationRest] = useCollapsedHeight<HTMLElement>();
+
   return (
     <Section
       id="skills"
       index="04"
       label="Skills & credentials"
       title="What I work with."
-      className="bg-white"
+      edge="end"
+      seam={<TerrainSeam band="contact" edge="bottom" />}
     >
       <div className="space-y-6">
         <div className="grid gap-px overflow-hidden rounded-xl bg-black/[0.08] ring-1 ring-black/[0.08] sm:grid-cols-2 lg:grid-cols-4">
           {skills.map((group) => (
-            <div key={group.group} className="bg-paper p-6">
+            <div key={group.group} className="bg-white p-6">
               <h3 className="font-mono text-label text-accent-ink uppercase">{group.group}</h3>
               <ul className="mt-4 space-y-1.5 text-base font-medium">
                 {group.items.map((item) => (
@@ -28,7 +35,10 @@ export function Skills() {
         </div>
 
         <div className="grid gap-6 lg:grid-cols-2 lg:items-start">
-          <article className="relative flex h-full flex-col overflow-hidden rounded-xl bg-main p-6 text-on-main ring-1 ring-on-main/10 sm:p-7">
+          <article
+            style={educationRest ? ({ '--education-rest': `${educationRest}px` } as CSSProperties) : undefined}
+            className="relative flex flex-col overflow-hidden rounded-xl bg-main p-6 text-on-main ring-1 ring-on-main/10 sm:p-7 lg:min-h-(--education-rest)"
+          >
             <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between sm:gap-6">
               <h3 className="text-xl leading-snug font-bold tracking-tight text-balance font-stretch-semi-expanded">
                 {certification.name}
@@ -57,7 +67,7 @@ export function Skills() {
             </div>
           </article>
 
-          <article className="h-full rounded-xl bg-paper p-6 ring-1 ring-black/[0.08] sm:p-7">
+          <article ref={educationRef} className="rounded-xl bg-white p-6 ring-1 ring-black/[0.08] sm:p-7">
             <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between sm:gap-6">
               <h3 className="text-xl leading-snug font-bold tracking-tight text-balance font-stretch-semi-expanded">
                 {education.school}
@@ -105,7 +115,7 @@ function CourseItem({ title, children }: { title: string; children: ReactNode })
           />
         </Accordion.Trigger>
       </Accordion.Header>
-      <Accordion.Panel className="h-[var(--accordion-panel-height)] overflow-hidden transition-[height] duration-300 ease-out-expo data-ending-style:h-0 data-starting-style:h-0">
+      <Accordion.Panel data-collapsible-panel className="h-[var(--accordion-panel-height)] overflow-hidden transition-[height] duration-300 ease-out-expo data-ending-style:h-0 data-starting-style:h-0">
         <div className="pb-4">{children}</div>
       </Accordion.Panel>
     </Accordion.Item>

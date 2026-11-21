@@ -2,3 +2,8 @@ node_modules
 dist
 *.local
 .DS_Store
+
+# Design guidelines (kept locally, not published)
+DESIGN.md
+PRODUCT.md
+.impeccable/

@@ -34,6 +34,12 @@ function write(path: string, next: string) {
 }
 
 // --- 1. Read DESIGN.md and derive the palette --------------------------------
+// DESIGN.md is kept out of git, so a fresh checkout (CI, a new machine) builds
+// from the committed src/tokens.css and src/design-tokens.ts instead.
+if (!existsSync(paths.design)) {
+  console.log('DESIGN.md not found; using the committed src/tokens.css and src/design-tokens.ts.');
+  process.exit(0);
+}
 const source = readFileSync(paths.design, 'utf8');
 const match = source.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n/);
 if (!match) throw new Error('DESIGN.md has no YAML frontmatter');
