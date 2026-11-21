@@ -7,6 +7,7 @@ import {
   LinkedInLogoIcon,
 } from '@radix-ui/react-icons';
 import { facts, profile } from '../content';
+import { useHeightVar } from '../hooks';
 import { TopoBackground } from './TopoBackground';
 import { ViewerLink } from './Viewer';
 import { Traverse } from './Traverse';
@@ -15,8 +16,10 @@ import { button, cn, IconLink } from './ui';
 const delay = (ms: number) => ({ '--reveal-delay': `${ms}ms` }) as CSSProperties;
 
 export function Hero() {
+  const ref = useHeightVar<HTMLElement>('--hero-h');
+
   return (
-    <section id="top" aria-label="Introduction" className="relative overflow-hidden bg-main text-on-main">
+    <section ref={ref} id="top" aria-label="Introduction" className="relative overflow-hidden bg-main text-on-main">
       <TopoBackground />
 
       <div className="container-site relative grid items-center gap-14 pt-32 pb-16 lg:grid-cols-2 lg:gap-12 lg:pt-36 lg:pb-20">

@@ -64,8 +64,10 @@ export function Section({
   title,
   intro,
   tone = 'light',
+  edge,
   className,
   backdrop,
+  seam,
   children,
 }: {
   id: string;
@@ -74,9 +76,17 @@ export function Section({
   title: ReactNode;
   intro?: ReactNode;
   tone?: 'light' | 'dark';
+  /**
+   * Light sections share one paper ground, so they sit closer together than the
+   * old alternating bands; the side that meets a dark band (`start` after the
+   * hero, `end` before Contact) keeps the full band spacing.
+   */
+  edge?: 'start' | 'end';
   className?: string;
   /** Full-bleed decorative layer rendered behind the content */
   backdrop?: ReactNode;
+  /** A TerrainSeam, which replaces the default grid so the two textures never overlap */
+  seam?: ReactNode;
   children: ReactNode;
 }) {
   const headerRef = useReveal<HTMLDivElement>();
@@ -87,12 +97,17 @@ export function Section({
       id={id}
       aria-labelledby={`${id}-title`}
       className={cn(
-        'relative py-20 sm:py-28',
-        tone === 'dark' ? 'bg-main text-on-main' : 'text-ink',
+        'relative',
+        tone === 'dark' ? 'bg-main py-20 text-on-main sm:py-28' : 'text-ink',
+        tone === 'light' && (edge === 'start' ? 'pt-24 sm:pt-32' : 'pt-14 sm:pt-20'),
+        tone === 'light' && (edge === 'end' ? 'pb-24 sm:pb-32' : 'pb-14 sm:pb-20'),
         className,
       )}
     >
-      {backdrop ?? (tone === 'light' ? <div aria-hidden className="map-grid pointer-events-none absolute inset-0" /> : null)}
+      {/* One texture per light section: the grid, or (where it meets a dark band) the terrain seam instead. */}
+      {backdrop ??
+        seam ??
+        (tone === 'light' ? <div aria-hidden className="map-grid pointer-events-none absolute inset-0" /> : null)}
       <div className="container-site relative">
         <div ref={headerRef} className="reveal mb-12 sm:mb-16">
           <div className="flex flex-col gap-4 sm:flex-row sm:items-baseline sm:gap-6">

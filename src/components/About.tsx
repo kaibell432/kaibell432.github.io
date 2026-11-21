@@ -1,10 +1,11 @@
 import { about } from '../content';
 import { Portrait } from './Portrait';
+import { TerrainSeam } from './TopoBackground';
 import { InlineList, Section } from './ui';
 
 export function About() {
   return (
-    <Section id="about" index="01" label="About" title={about.title}>
+    <Section id="about" index="01" label="About" title={about.title} edge="start" seam={<TerrainSeam band="hero" edge="top" />}>
       {/* Portrait beside the story, then the focus areas as an even strip across the full width. */}
       <div className="grid items-center gap-14 lg:grid-cols-[auto_minmax(0,1fr)] lg:gap-20">
         <Portrait className="mx-auto size-52 sm:size-60 lg:mx-0 lg:ml-8 lg:size-64" />

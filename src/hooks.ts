@@ -122,3 +122,29 @@ export function useShrinkWrap<T extends HTMLElement>() {
 
   return ref;
 }
+
+/**
+ * Publishes the element's height as a CSS custom property on the root
+ * (e.g. `--hero-h`), so a neighbouring section can lay its `TerrainSeam`
+ * out on this band's exact box.
+ */
+export function useHeightVar<T extends HTMLElement>(name: string) {
+  const ref = useRef<T>(null);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el || !('ResizeObserver' in window)) return;
+    const root = document.documentElement;
+    const observer = new ResizeObserver(([entry]) => {
+      const h = entry?.borderBoxSize?.[0]?.blockSize ?? el.offsetHeight;
+      root.style.setProperty(name, `${Math.round(h)}px`);
+    });
+    observer.observe(el);
+    return () => {
+      observer.disconnect();
+      root.style.removeProperty(name);
+    };
+  }, [name]);
+
+  return ref;
+}

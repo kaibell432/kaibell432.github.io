@@ -13,7 +13,6 @@ export function Experience() {
       label="Experience"
       title="Where I’ve worked."
       intro="Building the tools now. Before that, getting to know the data that flows through them."
-      className="bg-white"
     >
       <ol ref={railRef} className="reveal relative space-y-6 sm:space-y-8">
         {/* timeline rail */}
@@ -25,7 +24,7 @@ export function Experience() {
               style={{ '--draw-delay': `${250 + i * 300}ms` } as CSSProperties}
               className={cn(
                 'draw-dot absolute top-7 left-0 hidden size-[15px] rounded-full border-2 sm:block lg:left-[161px]',
-                job.current ? 'border-accent bg-accent ring-[5px] ring-accent/15' : 'border-black/25 bg-white',
+                job.current ? 'border-accent bg-accent ring-[5px] ring-accent/15' : 'border-black/25 bg-paper',
               )}
             />
             <JobCard job={job} order={i} />
@@ -38,7 +37,7 @@ export function Experience() {
 
 function JobCard({ job, order }: { job: Job; order: number }) {
   return (
-    <article className="rounded-xl bg-paper p-6 ring-1 ring-black/[0.08] sm:p-7">
+    <article className="rounded-xl bg-white p-6 ring-1 ring-black/[0.08] sm:p-7">
       <header className="flex flex-wrap items-start justify-between gap-x-6 gap-y-2">
         <div>
           <h3 className="text-xl font-bold tracking-tight text-balance font-stretch-semi-expanded sm:text-2xl">{job.company}</h3>

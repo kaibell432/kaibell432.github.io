@@ -3,6 +3,8 @@
  * Each "hill" is a stack of closed, wobbly rings drawn as smooth
  * Catmull-Rom curves.
  */
+import { useId } from 'react';
+import { cn } from './ui';
 
 type Point = [number, number];
 
@@ -64,29 +66,61 @@ const CONTOURS = HILLS.flatMap((hill, h) =>
   })),
 );
 
-export function TopoBackground() {
+/**
+ * The contour map. `dark` is the full sheet for the main-colour bands (grid,
+ * radial fade, one accent contour). `light` is the same terrain in faint ink
+ * with no grid or mask, used by `TerrainSeam` to carry a dark band's contours
+ * across its edge onto the paper.
+ */
+export function TopoBackground({ tone = 'dark', className }: { tone?: 'dark' | 'light'; className?: string }) {
+  // Hero and Contact both render the dark sheet, so the defs need unique ids.
+  const uid = useId().replace(/:/g, '');
+
+  if (tone === 'light') {
+    return (
+      <svg
+        aria-hidden
+        className={cn('pointer-events-none absolute inset-0 size-full overflow-visible', className)}
+        viewBox="0 0 1200 800"
+        preserveAspectRatio="xMidYMid slice"
+      >
+        <g fill="none" stroke="var(--color-ink)">
+          {CONTOURS.map((c) => (
+            <path
+              key={c.key}
+              d={c.d}
+              strokeOpacity={c.index ? 0.11 : 0.06}
+              strokeWidth={c.index ? 1.25 : 1}
+              vectorEffect="non-scaling-stroke"
+            />
+          ))}
+        </g>
+      </svg>
+    );
+  }
+
   return (
     <svg
       aria-hidden
-      className="pointer-events-none absolute inset-0 size-full"
+      className={cn('pointer-events-none absolute inset-0 size-full', className)}
       viewBox="0 0 1200 800"
       preserveAspectRatio="xMidYMid slice"
     >
       <defs>
-        <pattern id="topo-grid" width="64" height="64" patternUnits="userSpaceOnUse">
+        <pattern id={`${uid}-grid`} width="64" height="64" patternUnits="userSpaceOnUse">
           <path d="M64 0H0V64" fill="none" stroke="var(--color-on-main)" strokeOpacity="0.035" />
         </pattern>
-        <radialGradient id="topo-fade" cx="62%" cy="40%" r="75%">
+        <radialGradient id={`${uid}-fade`} cx="62%" cy="40%" r="75%">
           <stop offset="0%" stopColor="#fff" />
           <stop offset="100%" stopColor="#fff" stopOpacity="0.15" />
         </radialGradient>
-        <mask id="topo-mask">
-          <rect width="1200" height="800" fill="url(#topo-fade)" />
+        <mask id={`${uid}-mask`}>
+          <rect width="1200" height="800" fill={`url(#${uid}-fade)`} />
         </mask>
       </defs>
 
-      <rect width="1200" height="800" fill="url(#topo-grid)" />
-      <g mask="url(#topo-mask)" fill="none">
+      <rect width="1200" height="800" fill={`url(#${uid}-grid)`} />
+      <g mask={`url(#${uid}-mask)`} fill="none">
         {CONTOURS.map((c) => (
           <path
             key={c.key}
@@ -98,5 +132,34 @@ export function TopoBackground() {
         ))}
       </g>
     </svg>
+  );
+}
+
+/**
+ * Where a light section meets a dark band, the band's terrain keeps going onto
+ * the paper in faint ink and fades out, so the edge reads as one map rather
+ * than a change of sheet. The light SVG is laid out on the dark band's exact
+ * box (its height comes from `--{band}-h`, set by `useHeightVar`) and allowed
+ * to overflow, so every contour continues from where the band cuts it.
+ */
+export function TerrainSeam({ band, edge }: { band: 'hero' | 'contact'; edge: 'top' | 'bottom' }) {
+  const h = `var(--${band}-h, 48rem)`;
+  return (
+    <div
+      aria-hidden
+      className={cn(
+        'pointer-events-none absolute inset-x-0 h-[22rem] overflow-hidden sm:h-[28rem]',
+        edge === 'top'
+          ? 'top-0 [mask-image:linear-gradient(to_bottom,black,transparent)]'
+          : 'bottom-0 [mask-image:linear-gradient(to_top,black,transparent)]',
+      )}
+    >
+      <div
+        className="absolute inset-x-0"
+        style={edge === 'top' ? { height: h, bottom: '100%' } : { height: h, top: '100%' }}
+      >
+        <TopoBackground tone="light" />
+      </div>
+    </div>
   );
 }
