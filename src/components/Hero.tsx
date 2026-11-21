@@ -7,7 +7,7 @@ import {
   LinkedInLogoIcon,
 } from '@radix-ui/react-icons';
 import { facts, profile } from '../content';
-import { useHeightVar } from '../hooks';
+import { SURVEY_MARGIN, useHeightVar, useReveal } from '../hooks';
 import { TopoBackground } from './TopoBackground';
 import { ViewerLink } from './Viewer';
 import { Traverse } from './Traverse';
@@ -17,6 +17,7 @@ const delay = (ms: number) => ({ '--reveal-delay': `${ms}ms` }) as CSSProperties
 
 export function Hero() {
   const ref = useHeightVar<HTMLElement>('--hero-h');
+  const factsRef = useReveal<HTMLDListElement>(SURVEY_MARGIN);
 
   return (
     <section ref={ref} id="top" aria-label="Introduction" className="relative overflow-hidden bg-main text-on-main">
@@ -86,15 +87,17 @@ export function Hero() {
       </div>
 
       <div className="relative border-t border-on-main/10 bg-main-800/70 backdrop-blur-sm">
-        <dl className="container-site grid grid-cols-2 lg:grid-cols-4">
+        <dl
+          ref={factsRef}
+          className="survey-cols survey-cols-2 reveal container-site grid grid-cols-2 [--dash:color-mix(in_oklab,var(--color-on-main)_30%,transparent)] [--pen:var(--color-accent-glow)] [--rule:color-mix(in_oklab,var(--color-on-main)_10%,transparent)] lg:grid-cols-4 lg:survey-cols-4"
+        >
           {facts.map((fact, i) => (
             <div
               key={fact.label}
               className={cn(
                 'py-5 pr-4 sm:py-6',
-                i % 2 === 1 && 'border-l border-on-main/10 pl-4',
-                i >= 2 && 'border-t border-on-main/10 lg:border-t-0',
-                i > 0 && 'lg:border-l lg:pl-6',
+                i % 2 === 1 && 'pl-4',
+                i > 0 && 'lg:pl-6',
               )}
             >
               <dt className="flex items-center gap-2 font-mono text-label-sm text-on-main-subtle uppercase">

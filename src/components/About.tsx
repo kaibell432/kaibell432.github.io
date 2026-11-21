@@ -1,9 +1,12 @@
 import { about } from '../content';
+import { SURVEY_MARGIN, useReveal } from '../hooks';
 import { Portrait } from './Portrait';
 import { TerrainSeam } from './TopoBackground';
 import { InlineList, Section } from './ui';
 
 export function About() {
+  const focusRef = useReveal<HTMLUListElement>(SURVEY_MARGIN);
+
   return (
     <Section id="about" index="01" label="About" title={about.title} edge="start" seam={<TerrainSeam band="hero" edge="top" />}>
       {/* Portrait beside the story, then the focus areas as an even strip across the full width. */}
@@ -16,9 +19,9 @@ export function About() {
         </div>
       </div>
 
-      <ul className="mt-16 grid gap-px overflow-hidden rounded-xl bg-black/[0.08] ring-1 ring-black/[0.08] sm:grid-cols-2 lg:mt-20 lg:grid-cols-4">
+      <ul ref={focusRef} className="survey-cols survey-cols-1 reveal mt-16 grid rounded-xl bg-white ring-1 ring-black/[0.08] sm:grid-cols-2 sm:survey-cols-2 lg:mt-20 lg:grid-cols-4 lg:survey-cols-4">
         {about.focus.map(({ icon: Icon, title, body }) => (
-          <li key={title} className="bg-white p-6">
+          <li key={title} className="p-6">
             <Icon aria-hidden className="size-5 text-accent-ink" />
             <h3 className="mt-4 font-semibold">{title}</h3>
             <p className="mt-1.5 text-sm leading-relaxed text-pretty text-muted">{body}</p>
