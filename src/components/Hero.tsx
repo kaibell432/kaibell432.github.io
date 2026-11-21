@@ -44,7 +44,7 @@ export function Hero() {
             className="hero-in mt-7 max-w-2xl text-2xl leading-snug font-medium text-balance sm:text-[1.75rem]"
             style={delay(160)}
           >
-            I build React front ends for data-heavy work, from{' '}
+            I build React front ends for <span className="whitespace-nowrap">data-heavy</span> work, from{' '}
             <span className="text-accent">geospatial analysis</span> to data repositories.
           </p>
 

@@ -35,6 +35,10 @@
   html {
     scroll-padding-top: 4.5rem;
     -webkit-text-size-adjust: 100%;
+    /* Browser surfaces follow the theme too: scrollbar on the paper, accent caret and native controls. */
+    scrollbar-color: color-mix(in oklab, var(--color-ink) 28%, transparent) var(--color-paper);
+    caret-color: var(--color-accent-ink);
+    accent-color: var(--color-accent-ink);
   }
 
   @media (prefers-reduced-motion: no-preference) {
