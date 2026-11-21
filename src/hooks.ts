@@ -62,8 +62,14 @@ export function useActiveSection(ids: readonly string[]) {
   return active;
 }
 
-/** Adds `data-shown` to the element the first time it scrolls into view. */
-export function useReveal<T extends HTMLElement>() {
+/** Survey-column strips draw once they are a quarter of the way up the screen, so the draw is seen. */
+export const SURVEY_MARGIN = '0px 0px -25% 0px';
+
+/**
+ * Adds `data-shown` to the element the first time it scrolls into view. Pass
+ * `rootMargin` to wait until it is further into view (e.g. SURVEY_MARGIN).
+ */
+export function useReveal<T extends HTMLElement>(rootMargin = '0px 0px -8% 0px') {
   const ref = useRef<T>(null);
 
   useEffect(() => {
@@ -80,11 +86,11 @@ export function useReveal<T extends HTMLElement>() {
           observer.disconnect();
         }
       },
-      { rootMargin: '0px 0px -8% 0px' },
+      { rootMargin },
     );
     observer.observe(el);
     return () => observer.disconnect();
-  }, []);
+  }, [rootMargin]);
 
   return ref;
 }

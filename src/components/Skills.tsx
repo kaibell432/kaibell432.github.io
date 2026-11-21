@@ -2,7 +2,7 @@ import type { CSSProperties, ReactNode } from 'react';
 import { Accordion } from '@base-ui/react/accordion';
 import { ArrowTopRightIcon, PlusIcon } from '@radix-ui/react-icons';
 import { certification, education, legend, skills } from '../content';
-import { useCollapsedHeight } from '../hooks';
+import { SURVEY_MARGIN, useCollapsedHeight, useReveal } from '../hooks';
 import { TerrainSeam } from './TopoBackground';
 import { cn, InlineList, Section } from './ui';
 
@@ -10,6 +10,7 @@ export function Skills() {
   // Side by side, the certification card matches the education card's height with
   // its courses shut, so opening one grows only the education card.
   const [educationRef, educationRest] = useCollapsedHeight<HTMLElement>();
+  const groupsRef = useReveal<HTMLDivElement>(SURVEY_MARGIN);
 
   return (
     <Section
@@ -21,9 +22,9 @@ export function Skills() {
       seam={<TerrainSeam band="contact" edge="bottom" />}
     >
       <div className="space-y-6">
-        <div className="grid gap-px overflow-hidden rounded-xl bg-black/[0.08] ring-1 ring-black/[0.08] sm:grid-cols-2 lg:grid-cols-4">
+        <div ref={groupsRef} className="survey-cols survey-cols-1 reveal grid rounded-xl bg-white ring-1 ring-black/[0.08] sm:grid-cols-2 sm:survey-cols-2 lg:grid-cols-4 lg:survey-cols-4">
           {skills.map((group) => (
-            <div key={group.group} className="bg-white p-6">
+            <div key={group.group} className="p-6">
               <h3 className="font-mono text-label text-accent-ink uppercase">{group.group}</h3>
               <ul className="mt-4 space-y-1.5 text-base font-medium">
                 {group.items.map((item) => (

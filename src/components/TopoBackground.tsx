@@ -6,7 +6,7 @@
 import { useId } from 'react';
 import { cn } from './ui';
 
-type Point = [number, number];
+export type Point = [number, number];
 
 export type Hill = {
   cx: number;
@@ -18,30 +18,42 @@ export type Hill = {
   accent?: number[];
 };
 
+/** The SVG's coordinate space; it is laid out with `xMidYMid slice` over its box. */
+export const TOPO_VIEW = { w: 1200, h: 800 };
+
+/** The hero's main hill, its peak toward the upper right: the hero traverse climbs it to the summit. */
+export const MAIN_HILL: Hill = { cx: 1020, cy: 200, radius: 560, levels: 15, seed: 1.3, accent: [3] };
+
 const HILLS: Hill[] = [
-  { cx: 940, cy: 330, radius: 560, levels: 15, seed: 1.3, accent: [3] },
+  MAIN_HILL,
   { cx: 90, cy: 780, radius: 420, levels: 11, seed: 4.1 },
   { cx: 520, cy: -40, radius: 220, levels: 6, seed: 2.6 },
 ];
 
-export function ring(hill: Hill, level: number): string {
-  const steps = 72;
+/** A point on contour `level` of `hill` at angle `a` (radians; π/2 points down the page). */
+export function ringPoint(hill: Hill, level: number, a: number): Point {
   const t = (level + 1) / hill.levels;
   const r0 = hill.radius * t;
   // Inner rings drift so the summit sits off-centre, like real terrain.
   const cx = hill.cx - (1 - t) * 60;
   const cy = hill.cy + (1 - t) * 30;
+  const wobble =
+    1 +
+    0.11 * Math.sin(3 * a + hill.seed + level * 0.21) +
+    0.06 * Math.sin(5 * a + hill.seed * 1.7 - level * 0.33) +
+    0.04 * Math.sin(2 * a + hill.seed * 0.6 + level * 0.12);
+  return [cx + r0 * wobble * Math.cos(a), cy + r0 * wobble * 0.8 * Math.sin(a)];
+}
 
+/** Where the rings converge: the hill's highest point. */
+export function summit(hill: Hill): Point {
+  return [hill.cx - 60, hill.cy + 30];
+}
+
+export function ring(hill: Hill, level: number): string {
+  const steps = 72;
   const pts: Point[] = [];
-  for (let i = 0; i < steps; i++) {
-    const a = (i / steps) * Math.PI * 2;
-    const wobble =
-      1 +
-      0.11 * Math.sin(3 * a + hill.seed + level * 0.21) +
-      0.06 * Math.sin(5 * a + hill.seed * 1.7 - level * 0.33) +
-      0.04 * Math.sin(2 * a + hill.seed * 0.6 + level * 0.12);
-    pts.push([cx + r0 * wobble * Math.cos(a), cy + r0 * wobble * 0.8 * Math.sin(a)]);
-  }
+  for (let i = 0; i < steps; i++) pts.push(ringPoint(hill, level, (i / steps) * Math.PI * 2));
 
   const f = (p: Point) => `${p[0].toFixed(1)},${p[1].toFixed(1)}`;
   let d = `M${f(pts[0]!)}`;

@@ -15,6 +15,9 @@
   --text-label-sm--letter-spacing: 0.08em;
 
   --ease-out-expo: cubic-bezier(0.22, 1, 0.36, 1);
+
+  /* From here the hero traverse is plotted on the topography; below it, a vertical list. */
+  --breakpoint-route: 85rem;
 }
 
 /* Page content spans about 70% of the viewport from 1024px; phones and tablets keep 16/24px gutters. */
@@ -86,6 +89,113 @@
  */
 .deco {
   overflow-anchor: none;
+}
+
+/*
+ * Survey columns: the divider between columns is a fine dashed survey line,
+ * the same dash as the Projects traverse, floating 16px clear of the strip's
+ * top and bottom edges. Once the grid wraps, later rows keep a solid hairline.
+ * With `.reveal` on the grid (useReveal), the lines draw downward in the accent
+ * colour, column by column, the first time it is well into view, then settle to
+ * the dash colour; reduced motion shows them drawn.
+ *
+ * Put `.survey-cols` on the grid and give its column count at each width with
+ * `survey-cols-1/2/4` (e.g. `survey-cols-1 sm:survey-cols-2 lg:survey-cols-4`).
+ * Dark surfaces set `--dash`, `--pen` and `--rule`; the defaults suit light ones.
+ */
+/* In a layer so the survey-cols-N utilities (which live in the utilities layer) can override it. */
+@layer components {
+  .survey-cols {
+    --dash: color-mix(in oklab, var(--color-ink) 28%, transparent);
+    --pen: var(--color-accent-ink);
+    --rule: rgb(0 0 0 / 0.08);
+    --dash-inset: 16px;
+
+    & > * {
+      position: relative;
+      border-top: 0 solid var(--rule);
+    }
+
+    & > *::before {
+      content: '';
+      display: none;
+      position: absolute;
+      top: var(--dash-inset);
+      bottom: var(--dash-inset);
+      left: 0;
+      border-left: 1px dashed var(--dash);
+      pointer-events: none;
+    }
+  }
+
+  /*
+   * The pen: each line draws down in the accent colour, then cools to its
+   * resting dash colour once drawn, so the draw reads even on a faint line.
+   */
+  @media (prefers-reduced-motion: no-preference) {
+    .survey-cols > *::before {
+      --draw-ms: 1300ms;
+      clip-path: inset(0 0 0 0);
+      transition:
+        clip-path var(--draw-ms) var(--ease-out-expo) var(--draw-delay, 150ms),
+        border-color 900ms ease calc(var(--draw-delay, 150ms) + var(--draw-ms) * 0.7);
+    }
+
+    .survey-cols > :nth-child(4n + 3)::before {
+      --draw-delay: 450ms;
+    }
+
+    .survey-cols > :nth-child(4n)::before {
+      --draw-delay: 750ms;
+    }
+
+    .survey-cols.reveal:not([data-shown]) > *::before {
+      clip-path: inset(0 0 100% 0);
+      border-color: var(--pen);
+    }
+  }
+}
+
+@utility survey-cols-1 {
+  & > :nth-child(n)::before {
+    display: none;
+  }
+  & > :nth-child(n) {
+    border-top-width: 0;
+  }
+  & > :nth-child(n + 2) {
+    border-top-width: 1px;
+  }
+}
+
+@utility survey-cols-2 {
+  & > :nth-child(n)::before {
+    display: none;
+  }
+  & > :nth-child(2n)::before {
+    display: block;
+  }
+  & > :nth-child(n) {
+    border-top-width: 0;
+  }
+  & > :nth-child(n + 3) {
+    border-top-width: 1px;
+  }
+}
+
+@utility survey-cols-4 {
+  & > :nth-child(n)::before {
+    display: none;
+  }
+  & > :not(:nth-child(4n + 1))::before {
+    display: block;
+  }
+  & > :nth-child(n) {
+    border-top-width: 0;
+  }
+  & > :nth-child(n + 5) {
+    border-top-width: 1px;
+  }
 }
 
 /*
@@ -189,6 +299,64 @@
 @keyframes leg-draw {
   from {
     stroke-dashoffset: 1;
+  }
+}
+
+/*
+ * The pen, as on the survey-column dividers: each leg draws in the accent,
+ * holds while it is drawn, then cools to its resting stroke.
+ */
+@media (prefers-reduced-motion: no-preference) {
+  .leg-pen {
+    animation: leg-pen 1300ms ease backwards;
+    animation-delay: var(--leg-delay, 0ms);
+  }
+}
+
+@keyframes leg-pen {
+  0%,
+  35% {
+    stroke: var(--color-accent-glow);
+    stroke-opacity: 1;
+  }
+}
+
+/*
+ * The same pen on the traverse's station marks: each appears in the accent as
+ * its leg arrives and cools to its own colour. Below xl, the vertical route line
+ * draws upward from the oldest station (the bottom) to the newest, in the accent.
+ */
+@media (prefers-reduced-motion: no-preference) {
+  .pen-mark {
+    animation: pen-mark 1300ms ease backwards;
+    animation-delay: var(--reveal-delay, 0ms);
+  }
+
+  .climb-draw {
+    animation:
+      climb-draw var(--climb-ms, 1500ms) var(--ease-out-expo) backwards,
+      climb-pen calc(var(--climb-ms, 1500ms) + 900ms) ease backwards;
+    animation-delay: var(--climb-delay, 0ms);
+  }
+}
+
+@keyframes pen-mark {
+  0%,
+  35% {
+    color: var(--color-accent-glow);
+  }
+}
+
+@keyframes climb-draw {
+  from {
+    clip-path: inset(100% 0 0 0);
+  }
+}
+
+@keyframes climb-pen {
+  0%,
+  60% {
+    border-color: var(--color-accent-glow);
   }
 }
 
