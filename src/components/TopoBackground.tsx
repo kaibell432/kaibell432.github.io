@@ -80,7 +80,7 @@ export function TopoBackground({ tone = 'dark', className }: { tone?: 'dark' | '
     return (
       <svg
         aria-hidden
-        className={cn('pointer-events-none absolute inset-0 size-full overflow-visible', className)}
+        className={cn('deco pointer-events-none absolute inset-0 size-full overflow-visible', className)}
         viewBox="0 0 1200 800"
         preserveAspectRatio="xMidYMid slice"
       >
@@ -102,7 +102,7 @@ export function TopoBackground({ tone = 'dark', className }: { tone?: 'dark' | '
   return (
     <svg
       aria-hidden
-      className={cn('pointer-events-none absolute inset-0 size-full', className)}
+      className={cn('deco pointer-events-none absolute inset-0 size-full', className)}
       viewBox="0 0 1200 800"
       preserveAspectRatio="xMidYMid slice"
     >
@@ -148,7 +148,7 @@ export function TerrainSeam({ band, edge }: { band: 'hero' | 'contact'; edge: 't
     <div
       aria-hidden
       className={cn(
-        'pointer-events-none absolute inset-x-0 h-[22rem] overflow-hidden sm:h-[28rem]',
+        'deco pointer-events-none absolute inset-x-0 h-[22rem] overflow-hidden sm:h-[28rem]',
         edge === 'top'
           ? 'top-0 [mask-image:linear-gradient(to_bottom,black,transparent)]'
           : 'bottom-0 [mask-image:linear-gradient(to_top,black,transparent)]',

@@ -43,7 +43,7 @@ export function Contact() {
         <div
           ref={backdropRef}
           aria-hidden
-          className="absolute inset-0 opacity-70 [mask-image:linear-gradient(to_bottom,rgb(0_0_0/0.4),black_45%)]"
+          className="deco absolute inset-0 opacity-70 [mask-image:linear-gradient(to_bottom,rgb(0_0_0/0.4),black_45%)]"
         >
           <TopoBackground />
         </div>
