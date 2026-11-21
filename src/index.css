@@ -15,6 +15,9 @@
   --text-label-sm--letter-spacing: 0.08em;
 
   --ease-out-expo: cubic-bezier(0.22, 1, 0.36, 1);
+
+  /* From here the hero traverse is plotted on the topography; below it, a vertical list. */
+  --breakpoint-route: 85rem;
 }
 
 /* Page content spans about 70% of the viewport from 1024px; phones and tablets keep 16/24px gutters. */
@@ -296,6 +299,64 @@
 @keyframes leg-draw {
   from {
     stroke-dashoffset: 1;
+  }
+}
+
+/*
+ * The pen, as on the survey-column dividers: each leg draws in the accent,
+ * holds while it is drawn, then cools to its resting stroke.
+ */
+@media (prefers-reduced-motion: no-preference) {
+  .leg-pen {
+    animation: leg-pen 1300ms ease backwards;
+    animation-delay: var(--leg-delay, 0ms);
+  }
+}
+
+@keyframes leg-pen {
+  0%,
+  35% {
+    stroke: var(--color-accent-glow);
+    stroke-opacity: 1;
+  }
+}
+
+/*
+ * The same pen on the traverse's station marks: each appears in the accent as
+ * its leg arrives and cools to its own colour. Below xl, the vertical route line
+ * draws upward from the oldest station (the bottom) to the newest, in the accent.
+ */
+@media (prefers-reduced-motion: no-preference) {
+  .pen-mark {
+    animation: pen-mark 1300ms ease backwards;
+    animation-delay: var(--reveal-delay, 0ms);
+  }
+
+  .climb-draw {
+    animation:
+      climb-draw var(--climb-ms, 1500ms) var(--ease-out-expo) backwards,
+      climb-pen calc(var(--climb-ms, 1500ms) + 900ms) ease backwards;
+    animation-delay: var(--climb-delay, 0ms);
+  }
+}
+
+@keyframes pen-mark {
+  0%,
+  35% {
+    color: var(--color-accent-glow);
+  }
+}
+
+@keyframes climb-draw {
+  from {
+    clip-path: inset(100% 0 0 0);
+  }
+}
+
+@keyframes climb-pen {
+  0%,
+  60% {
+    border-color: var(--color-accent-glow);
   }
 }
 
