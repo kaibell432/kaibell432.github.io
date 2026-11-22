@@ -20,7 +20,7 @@ export function Projects() {
       intro="Two React apps I’ve built at KBR, plus personal and university projects. Open any card for the details."
     >
       {/* The hero's traverse continues here: one dashed line past every station's data sheet. */}
-      <ol ref={railRef} className="reveal relative space-y-6">
+      <ol ref={railRef} className="reveal relative space-y-6 [--draw-pace:1.8]">
         {projects.map((p, i) => (
           <DataSheet key={p.id} project={p} order={i} last={i === projects.length - 1} />
         ))}
