@@ -227,19 +227,20 @@
 }
 
 @media (prefers-reduced-motion: no-preference) {
+  /* `--draw-pace` stretches durations and delays; the Experience and Projects timelines set it. */
   .draw-x,
   .draw-y,
   .draw-dot {
-    transition: scale 900ms var(--ease-out-expo);
-    transition-delay: var(--draw-delay, 120ms);
+    transition: scale calc(900ms * var(--draw-pace, 1)) var(--ease-out-expo);
+    transition-delay: calc(var(--draw-delay, 120ms) * var(--draw-pace, 1));
   }
 
   .draw-y {
-    transition-duration: 1600ms;
+    transition-duration: calc(1600ms * var(--draw-pace, 1));
   }
 
   .draw-dot {
-    transition-duration: 500ms;
+    transition-duration: calc(500ms * var(--draw-pace, 1));
   }
 
   .reveal:not([data-shown]) .draw-x {
@@ -288,7 +289,8 @@
   }
 
   .draw-clip-y {
-    transition: clip-path 900ms var(--ease-out-expo) var(--draw-delay, 120ms);
+    transition: clip-path calc(900ms * var(--draw-pace, 1)) var(--ease-out-expo)
+      calc(var(--draw-delay, 120ms) * var(--draw-pace, 1));
   }
 
   .reveal:not([data-shown]) .draw-clip-y {

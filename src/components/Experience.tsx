@@ -14,7 +14,7 @@ export function Experience() {
       title="Where I’ve worked."
       intro="Building the tools now. Before that, getting to know the data that flows through them."
     >
-      <ol ref={railRef} className="reveal relative space-y-6 sm:space-y-8">
+      <ol ref={railRef} className="reveal relative space-y-6 [--draw-pace:1.8] sm:space-y-8">
         {/* timeline rail */}
         <span aria-hidden className="draw-y absolute top-3 bottom-3 left-[7px] hidden w-px bg-black/10 sm:block lg:left-42" />
         {experience.map((job, i) => (
