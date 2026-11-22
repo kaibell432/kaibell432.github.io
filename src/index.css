@@ -92,48 +92,60 @@
 }
 
 /*
- * Survey columns: the divider between columns is a fine dashed survey line,
- * the same dash as the Projects traverse, floating 16px clear of the strip's
- * top and bottom edges. Once the grid wraps, later rows keep a solid hairline.
- * With `.reveal` on the grid (useReveal), the lines draw downward in the accent
- * colour, column by column, the first time it is well into view, then settle to
- * the dash colour; reduced motion shows them drawn.
+ * Survey columns: every separator in a strip is a fine dashed survey line, the
+ * same dash as the Projects traverse, floating 16px clear of the edges it runs
+ * between. Columns get a vertical line; once the grid wraps (or on a single
+ * column), rows get a horizontal one, so phones and wide screens share one
+ * language. With `.reveal` on the grid (useReveal), the lines draw in (down,
+ * or left to right) in the accent colour the first time it is well into view,
+ * then settle to the dash colour; reduced motion shows them drawn.
  *
  * Put `.survey-cols` on the grid and give its column count at each width with
  * `survey-cols-1/2/4` (e.g. `survey-cols-1 sm:survey-cols-2 lg:survey-cols-4`).
- * Dark surfaces set `--dash`, `--pen` and `--rule`; the defaults suit light ones.
+ * Dark surfaces set `--dash` and `--pen`; the defaults suit light ones.
  */
 /* In a layer so the survey-cols-N utilities (which live in the utilities layer) can override it. */
 @layer components {
   .survey-cols {
     --dash: color-mix(in oklab, var(--color-ink) 28%, transparent);
     --pen: var(--color-accent-ink);
-    --rule: rgb(0 0 0 / 0.08);
     --dash-inset: 16px;
 
     & > * {
       position: relative;
-      border-top: 0 solid var(--rule);
     }
 
-    & > *::before {
+    /* ::before is the column line (left edge), ::after the row line (top edge). */
+    & > *::before,
+    & > *::after {
       content: '';
       display: none;
       position: absolute;
+      pointer-events: none;
+    }
+
+    & > *::before {
       top: var(--dash-inset);
       bottom: var(--dash-inset);
       left: 0;
       border-left: 1px dashed var(--dash);
-      pointer-events: none;
+    }
+
+    & > *::after {
+      top: 0;
+      left: var(--dash-inset);
+      right: var(--dash-inset);
+      border-top: 1px dashed var(--dash);
     }
   }
 
   /*
-   * The pen: each line draws down in the accent colour, then cools to its
-   * resting dash colour once drawn, so the draw reads even on a faint line.
+   * The pen: each line draws in the accent colour, then cools to its resting
+   * dash colour once drawn, so the draw reads even on a faint line.
    */
   @media (prefers-reduced-motion: no-preference) {
-    .survey-cols > *::before {
+    .survey-cols > *::before,
+    .survey-cols > *::after {
       --draw-ms: 1300ms;
       clip-path: inset(0 0 0 0);
       transition:
@@ -141,11 +153,13 @@
         border-color 900ms ease calc(var(--draw-delay, 150ms) + var(--draw-ms) * 0.7);
     }
 
-    .survey-cols > :nth-child(4n + 3)::before {
+    .survey-cols > :nth-child(4n + 3)::before,
+    .survey-cols > :nth-child(4n + 3)::after {
       --draw-delay: 450ms;
     }
 
-    .survey-cols > :nth-child(4n)::before {
+    .survey-cols > :nth-child(4n)::before,
+    .survey-cols > :nth-child(4n)::after {
       --draw-delay: 750ms;
     }
 
@@ -153,48 +167,44 @@
       clip-path: inset(0 0 100% 0);
       border-color: var(--pen);
     }
+
+    .survey-cols.reveal:not([data-shown]) > *::after {
+      clip-path: inset(0 100% 0 0);
+      border-color: var(--pen);
+    }
   }
 }
 
+/* Resets use :nth-child(n) to match the specificity of the rules after them, so the widest breakpoint wins. */
 @utility survey-cols-1 {
-  & > :nth-child(n)::before {
+  & > :nth-child(n)::before,
+  & > :nth-child(n)::after {
     display: none;
   }
-  & > :nth-child(n) {
-    border-top-width: 0;
-  }
-  & > :nth-child(n + 2) {
-    border-top-width: 1px;
+  & > :nth-child(n + 2)::after {
+    display: block;
   }
 }
 
 @utility survey-cols-2 {
-  & > :nth-child(n)::before {
+  & > :nth-child(n)::before,
+  & > :nth-child(n)::after {
     display: none;
   }
-  & > :nth-child(2n)::before {
+  & > :nth-child(2n)::before,
+  & > :nth-child(n + 3)::after {
     display: block;
-  }
-  & > :nth-child(n) {
-    border-top-width: 0;
-  }
-  & > :nth-child(n + 3) {
-    border-top-width: 1px;
   }
 }
 
 @utility survey-cols-4 {
-  & > :nth-child(n)::before {
+  & > :nth-child(n)::before,
+  & > :nth-child(n)::after {
     display: none;
   }
-  & > :not(:nth-child(4n + 1))::before {
+  & > :not(:nth-child(4n + 1))::before,
+  & > :nth-child(n + 5)::after {
     display: block;
-  }
-  & > :nth-child(n) {
-    border-top-width: 0;
-  }
-  & > :nth-child(n + 5) {
-    border-top-width: 1px;
   }
 }
 

@@ -89,7 +89,7 @@ export function Hero() {
       <div className="relative border-t border-on-main/10 bg-main-800/70 backdrop-blur-sm">
         <dl
           ref={factsRef}
-          className="survey-cols survey-cols-2 reveal container-site grid grid-cols-2 [--dash:color-mix(in_oklab,var(--color-on-main)_30%,transparent)] [--pen:var(--color-accent-glow)] [--rule:color-mix(in_oklab,var(--color-on-main)_10%,transparent)] lg:grid-cols-4 lg:survey-cols-4"
+          className="survey-cols survey-cols-2 reveal container-site grid grid-cols-2 [--dash:color-mix(in_oklab,var(--color-on-main)_30%,transparent)] [--pen:var(--color-accent-glow)] lg:grid-cols-4 lg:survey-cols-4"
         >
           {facts.map((fact, i) => (
             <div
